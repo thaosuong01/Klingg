@@ -1,0 +1,107 @@
+@media (max-width: 767px) {
+  .header .nav-header {
+    height: 60px;
+  }
+  .header .nav-header .nav-menu .icon-menu {
+    width: 30px;
+    height: 100%;
+  }
+  .header .nav-header .nav-menu .icon-menu .bar-1 {
+    width: 28px;
+    height: 3px;
+    top: 0;
+  }
+  .header .nav-header .nav-menu .icon-menu .bar-2 {
+    width: 28px;
+    height: 2px;
+    top: 8px;
+  }
+  .header .nav-header .nav-menu .icon-menu .bar-3 {
+    width: 28px;
+    height: 3px;
+    top: 15px;
+  }
+  .header .nav-header .nav-menu .menu {
+    display: none;
+  }
+  .header .nav-header .nav-logo {
+    padding-left: 0;
+    padding-right: 3%;
+  }
+  .header .nav-header .nav-logo img {
+    max-width: 150px;
+  }
+  .header .nav-header .nav-item {
+    width: auto;
+    justify-content: flex-end;
+  }
+  .header .nav-header .nav-item .nav-account,
+.header .nav-header .nav-item .nav-search {
+    display: none;
+  }
+  .header .nav-header .nav-item .header-cart-icon {
+    padding: 4px;
+    font-size: 1.6rem;
+  }
+  .header .nav-header .nav-item .nav-cart .number {
+    position: absolute;
+    left: 62%;
+    bottom: 38%;
+  }
+  .header .nav-header .nav-item .nav-cart::after {
+    display: none;
+  }
+}
+@media (min-width: 768px) {
+  header .nav-header {
+    height: 46px;
+  }
+  header .nav-header .nav-menu .icon-menu {
+    width: 18px;
+    height: 100%;
+  }
+  header .nav-header .nav-menu .icon-menu .bar-1 {
+    width: 20px;
+    height: 2px;
+    top: 0;
+  }
+  header .nav-header .nav-menu .icon-menu .bar-2 {
+    width: 20px;
+    height: 1px;
+    top: 6px;
+  }
+  header .nav-header .nav-menu .icon-menu .bar-3 {
+    width: 20px;
+    height: 2px;
+    top: 11px;
+  }
+  header .nav-header .nav-logo {
+    padding-left: 10%;
+  }
+  header .nav-header .nav-logo img {
+    max-width: 120px;
+  }
+  header .nav-header .nav-item {
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+  }
+  header .nav-header .nav-item .header-cart-icon {
+    font-size: 1.4rem;
+    padding: 0 30px;
+  }
+  header .nav-header .nav-item .nav-account {
+    padding-right: 30px;
+  }
+  header .nav-header .nav-item .nav-cart .number {
+    position: absolute;
+    left: 52%;
+    bottom: 44%;
+  }
+  header .nav-header .nav-item .nav-account::after,
+header .nav-header .nav-item .nav-cart::after {
+    position: absolute;
+    height: 32px;
+    top: -3px;
+  }
+}/*# sourceMappingURL=responsive.css.map */
