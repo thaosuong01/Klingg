@@ -9,5 +9,5 @@ if(!empty($data['msg'])) {
     <input type="text" class="form-control" name="groupname" placeholder="Name group">
   </div>
   <input type="hidden" name="add_group" value="add_group">
-  <button type="submit" class="btn btn-primary bg-blue-600">Add</button>
+  <button type="submit" class="btn bg-neutral-900 text-slate-50 mb-3 rounded-lg inline-block hover:bg-orange-500 hover:text-slate-50 transition-all duration-300">Add</button>
 </form>

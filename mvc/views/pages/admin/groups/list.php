@@ -1,4 +1,5 @@
-<a class="px-4 py-2 bg-green-500 text-slate-50 mb-3 rounded-lg inline-block hover:bg-green-600 hover:text-slate-50" href="<?php echo _WEB_ROOT . '/admin/add_group' ?>">Add</a>
+<a class="px-4 py-2 bg-neutral-900 text-slate-50 mb-3 rounded-lg inline-block hover:bg-orange-500 hover:text-slate-50 transition-all duration-300" href="<?php echo _WEB_ROOT . '/admin/add_group' ?>">Add</a>
+
 <?php
 if (!empty($_SESSION['msg'])) {
     echo '<div class="alert alert-success">' . $_SESSION['msg'] . '</div>';

@@ -14,7 +14,7 @@ class ModelGroup extends DB
     }
 
     function updateGroup($id, $name, $updated_at) {
-        $update = "UPDATE group_user SET name = '$name', updated_at = '$updated_at' WHERE id = $id";
+        $update = "UPDATE group_user SET name = '$name', updated_at = '$updated_at' WHERE id = '$id'";
         return $this->pdo_execute($update);
     }
 
@@ -29,7 +29,7 @@ class ModelGroup extends DB
     }
 
     function deleteGroup($id) {
-        $delete = "DELETE FROM group_user WHERE id = $id";
+        $delete = "DELETE FROM group_user WHERE id = '$id'";
         return $this->pdo_execute($delete);
     }
 }
