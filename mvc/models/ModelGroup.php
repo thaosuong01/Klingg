@@ -1,9 +1,14 @@
 <?php
 class ModelGroup extends DB
 {
-    function getAll()
+    function getAll($keyword = '')
     {
-        $sql = "SELECT * FROM group_user";
+        if(!empty($keyword)) {
+            $sql = "SELECT * FROM group_user WHERE name like '%".$keyword."%'";
+        }
+        else {
+            $sql = "SELECT * FROM group_user";
+        }
         return $this->pdo_query($sql);
     }
 

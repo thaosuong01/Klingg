@@ -1,7 +1,14 @@
 <?php
 class ModelUser extends DB {
-    function getAll() {
-        $sql = "SELECT * FROM users";
+
+    function getAll($keyword = '')
+    {
+        if(!empty($keyword)) {
+            $sql = "SELECT * FROM users WHERE name like '%".$keyword."%'";
+        }
+        else {
+            $sql = "SELECT * FROM users";
+        }
         return $this->pdo_query($sql);
     }
 
@@ -19,5 +26,16 @@ class ModelUser extends DB {
             return [];
         }
     }
+
+    function checkGroupUser($gr_id) {
+        $select = "SELECT * FROM users WHERE gr_id = '$gr_id'";
+        if($this->pdo_query($select)) {
+            return $this->pdo_query($select);
+        }
+        else {
+            return [];
+        }
+    }
+
 }
 ?>

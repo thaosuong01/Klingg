@@ -26,9 +26,9 @@
   <link rel="stylesheet" href="<?php echo _PUBLIC . '/admin/plugins/daterangepicker/daterangepicker.css' ?>">
   <!-- summernote -->
   <link rel="stylesheet" href="<?php echo _PUBLIC . '/admin/plugins/summernote/summernote-bs4.min.css' ?>">
-  <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+  <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-minimal@4/minimal.css" rel="stylesheet">
 
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com"></script> 
 
 </head>
 
@@ -220,11 +220,19 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="<?php echo _WEB_ROOT . '/admin/list_group' ?>" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
+            <li class="nav-item hover:bg-slate-600 rounded">
+              <a class="text-white d-flex align-items-center py-2 px-3" href="<?php echo _WEB_ROOT . '/admin/list_group' ?>" class="nav-link">
+                <i class="mr-2 nav-icon fas fa-th "></i>
                 <p>
                   Group User
+                </p>
+              </a>
+            </li>
+            <li class="nav-item hover:bg-slate-600 rounded">
+              <a class="text-white d-flex align-items-center py-2 px-3" href="<?php echo _WEB_ROOT . '/admin/list_user' ?>" class="nav-link">
+                <i class="mr-2 nav-icon fas fa-th "></i>
+                <p>
+                  User
                 </p>
               </a>
             </li>

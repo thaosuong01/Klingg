@@ -21,12 +21,32 @@ window.addEventListener('load', function () {
                         url: href,
                         dataType: 'text',
                         success: function (data) {
-                            that.parentElement.parentElement.remove();
-                            Swal.fire(
-                                'Deleted!',
-                                'Your group has been deleted.',
-                                'success'
-                            )
+                            if (+data > 0) {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: "There are "+(data)+" users in the group. Can't delete user group!",
+                                    footer: '<a href="">Why do I have this issue?</a>'
+                                })
+                            }
+                            else {
+                                if (+data == -1) {
+                                    that.parentElement.parentElement.remove();
+                                    Swal.fire(
+                                        'Deleted!',
+                                        'Your group has been deleted.',
+                                        'success'
+                                    )
+                                }
+                                else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Oops...',
+                                        text: "System error!",
+                                        footer: '<a href="">Why do I have this issue?</a>'
+                                    })
+                                }
+                            }
                         },
                         error: function (e) {
                             console.log(e);
