@@ -1,9 +1,4 @@
-<!-- <?php
-      if (!empty($data['msg'])) {
-        echo '<div class="alert alert-' . $data['type'] . '">' . $data['msg'] . '</div>';
-      }
-      ?> -->
-<form method="POST">
+<form method="POST" action="<?php echo _WEB_ROOT . '/user/add_user' ?>" enctype="multipart/form-data">
   <div class="grid-cols-12 grid gap-4">
     <div class="mb-3 col-span-6">
       <label for="exampleInputEmail1" class="form-label">Name user</label>
@@ -18,14 +13,21 @@
             Upload file
           </span>
         </div>
-
       </label>
-
       <input type="file" id="image" class="form-control hidden" name="avatar"><br>
     </div>
     <div class="mb-3 col-span-6">
-      <label for="exampleInputEmail1" class="form-label">User group</label>
-      <input type="text" class="form-control" name="usergroup" placeholder="User group">
+      <label for="exampleInputEmail1" class="form-label">User group</label><br>
+      <select name="group" id="groupuser" class="custom-select" required>
+        <option>Select....</option>
+        <?php
+        foreach ($data['groups'] as $group) {
+        ?>
+          <option value="<?php echo $group['id'] ?>"><?php echo $group['name'] ?></option>
+        <?php
+        }
+        ?>
+      </select>
     </div>
     <div class="mb-3 col-span-6">
       <label for="exampleInputEmail1" class="form-label">Email</label>

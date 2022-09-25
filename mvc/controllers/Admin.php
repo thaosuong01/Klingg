@@ -5,9 +5,14 @@ class Admin extends Controller
     private $users;
     function index()
     {
-        return $this->view('admin', [
-            'page' => 'dashboard',
-        ]);
+        if(isset($_SESSION['user']) && $_SESSION['user']['gr_id'] == 1){
+            return $this->view('admin', [
+                'page' => 'dashboard',
+            ]);
+        }
+        else {
+            header('Location: ' . _WEB_ROOT. '');
+        }
     }
 
     function __construct()
@@ -28,7 +33,8 @@ class Admin extends Controller
         return $this->view('admin', [
             'page' => 'groups/list',
             'groups' => $groups,
-            'js' => ['ajax','search']
+            'js' => ['ajax','search'],
+            'title'=> 'User Group'
         ]);
     }
 
@@ -145,132 +151,4 @@ class Admin extends Controller
         }
     }
     
-    // User
-    function list_user()
-    {
-        $keyword = '';
-        if(isset($_POST['search']) && ($_POST['search'] != '')) {
-            $keyword = $_POST['keyword_user'];
-            $_POST['search'] = '';
-        }
-        $users = $this->users->getAll($keyword);
-        return $this->view('admin', [
-            'page' => 'users/list',
-            'users' => $users,
-            'js' => ['ajax','search']
-        ]);
-    }
-
-    function add_user()
-    {
-        $msg = '';
-        $type = '';
-        if (isset($_POST['add_user']) && ($_POST['add_user'])) {
-            $name = $_POST['username'];
-            $created_at = date('Y-m-d H:i:s');
-            $users = $this->users->getAll();
-            $check = 0;
-            foreach ($users as $user) {
-                if ($user['name'] == $name) {
-                    $check = 1;
-                    break;
-                } else {
-                    $check = 0;
-                }
-            }
-
-            if ($check == 1) {
-                $type = 'danger';
-                $msg = 'User name already exists';
-            } else {
-                $status = $this->users->insert($name, $created_at);
-                if ($status) {
-                    $type = 'success';
-                    $msg = 'Added user successfully';
-                    $_SESSION['msg'] = $msg;
-                    header('Location: ' . _WEB_ROOT . '/admin/list_user');
-                } else {
-                    $type = 'danger';
-                    $msg = 'System error';
-                }
-            }
-        }
-        return $this->view('admin', [
-            'page' => 'users/add',
-            'msg' => $msg,
-            'type' => $type
-        ]);
-    }
-
-    function update_user($id)
-    {
-        $user = $this->users->SelectOneUser($id);
-        if (isset($_POST['update_user']) && ($_POST['update_user'])) {
-            $name = $_POST['username'];
-            $updated_at = date('Y-m-d H:i:s');
-            $users = $this->users->getAll();
-            $check = 0;
-            foreach ($users as $user) {
-                if ($user['name'] == $name) {
-                    $check = 1;
-                    break;
-                } else {
-                    $check = 0;
-                }
-            }
-            $header = 0;
-            if ($check == 1) {
-                $header = 0;
-                $type = 'danger';
-                $msg = 'User user name already exists';
-            } else {
-                $status = $this->users->updateUser($id, $name, $updated_at);
-                if ($status) {
-                    $header = 1;
-                    $type = 'success';
-                    $msg = 'Added user user successfully';
-                } else {
-                    $header = 0;
-                    $type = 'danger';
-                    $msg = 'System error';
-                }
-            }
-
-            if ($header === 0) {
-                return $this->view('admin', [
-                    'page' => 'users/update',
-                    'user' => $user,
-                    'msg' => $msg,
-                    'type' => $type
-                ]);
-            } else {
-                $_SESSION['msg'] = $msg;
-                header('Location: ' . _WEB_ROOT . '/admin/list_user');
-                return;
-            }
-        }
-        if (!empty($user)) {
-            return $this->view('admin', [
-                'page' => 'users/update',
-                'user' => $user,
-
-            ]);
-        }
-    }
-
-    function delete_user($id)
-    {
-        $users = $this->users->checkUser($id);
-        if(!empty($users)) {
-            echo count($users);
-        }
-        else {
-            $status = $this->users->deleteUser($id);
-            if ($status) {
-                echo -1;
-            } else {
-                echo -2;
-            }
-        }
-    }
 }

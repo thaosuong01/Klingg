@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="<?php echo _PUBLIC . '/admin/plugins/summernote/summernote-bs4.min.css' ?>">
   <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-minimal@4/minimal.css" rel="stylesheet">
 
-  <script src="https://cdn.tailwindcss.com"></script> 
+  <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
 
@@ -179,7 +179,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="index3.html" class="brand-link">
-        <img src="<?php echo _PUBLIC. '/admin/dist/img/AdminLTELogo.png'?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="<?php echo _PUBLIC . '/admin/dist/img/AdminLTELogo.png' ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">AdminLTE 3</span>
       </a>
 
@@ -188,10 +188,10 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="<?php echo _PUBLIC. '/admin/dist/img/user2-160x160.jpg'?>" class="img-circle elevation-2" alt="User Image">
+            <img src="<?php echo _PATH_AVATAR . $_SESSION['user']['avatar'] ?>" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">Alexander Pierce</a>
+            <a href="#" class="d-block"><?php echo $_SESSION['user']['name'] ?></a>
           </div>
         </div>
 
@@ -213,7 +213,7 @@
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item menu-open">
-              <a href="#" class="nav-link active">
+              <a href="<?php echo _WEB_ROOT . '/admin/dashboard' ?>" class="nav-link active">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Dashboard
@@ -224,12 +224,12 @@
               <a class="text-white d-flex align-items-center py-2 px-3" href="<?php echo _WEB_ROOT . '/admin/list_group' ?>" class="nav-link">
                 <i class="mr-2 nav-icon fas fa-th "></i>
                 <p>
-                  Group User
+                  User Group
                 </p>
               </a>
             </li>
             <li class="nav-item hover:bg-slate-600 rounded">
-              <a class="text-white d-flex align-items-center py-2 px-3" href="<?php echo _WEB_ROOT . '/admin/list_user' ?>" class="nav-link">
+              <a class="text-white d-flex align-items-center py-2 px-3" href="<?php echo _WEB_ROOT . '/user/list_user' ?>" class="nav-link">
                 <i class="mr-2 nav-icon fas fa-th "></i>
                 <p>
                   User
@@ -255,7 +255,17 @@
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard v1</li>
+                <?php if (!empty($data['title'])) {
+                ?>
+                  <li class="breadcrumb-item active"><?php echo $data['title'] ?></li>
+                <?php
+                } else {
+                ?>
+                  <li class="breadcrumb-item active">Dashboard</li>
+                <?php
+                }
+                ?>
+
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->

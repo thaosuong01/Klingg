@@ -1,3 +1,5 @@
+
+
 <div class="search-header">
     <div class="search-box">
         <input type="text" class="search-box-input" placeholder="Search Our Store">
@@ -34,7 +36,7 @@
                 if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
                     if (!empty($_SESSION['user']['avatar'])) {
                 ?>
-                        <img class="header-account-icon w-[30px] h-[30px] object-cover rounded-full" src="<?php echo $_SESSION['user']['avatar'] ?>" alt="">
+                        <img class="header-account-icon w-[30px] h-[30px] object-cover rounded-full" src="<?php echo _PATH_AVATAR . $_SESSION['user']['avatar'] ?>" alt="">
                     <?php
                     }
                     ?>
@@ -106,7 +108,7 @@
                 if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
                     if (!empty($_SESSION['user']['avatar'])) {
                 ?>
-                        <img class="header-account-icon w-[30px] h-[30px] object-cover rounded-full" src="<?php echo $_SESSION['user']['avatar'] ?>" alt="">
+                        <img class="header-account-icon w-[30px] h-[30px] object-cover rounded-full" src="<?php echo _PATH_AVATAR . $_SESSION['user']['avatar'] ?>" alt="">
                     <?php
                     }
                     ?>
@@ -124,7 +126,7 @@
                         <?php
                         if ($_SESSION['user']['gr_id'] == 1) {
                         ?>
-                            <li class="user-item user-logout"><a href="account.html">Admin</a></li>
+                            <li class="user-item user-logout"><a href="<?php echo _WEB_ROOT .'/admin' ?>">Admin</a></li>
                         <?php
                         }
                         ?>

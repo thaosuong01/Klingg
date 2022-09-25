@@ -38,8 +38,8 @@ function formSunbmit(form, table) {
             });
         }, 1000);
     });
-
 }
+
 // search User Group
 let input_group = document.querySelector('.input_group');
 let table_group = document.querySelector('.table_group');
@@ -53,3 +53,15 @@ let table_user = document.querySelector('.table_user');
 let form_user = document.querySelector('.form_user');
 searchInput(input_user, table_user, form_user);
 formSunbmit(form_user, table_user);
+
+// Select
+let selectGroupUser = document.querySelector('.select-group');
+console.log(selectGroupUser);
+
+selectGroupUser?.addEventListener("change", function (e) {
+    localStorage.setItem("idSelect", JSON.stringify(e.target.value));
+    setLoading(table_user);
+    setTimeout(() => {
+        form_user.submit();
+    }, 1500);
+});
