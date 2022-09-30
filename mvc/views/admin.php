@@ -27,6 +27,7 @@
   <!-- summernote -->
   <link rel="stylesheet" href="<?php echo _PUBLIC . '/admin/plugins/summernote/summernote-bs4.min.css' ?>">
   <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-minimal@4/minimal.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -177,12 +178,6 @@
 
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-      <!-- Brand Logo -->
-      <a href="index3.html" class="brand-link">
-        <img src="<?php echo _PUBLIC . '/admin/dist/img/AdminLTELogo.png' ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
-      </a>
-
       <!-- Sidebar -->
       <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
@@ -222,7 +217,7 @@
             </li>
             <li class="nav-item hover:bg-slate-600 rounded">
               <a class="text-white d-flex align-items-center py-2 px-3" href="<?php echo _WEB_ROOT . '/admin/list_group' ?>" class="nav-link">
-                <i class="mr-2 nav-icon fas fa-th "></i>
+                <i class="mr-2 nav-icon bi bi-columns-gap"></i>
                 <p>
                   User Group
                 </p>
@@ -230,9 +225,25 @@
             </li>
             <li class="nav-item hover:bg-slate-600 rounded">
               <a class="text-white d-flex align-items-center py-2 px-3" href="<?php echo _WEB_ROOT . '/user/list_user' ?>" class="nav-link">
-                <i class="mr-2 nav-icon fas fa-th "></i>
+                <i class="mr-2 nav-icon bi bi-grid-fill"></i>
                 <p>
                   User
+                </p>
+              </a>
+            </li>
+            <li class="nav-item hover:bg-slate-600 rounded">
+              <a class="text-white d-flex align-items-center py-2 px-3" href="<?php echo _WEB_ROOT . '/category/list_category' ?>" class="nav-link">
+                <i class="mr-2 nav-icon bi bi-columns-gap"></i>
+                <p>
+                  Category
+                </p>
+              </a>
+            </li>
+            <li class="nav-item hover:bg-slate-600 rounded">
+              <a class="text-white d-flex align-items-center py-2 px-3" href="<?php echo _WEB_ROOT . '/product/list_product' ?>" class="nav-link">
+                <i class="mr-2 nav-icon bi bi-grid-fill"></i>
+                <p>
+                  Product
                 </p>
               </a>
             </li>
@@ -250,7 +261,17 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Dashboard</h1>
+              <?php
+              if (!empty($data['title'])) {
+              ?>
+                <h1 class="m-0"><?php echo $data['title'] ?></h1>
+              <?php
+              } else {
+              ?>
+                <h1 class="m-0">Dashboard</h1>
+              <?php
+              }
+              ?>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">

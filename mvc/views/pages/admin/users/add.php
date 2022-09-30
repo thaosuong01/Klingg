@@ -1,3 +1,8 @@
+<?php
+if(!empty($data['msg'])) {
+    echo '<div class="alert alert-'.$data['type'].'">'.$data['msg'].'</div>';
+}
+?>
 <form method="POST" action="<?php echo _WEB_ROOT . '/user/add_user' ?>" enctype="multipart/form-data">
   <div class="grid-cols-12 grid gap-4">
     <div class="mb-3 col-span-6">

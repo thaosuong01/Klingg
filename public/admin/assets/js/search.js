@@ -54,14 +54,38 @@ let form_user = document.querySelector('.form_user');
 searchInput(input_user, table_user, form_user);
 formSunbmit(form_user, table_user);
 
-// Select
+// Select user group
 let selectGroupUser = document.querySelector('.select-group');
-console.log(selectGroupUser);
 
 selectGroupUser?.addEventListener("change", function (e) {
     localStorage.setItem("idSelect", JSON.stringify(e.target.value));
     setLoading(table_user);
     setTimeout(() => {
         form_user.submit();
+    }, 1500);
+});
+
+// category
+let input_category = document.querySelector('.input_category');
+let table_category = document.querySelector('.table_category');
+let form_category = document.querySelector('.form_category');
+searchInput(input_category, table_category, form_category);
+formSunbmit(form_category, table_category);
+
+// product
+let input_product = document.querySelector('.input_product');
+let table_product = document.querySelector('.table_product');
+let form_product = document.querySelector('.form_product');
+searchInput(input_product, table_product, form_product);
+formSunbmit(form_product, table_product);
+
+// select category
+let selectCategory = document.querySelector('.select-category');
+
+selectCategory?.addEventListener("change", function (e) {
+    localStorage.setItem("idSelect", JSON.stringify(e.target.value));
+    setLoading(table_product);
+    setTimeout(() => {
+        form_product.submit();
     }, 1500);
 });

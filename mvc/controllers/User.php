@@ -127,7 +127,7 @@ class User extends Controller
 
             }
         }
-        $users = $this->users->getAll($keyword,0, (int)$gr_id);
+        $users = $this->users->getAll($keyword, 0, (int)$gr_id);
         $groups = $this->groups->getAll();
         return $this->view('admin', [
             'page' => 'users/list',
@@ -190,7 +190,8 @@ class User extends Controller
             'page' => 'users/add',
             'groups' => $groups,
             'msg' => $msg,
-            'type' => $type
+            'type' => $type,
+            'title'=> 'User'
         ]);
     }
 

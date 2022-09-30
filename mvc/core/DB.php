@@ -13,7 +13,6 @@ class DB
 
         $this->conn = new PDO($dburl, $this->username, $this->password);
         $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        // return $this->conn;
     }
     /**
      * Thực thi câu lệnh sql thao tác dữ liệu (INSERT, UPDATE, DELETE)

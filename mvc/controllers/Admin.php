@@ -105,7 +105,7 @@ class Admin extends Controller
                 if ($status) {
                     $header = 1;
                     $type = 'success';
-                    $msg = 'Added user group successfully';
+                    $msg = 'Updated user group successfully';
                 } else {
                     $header = 0;
                     $type = 'danger';
@@ -130,7 +130,6 @@ class Admin extends Controller
             return $this->view('admin', [
                 'page' => 'groups/update',
                 'group' => $group,
-
             ]);
         }
     }

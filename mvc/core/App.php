@@ -8,6 +8,7 @@ class App {
         $arr = $this->UrlProcess();
         
         // xu ly controller
+        // Kiểm tra file có tồn tại hay không
         if(isset($arr[0]) && file_exists('./mvc/controllers/' .$arr[0]. '.php')) {
             $this->controller = $arr[0];
             unset($arr[0]);
