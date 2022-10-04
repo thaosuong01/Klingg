@@ -60,7 +60,7 @@
 </style>
 <?php
 if (!empty($_SESSION['msg'])) {
-    echo '<div class="alert alert-success">' . $_SESSION['msg'] . '</div>';
+    echo '<div class="alert alert-success" id="toast-success">' . $_SESSION['msg'] . '</div>';
     $_SESSION['msg'] = '';
 }
 ?>

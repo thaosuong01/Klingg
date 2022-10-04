@@ -366,6 +366,11 @@
   }
 
   ?>
+  <script>
+    setTimeout(function() {
+      document.getElementById("toast-success").classList.add("hidden");
+    }, 3000);
+  </script>
 </body>
 
 </html>
