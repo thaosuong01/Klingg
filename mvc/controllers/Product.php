@@ -15,10 +15,10 @@ class Product extends Controller
     {
         $keyword = '';
         $cate_id = 0;
-        if(isset($_POST['search']) && ($_POST['search'] != '')) {
+        if (isset($_POST['search']) && ($_POST['search'] != '')) {
             $keyword = $_POST['keyword_product'];
             $_POST['search'] = '';
-            if(!empty($_POST['category'])) {
+            if (!empty($_POST['category'])) {
                 $cate_id = $_POST['category'];
             }
         }
@@ -82,8 +82,71 @@ class Product extends Controller
         ]);
     }
 
+    function update_product($id)
+    {
+        $msg = [];
+        $type = [];
+        $product = $this->products->SelectProduct($id);
+        $productImg = $this->products->SelectProductImg($id);
+        $categories = $this->categories->getAll();
+        if (isset($_POST['update_product']) && ($_POST['update_product'])) {
+            $name = $_POST['productname'];
+            $image = $_FILES['image']['name'];
+            $price = $_POST['price'];
+            $category = $_POST['category'];
+            $desc = $_POST['description'];
+            $updated_at = date('Y-m-d H:i:s');
+            $detail_img = $_FILES['detail_image'];
+            if (!empty($detail_img)) {
+                for ($i = 0; $i < count($detail_img['name']); $i++) {
+                    $target_file = _UPLOAD . '/product/' .  basename($_FILES['detail_image']['name'][$i]);
+                    if (move_uploaded_file($_FILES['detail_image']['tmp_name'][$i], $target_file)) {
+                    } else {
+                    }
+                }
+            }
+
+            if (!empty($image)) {
+                $target_file = _UPLOAD . '/product/' .  basename($_FILES['image']['name']);
+                if (move_uploaded_file($_FILES['image']['tmp_name'], $target_file)) {
+                } else {
+                }
+            }
+
+            $status = $this->products->updateProduct($id, $name, $image, $category, $price, $desc, $updated_at);
+            if(!empty($detail_img)) {
+                $this->products->deleteImgPro($id);
+                foreach ($_FILES['detail_image']['name'] as $name) {
+                    $this->products->addImageProduct($id, $name, $updated_at);
+                }
+            }
+            if ($status) {
+                $type = 'success';
+                $msg = 'Updated product successfully';
+                $_SESSION['msg'] = $msg;
+                header('Location: ' . _WEB_ROOT . '/product/list_product');
+            } else {
+                $type = 'danger';
+                $msg = 'System error';
+            }
+
+            unset($_POST['update_product']);
+        }
+
+        return $this->view('admin', [
+            'page' => 'product/update',
+            'product' => $product,
+            'categories' => $categories,
+            'productImg' => $productImg,
+            'msg' => $msg,
+            'type' => $type,
+            'title' => 'Product'
+        ]);
+    }
+
     function delete_product($id)
     {
+        $this->products->deleteImgPro($id);
         $status = $this->products->deletePro($id);
         if ($status) {
             echo -1;

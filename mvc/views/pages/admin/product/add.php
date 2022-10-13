@@ -21,8 +21,17 @@ if (!empty($data['msg'])) {
             </label>
             <input type="file" id="image" class="form-control hidden" name="image"><br>
         </div>
-        <div class="mb-3 col-span-6">
-            <input type="file" id="image" multiple class="form-control" name="detail_image[]"><br>
+        <div class="mb-3 col-span-6 h-[70px]">
+            <label for="image" class="form-label flex flex-col justify-center">
+                <span>Images</span>
+                <div class="flex items-center gap-3 bg-[#fff] mt-2 px-2 py-1 rounded border border-[#99a1a8] w-[483px]">
+                    <img src="<?php echo _PUBLIC . '/client/assets/image/image_upload.png' ?>" alt="" class="w-7">
+                    <span>
+                        Upload file
+                    </span>
+                </div>
+            </label>
+            <input type="file" id="image" multiple class="form-control hidden" name="detail_image[]"><br>
         </div>
         <div class="mb-3 col-span-6">
             <label for="exampleInputEmail1" class="form-label">Category</label><br>

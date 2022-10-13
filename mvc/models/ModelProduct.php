@@ -34,4 +34,46 @@ class ModelProduct extends DB
         $delete = "DELETE FROM product WHERE id = '$id'";
         return $this->pdo_execute($delete);
     }
+
+    function SelectProduct($id)
+    {
+        $select = "SELECT * FROM product WHERE id = '$id'";
+        if ($this->pdo_query_one($select)) {
+            return $this->pdo_query_one($select);
+        } else {
+            return [];
+        }
+    }
+
+    function SelectProductImg($id)
+    {
+        $select = "SELECT * FROM img_product WHERE product_id = '$id'";
+        if ($this->pdo_query($select)) {
+            return $this->pdo_query($select);
+        } else {
+            return [];
+        }
+    }
+
+    function updateProduct($id, $name, $image, $cate_id, $price, $desc, $updated_at) {
+        if(empty($image)) {
+            $update = "UPDATE product SET name = '$name', cate_id = '$cate_id', price = '$price', description = '$desc', updated_at = '$updated_at' WHERE id = '$id'";
+        }
+        else {
+            $update = "UPDATE product SET name = '$name', image = '$image', cate_id = '$cate_id', price = '$price', description = '$desc', updated_at = '$updated_at' WHERE id = '$id'";
+        }
+        return $this->pdo_execute($update);
+    }
+
+    function deleteImgPro($id)
+    {
+        $delete = "DELETE FROM img_product WHERE product_id = '$id'";
+        return $this->pdo_execute($delete);
+    }
+
+    function updateImgProduct($productId, $image, $updated_at)
+    {
+        $update = "UPDATE img_product SET image = '$image', updated_at = '$updated_at' WHERE product_id = '$productId'";
+        return $this->pdo_execute($update);
+    }
 }
