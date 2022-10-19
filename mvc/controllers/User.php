@@ -5,9 +5,8 @@ class User extends Controller
     {
         return $this->view('client', [
             'page' => 'login',
-            'js' => [
-                'account'
-            ]
+            'js' => ['account'],
+            'css' => ['login']
         ]);
     }
 
@@ -17,7 +16,8 @@ class User extends Controller
             'page' => 'register',
             'js' => [
                 'register'
-            ]
+            ],
+            'css' => ['register']
         ]);
     }
 
@@ -74,7 +74,8 @@ class User extends Controller
             } else {
                 $this->view('client', [
                     'page' => 'register',
-                    'msg' => $message
+                    'msg' => $message,
+                    'css' => ['register']
                 ]);
             }
         }
@@ -146,7 +147,7 @@ class User extends Controller
         $groups = $this->groups->getAll();
         if (isset($_POST['add_user']) && ($_POST['add_user'])) {
             $name = $_POST['username'];
-            $avatar = $_FILES['avatar']['name'];
+            $avatar = $this->processImg();
             $email = $_POST['email'];
             $password = $_POST['password'];
             $password = password_hash($password, PASSWORD_DEFAULT);
@@ -171,9 +172,6 @@ class User extends Controller
                 $type = 'danger';
                 $msg = 'User name already exists';
             } else {
-                $target_file = _UPLOAD . '/avt/' .  basename($_FILES['avatar']['name']);
-                if (move_uploaded_file($_FILES['avatar']['tmp_name'], $target_file)) {
-                }
                 $status = $this->users->insert($name, $avatar, $group, $email, $password, $phone, $address, $desc, $created_at);
                 if ($status) {
                     $type = 'success';
@@ -191,7 +189,8 @@ class User extends Controller
             'groups' => $groups,
             'msg' => $msg,
             'type' => $type,
-            'title'=> 'User'
+            'title'=> 'User',
+            'js' => ['uploadImg']
         ]);
     }
 
@@ -200,8 +199,9 @@ class User extends Controller
         $user = $this->users->SelectUser($id);
         $groups = $this->groups->getAll();
         if (isset($_POST['update_user']) && ($_POST['update_user'])) {
+
             $name = $_POST['username'];
-            $avatar = $_FILES['avatar']['name'];
+            $avatar = $this->processImg();            
             $email = $_POST['email'];
             $password = $_POST['password'];
             if (!empty($password)) {
@@ -214,6 +214,7 @@ class User extends Controller
             $updated_at = date('Y-m-d H:i:s');
             $users = $this->users->getAll('', $id);
             $check = 0;
+
             foreach ($users as $user) {
                 if ($user['name'] == $name) {
                     $check = 1;
@@ -245,7 +246,8 @@ class User extends Controller
                     'page' => 'users/update',
                     'user' => $user,
                     'msg' => $msg,
-                    'type' => $type
+                    'type' => $type,
+                    'js' => ['uploadImg']
                 ]);
             } else {
                 $_SESSION['msg'] = $msg;
@@ -257,7 +259,8 @@ class User extends Controller
             return $this->view('admin', [
                 'page' => 'users/update',
                 'user' => $user,
-                'groups' => $groups
+                'groups' => $groups,
+                'js' => ['uploadImg']
             ]);
         }
     }
@@ -269,6 +272,18 @@ class User extends Controller
             echo -1;
         } else {
             echo -2;
+        }
+    }
+
+    function processImg() {
+        if(isset($_FILES['avatar'])) {
+            $date = new DateTimeImmutable();
+            $fileNameArr = explode(".", $_FILES['avatar']['name']);
+            $target_file = _UPLOAD . '/avt/' .  basename($date->getTimestamp() . "." . $fileNameArr[1]);
+
+            if (move_uploaded_file($_FILES['avatar']['tmp_name'], $target_file)) {
+                return $date->getTimestamp() . "." . $fileNameArr[1];
+            }
         }
     }
 }

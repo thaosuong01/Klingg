@@ -3,7 +3,7 @@
         <div class="bg-header">
             <h1 class="heading" data-aos="fade-right" data-aos-duration="1000">Create Account</h1>
             <div class="path" data-aos="fade-left" data-aos-duration="2000">
-                <a href="index.html" class="back-to-home">Home</a>
+                <a href="<?php echo _WEB_ROOT ?>" class="back-to-home">Home</a>
                 <span>/</span>
                 <span class="page">Create Account</span>
             </div>

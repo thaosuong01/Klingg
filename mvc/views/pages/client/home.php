@@ -15,7 +15,7 @@
                             Sale Upto 20% Off
                         </div>
                         <div class="multiple-button">
-                            <a class="multiple-btn"><span>Shop now</span></a>
+                            <a class="multiple-btn" href="<?php echo _WEB_ROOT . '/product' ?>"><span>Shop now</span></a>
                         </div>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                             Sale Upto 30% Off
                         </div>
                         <div class="multiple-button">
-                            <a class="multiple-btn"><span>Shop now</span></a>
+                            <a class="multiple-btn" href="<?php echo _WEB_ROOT . '/product' ?>"><span>Shop now</span></a>
                         </div>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                             Sale Upto 40% Off
                         </div>
                         <div class="multiple-button">
-                            <a class="multiple-btn"><span>Shop now</span></a>
+                            <a class="multiple-btn" href="<?php echo _WEB_ROOT . '/product' ?>"><span>Shop now</span></a>
                         </div>
                     </div>
                 </div>
@@ -120,125 +120,53 @@
         <div class="product-trending container">
             <h2 class="trending-title">Trending Now</h2>
             <ul class="trending-list row">
-                <li class="trending-item col col-4">
-                    <div class="trending-info">
-                        <div class="trending-img">
-                            <img src="https://cdn.shopify.com/s/files/1/1933/0009/products/22S2279-HPMSH_valentina-small-hobo_marshmallow_A_250x250@2x.jpg?v=1650574940" alt="" class="first-img">
-                            <img src="https://cdn.shopify.com/s/files/1/1933/0009/products/22S2279-HPMSH_valentina-small-hobo_marshmallow_D_1024x1024.jpg?v=1652800579" alt="" class="last-img">
-                            <div class="trending-icon">
-                                <div class="trending-button row">
-                                    <div class="trending-button__icon col col-3">
-                                        <i class="fa fa fa-shopping-bag"></i>
-                                    </div>
-                                    <div class="trending-button__icon col col-3">
-                                        <i class="fa-regular fa-clone"></i>
-                                    </div>
-                                    <div class="trending-button__icon col col-3">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                    <div class="trending-button__icon col col-3">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </div>
+                <?php
+                foreach ($data['trendpro'] as $trendpro) {
+                ?>
+                    <li class="trending-item col col-4">
+                        <div class="trending-info">
+                            <div class="trending-img">
+                                <img src="<?php echo _PATH_IMG_PRODUCT . $trendpro['image'] ?>" alt="" class="first-img">
+                                <img src="<?php echo _PATH_IMG_PRODUCT . $trendpro['detail_img'] ?>" alt="" class="last-img">
+                                <div class="trending-icon">
+                                    <div class="trending-button row">
+                                        <div data-url="<?php echo _WEB_ROOT . '/ajax' ?>" data-id="<?php echo $trendpro['id'] ?>" class="add-to-cart trending-button__icon col col-3">
+                                            <i class="fa fa fa-shopping-bag"></i>
+                                        </div>
+                                        <div class="trending-button__icon col col-3">
+                                            <i class="fa-regular fa-clone"></i>
+                                        </div>
+                                        <div class="trending-button__icon col col-3">
+                                            <i class="fa-regular fa-heart"></i>
+                                        </div>
+                                        <div class="trending-button__icon col col-3">
+                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                        </div>
 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="trending-detail">
+                                <p class="trending-vendor">
+                                    <?php getNameCate($trendpro['cate_id']) ?>
+                                </p>
+
+                                <div class="trending-link__title">
+                                    <a href="#">
+                                        <?php echo $trendpro['name'] ?>
+                                    </a>
+                                </div>
+
+                                <div class="trending-link__price">
+                                    <span class="money">$ <?php echo $trendpro['price'] ?></span>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="trending-detail">
-                            <p class="trending-vendor">
-                                Crossbody
-                            </p>
-
-                            <div class="trending-link__title">
-                                <a href="#">Valentina Saddle Crossbody</a>
-                            </div>
-
-                            <div class="trending-link__price">
-                                <span class="money">$ 99</span>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="trending-item col col-4">
-                    <div class="trending-info">
-                        <div class="trending-img">
-                            <img src="https://cdn.shopify.com/s/files/1/1933/0009/products/22S2782-HPRSS_hudson-hobo_rossa_A_250x250@2x.jpg?v=1650401531" alt="" class="first-img">
-                            <img src="https://cdn.shopify.com/s/files/1/1933/0009/products/22S2782-HPRSS_hudson-hobo_rossa_C_1024x1024.jpg?v=1650401531" alt="" class="last-img">
-                            <div class="trending-icon">
-                                <div class="trending-button row">
-                                    <div class="trending-button__icon col col-3">
-                                        <i class="fa fa fa-shopping-bag"></i>
-                                    </div>
-                                    <div class="trending-button__icon col col-3">
-                                        <i class="fa-regular fa-clone"></i>
-                                    </div>
-                                    <div class="trending-button__icon col col-3">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                    <div class="trending-button__icon col col-3">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="trending-detail">
-                            <p class="trending-vendor">
-                                Hobo
-                            </p>
-
-                            <div class="trending-link__title">
-                                <a href="#">Hudson Hobo</a>
-                            </div>
-
-                            <div class="trending-link__price">
-                                <span class="money">$ 206</span>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="trending-item col col-4">
-                    <div class="trending-info">
-                        <div class="trending-img">
-                            <img src="https://cdn.shopify.com/s/files/1/1933/0009/products/22S1902-HPAZU_valentina-flap-satchel_azzurro_A_250x250@2x.jpg?v=1648157709" alt="" class="first-img">
-                            <img src="https://cdn.shopify.com/s/files/1/1933/0009/products/22S1902-HPAZU_valentina-flap-satchel_azzurro_C_1024x1024.jpg?v=1648157709" alt="" class="last-img">
-                            <div class="trending-icon">
-                                <div class="trending-button row">
-                                    <div class="trending-button__icon col col-3">
-                                        <i class="fa fa fa-shopping-bag"></i>
-                                    </div>
-                                    <div class="trending-button__icon col col-3">
-                                        <i class="fa-regular fa-clone"></i>
-                                    </div>
-                                    <div class="trending-button__icon col col-3">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                    <div class="trending-button__icon col col-3">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="trending-detail">
-                            <p class="trending-vendor">
-                                Satchel
-                            </p>
-
-                            <div class="trending-link__title">
-                                <a href="#">VALENTINA FLAP SATCHEL</a>
-                            </div>
-
-                            <div class="trending-link__price">
-                                <span class="money">$ 105</span>
-                            </div>
-                        </div>
-                    </div>
-                </li>
+                    </li>
+                <?php
+                }
+                ?>
             </ul>
         </div>
 

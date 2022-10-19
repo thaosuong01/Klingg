@@ -1,5 +1,3 @@
-
-
 <div class="search-header">
     <div class="search-box">
         <input type="text" class="search-box-input" placeholder="Search Our Store">
@@ -54,13 +52,13 @@
                         <?php
                         if ($_SESSION['user']['gr_id'] == 1) {
                         ?>
-                            <li class="user-item user-logout"><a href="<?php echo _WEB_ROOT .'/admin' ?>">Admin</a></li>
+                            <li class="user-item user-logout"><a href="<?php echo _WEB_ROOT . '/admin' ?>">Admin</a></li>
                         <?php
                         }
                         ?>
-                        <li class="user-item"><a href="account.html"><?php echo $_SESSION['user']['name'] ?></a></li>
+                        <li class="user-item"><a href="account.php"><?php echo $_SESSION['user']['name'] ?></a></li>
 
-                        <li class="user-item user-logout"><a href="<?php echo _WEB_ROOT. '/user/logout' ?>">Log out</a></li>
+                        <li class="user-item user-logout"><a href="<?php echo _WEB_ROOT . '/user/logout' ?>">Log out</a></li>
                     <?php
                     } else {
                     ?>
@@ -72,10 +70,18 @@
                 </ul>
             </div>
 
+            <?php
+            $number = 0;
+            if (!empty($_SESSION['cart'])) {
+                foreach ($_SESSION['cart'] as $item) {
+                    $number += $item['number'];
+                }
+            }
+            ?>
             <div class="nav-cart">
                 <a href="#">
                     <i class="fa fa fa-shopping-bag header-cart-icon"></i>
-                    <span class="number">0</span>
+                    <span class="number cart-count"><?php echo $number ?></span>
                 </a>
             </div>
 
@@ -126,13 +132,13 @@
                         <?php
                         if ($_SESSION['user']['gr_id'] == 1) {
                         ?>
-                            <li class="user-item user-logout"><a href="<?php echo _WEB_ROOT .'/admin' ?>">Admin</a></li>
+                            <li class="user-item user-logout"><a href="<?php echo _WEB_ROOT . '/admin' ?>">Admin</a></li>
                         <?php
                         }
                         ?>
-                        <li class="user-item"><a href="account.html"><?php echo $_SESSION['user']['name'] ?></a></li>
+                        <li class="user-item"><a href="account.php"><?php echo $_SESSION['user']['name'] ?></a></li>
 
-                        <li class="user-item user-logout"><a href="<?php echo _WEB_ROOT. '/user/logout' ?>">Log out</a></li>
+                        <li class="user-item user-logout"><a href="<?php echo _WEB_ROOT . '/user/logout' ?>">Log out</a></li>
                     <?php
                     } else {
                     ?>
@@ -147,7 +153,7 @@
             <div class="nav-cart">
                 <a href="#">
                     <i class="fa fa fa-shopping-bag header-cart-icon"></i>
-                    <span class="number">0</span>
+                    <span class="number cart-count"><?php echo $number ?></span>
                 </a>
             </div>
 
@@ -166,12 +172,12 @@
                 </li>
                 <li class="menu-item">
                     <div class="hover-menu">
-                        <a href="index.html">Home</a>
+                        <a href="<?php echo _WEB_ROOT ?>">Home</a>
                     </div>
                 </li>
                 <li class="menu-item menu-item-list">
                     <div class="hover-menu">
-                        <a href="product.html">Catalog
+                        <a href="<?php echo _WEB_ROOT . '/product' ?>">Catalog
                         </a>
                         <i class="fa-solid fa-angle-right icon-right"></i>
                     </div>
@@ -183,13 +189,13 @@
                 </li>
                 <li class="menu-item menu-item-list">
                     <div class="hover-menu">
-                        <a href="pages.html">Pages</a>
+                        <a href="pages.php">Pages</a>
                         <i class="fa-solid fa-angle-right icon-right"></i>
                     </div>
                     <ul class="list">
-                        <li class="item"><a href="pages.html">About</a></li>
-                        <li class="item"><a href="contact.html">Contact</a></li>
-                        <li class="item"><a href="blog.html">Blog</a></li>
+                        <li class="item"><a href="pages.php">About</a></li>
+                        <li class="item"><a href="contact.php">Contact</a></li>
+                        <li class="item"><a href="blog.php">Blog</a></li>
                     </ul>
                 </li>
             </ul>

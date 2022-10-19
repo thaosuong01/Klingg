@@ -1,6 +1,6 @@
 <?php
-if(!empty($data['msg'])) {
-    echo '<div class="alert alert-'.$data['type'].'">'.$data['msg'].'</div>';
+if (!empty($data['msg'])) {
+  echo '<div class="alert alert-' . $data['type'] . '">' . $data['msg'] . '</div>';
 }
 ?>
 
@@ -10,14 +10,9 @@ if(!empty($data['msg'])) {
       <label for="exampleInputEmail1" class="form-label">Name user</label>
       <input type="text" class="form-control" name="username" placeholder="Name user" value="<?php echo $data['user']['name'] ?>">
     </div>
-    <?php
-    $mb = 'mb-3';
-    if ($data['user']['avatar'] != '') {
-      $mb = 'mb-5';
-    }
-    ?>
-    <div class="<?php echo $mb ?> col-span-6 h-[70px]">
-      <label for="image" class="form-label flex flex-col justify-center">
+
+    <div class="mb-3 col-span-6 h-[70px]" id="avatar-upload">
+      <label for="image" class="form-label flex flex-col justify-center" id="upload-img">
         <span>Avatar</span>
         <div class="flex items-center gap-3 bg-[#fff] mt-2 px-2 py-1 rounded border border-[#99a1a8] w-[483px]">
           <img src="<?php echo _PUBLIC . '/client/assets/image/image_upload.png' ?>" alt="" class="w-7">
@@ -26,14 +21,13 @@ if(!empty($data['msg'])) {
           </span>
         </div>
       </label>
-      <input type="file" id="image" class="form-control hidden" name="avatar">
-      <?php
-      if ($data['user']['avatar'] != '') {
-      ?>
-        <img class="w-10 h-10 my-2" src="<?php echo _PATH_AVATAR . $data['user']['avatar'] ?>" alt="">
-      <?php
-      }
-      ?>
+
+      <input type="file" id="image" class="form-control hidden" name="avatar" onchange="readURL(this);">
+
+      <?php if (!empty($data['user']['avatar'])) { ?>
+        <img class="w-10 h-10 my-2" src="<?php echo _PATH_AVATAR . $data['user']['avatar'] ?>" alt="" id="img-preview">
+      <?php } ?>
+
     </div>
     <div class="mb-3 col-span-6">
       <label for="exampleInputEmail1" class="form-label">User group</label><br>
@@ -42,9 +36,9 @@ if(!empty($data['msg'])) {
         <?php
         foreach ($data['groups'] as $group) {
         ?>
-          <option <?php 
-            echo $group['id'] == $data['user']['gr_id'] ? 'selected' : ''
-          ?> value="<?php echo $group['id'] ?>"><?php echo $group['name'] ?></option>
+          <option <?php
+                  echo $group['id'] == $data['user']['gr_id'] ? 'selected' : ''
+                  ?> value="<?php echo $group['id'] ?>"><?php echo $group['name'] ?></option>
         <?php
         }
         ?>

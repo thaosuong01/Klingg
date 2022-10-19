@@ -3,7 +3,7 @@
         <div class="bg-header">
             <h1 class="heading" data-aos="fade-right" data-aos-duration="1000">Account</h1>
             <div class="path" data-aos="fade-left" data-aos-duration="2000">
-                <a href="index.html" class="back-to-home">Home</a>
+                <a href="<?php echo _WEB_ROOT ?>" class="back-to-home">Home</a>
                 <span>/</span>
                 <span class="page">Account</span>
             </div>
@@ -23,8 +23,6 @@
                     echo '<div class="alert alert-'.$_SESSION['typelg'].'">'.$_SESSION['msglg'].'</div>';
                     $_SESSION['msglg'] = '';
                     $_SESSION['typelg'] = '';
-
-
                 }
             ?>
                 <div class="form-input">

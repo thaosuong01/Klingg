@@ -11,19 +11,41 @@ class Product extends Controller
         $this->categories = $this->model('ModelCategory');
     }
 
+    function index() {
+        $products = $this->products->getAll();
+        $categories = $this->categories->getAllCl();
+        
+        $productNew = [];
+        foreach($products as $item) {
+            $item['detail_img'] = $this->products->getProImg($item['id'])['image'];
+            array_push($productNew, $item);
+        }
+
+        return $this->view('client', [
+            'page' => 'product',
+            'css' => ['product'],
+            'js' => ['ajax'],
+            'products' => $productNew,
+            'categories' => $categories
+        ]);
+    }
+
     function list_product()
     {
         $keyword = '';
         $cate_id = 0;
+
         if (isset($_POST['search']) && ($_POST['search'] != '')) {
             $keyword = $_POST['keyword_product'];
             $_POST['search'] = '';
-            if (!empty($_POST['category'])) {
+
+            if (!empty($_POST['category'])) 
                 $cate_id = $_POST['category'];
-            }
         }
+
         $products = $this->products->getAll($keyword, 0, (int)$cate_id);
         $categories = $this->categories->getAll();
+
         return $this->view('admin', [
             'page' => 'product/list',
             'products' => $products,
@@ -37,30 +59,31 @@ class Product extends Controller
     {
         $msg = '';
         $type = '';
+
         $categories = $this->categories->getAll();
+
         if (isset($_POST['add_product']) && ($_POST['add_product'])) {
+            $image = $this->processImg($_FILES['product']['name'], $_FILES['product']['tmp_name']);
             $name = $_POST['productname'];
-            $image = $_FILES['image']['name'];
             $price = $_POST['price'];
+
             $category = $_POST['category'];
             $desc = $_POST['description'];
-            $create_at = date('Y-m-d H:i:s');
             $detail_img = $_FILES['detail_image'];
+
+            $create_at = date('Y-m-d H:i:s');
+            $image_array = array();
+
             for ($i = 0; $i < count($detail_img['name']); $i++) {
-                $target_file = _UPLOAD . '/product/' .  basename($_FILES['detail_image']['name'][$i]);
-                if (move_uploaded_file($_FILES['detail_image']['tmp_name'][$i], $target_file)) {
-                } else {
-                }
-            }
-            $target_file = _UPLOAD . '/product/' .  basename($_FILES['image']['name']);
-            if (move_uploaded_file($_FILES['image']['tmp_name'], $target_file)) {
-            } else {
+                $img = $this->processImg($detail_img['name'][$i], $detail_img['tmp_name'][$i]);
+                array_push($image_array, $img);
             }
 
             $idProduct = $this->products->insertPro($name, $image, $category, $price, $desc, $create_at);
-            foreach ($_FILES['detail_image']['name'] as $name) {
+
+            foreach ($image_array as $name)
                 $this->products->addImageProduct($idProduct, $name, $create_at);
-            }
+
             if ($idProduct) {
                 $type = 'success';
                 $msg = 'Added product successfully';
@@ -78,7 +101,8 @@ class Product extends Controller
             'categories' => $categories,
             'msg' => $msg,
             'type' => $type,
-            'title' => 'Product'
+            'title' => 'Product',
+            'js' => ['uploadImg']
         ]);
     }
 
@@ -86,40 +110,41 @@ class Product extends Controller
     {
         $msg = [];
         $type = [];
+
         $product = $this->products->SelectProduct($id);
         $productImg = $this->products->SelectProductImg($id);
         $categories = $this->categories->getAll();
+
         if (isset($_POST['update_product']) && ($_POST['update_product'])) {
+            $image = "";
+            $updated_at = date('Y-m-d H:i:s');
+            $image_array = array();
+
             $name = $_POST['productname'];
-            $image = $_FILES['image']['name'];
             $price = $_POST['price'];
             $category = $_POST['category'];
             $desc = $_POST['description'];
-            $updated_at = date('Y-m-d H:i:s');
+            
             $detail_img = $_FILES['detail_image'];
-            if (!empty($detail_img)) {
-                for ($i = 0; $i < count($detail_img['name']); $i++) {
-                    $target_file = _UPLOAD . '/product/' .  basename($_FILES['detail_image']['name'][$i]);
-                    if (move_uploaded_file($_FILES['detail_image']['tmp_name'][$i], $target_file)) {
-                    } else {
-                    }
-                }
-            }
 
-            if (!empty($image)) {
-                $target_file = _UPLOAD . '/product/' .  basename($_FILES['image']['name']);
-                if (move_uploaded_file($_FILES['image']['tmp_name'], $target_file)) {
-                } else {
+            if (!empty($detail_img))
+                for ($i = 0; $i < count($detail_img['name']); $i++) {
+                    $img = $this->processImg($detail_img['name'][$i], $detail_img['tmp_name'][$i]);
+                    array_push($image_array, $img);
                 }
-            }
+
+            if (isset($_FILES['product']['name']))
+                $image = $this->processImg($_FILES['product']['name'], $_FILES['product']['tmp_name']);
 
             $status = $this->products->updateProduct($id, $name, $image, $category, $price, $desc, $updated_at);
-            if(!empty($detail_img)) {
+
+            if (count($image_array) > 0) {
                 $this->products->deleteImgPro($id);
-                foreach ($_FILES['detail_image']['name'] as $name) {
+                foreach ($image_array as $name) {
                     $this->products->addImageProduct($id, $name, $updated_at);
                 }
             }
+
             if ($status) {
                 $type = 'success';
                 $msg = 'Updated product successfully';
@@ -140,7 +165,8 @@ class Product extends Controller
             'productImg' => $productImg,
             'msg' => $msg,
             'type' => $type,
-            'title' => 'Product'
+            'title' => 'Product',
+            'js' => ['uploadImg']
         ]);
     }
 
@@ -148,10 +174,24 @@ class Product extends Controller
     {
         $this->products->deleteImgPro($id);
         $status = $this->products->deletePro($id);
-        if ($status) {
-            echo -1;
-        } else {
-            echo -2;
+        if ($status) echo -1;
+        else echo -2;
+    }
+
+
+
+    function processImg($filesName, $tmpName)
+    {
+        if (isset($filesName) && !empty($filesName)) {
+            $date = new DateTimeImmutable();
+            $fileNameArr = explode(".", $filesName);
+            $name = $date->getTimestamp().rand();
+            $target_file = _UPLOAD . '/product/' .  basename($name. "." . $fileNameArr[1]);
+
+            if (move_uploaded_file($tmpName, $target_file)) {
+                return $name . "." . $fileNameArr[1];
+            }
         }
     }
+
 }

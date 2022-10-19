@@ -15,11 +15,23 @@
     <link rel="shortcut icon" href="//cdn.shopify.com/s/files/1/0461/9036/2778/files/favicon_1_16x16.png?v=1630996498" type="image/png" />
     <title>Kling</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?php echo _PUBLIC . '/client/assets/css/main.css' ?>">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-minimal@4/minimal.css" rel="stylesheet">
+
+    <?php
+    if (isset($data['css'])) {
+        foreach ($data['css'] as $item) {
+    ?>
+            <link rel="stylesheet" href="<?php echo _PUBLIC . '/client/assets/css/' . $item . '.css' ?>">
+    <?php
+        }
+    }
+
+    ?>
     <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 
 <body>
@@ -28,37 +40,45 @@
         <?php require_once './mvc/views/pages/client/' . $data['page'] . '.php' ?>
 
         <?php require_once './mvc/views/block/client/footer.php' ?>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="<?php echo _PUBLIC . '/client/assets/js/main.js' ?>"></script>
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 
-        <script type="text/javascript">
-            $(document).ready(function() {
-                if ($('.banner-slider')) {
+    <script type="text/javascript">
+        $(document).ready(function() {
+            if ($('.banner-slider')) {
 
-                    $('.banner-slider').slick({
-                        speed: 300,
-                        slidesToShow: 1,
-                        arrows: true,
-                        prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa-solid fa-angles-left behavior-prev'></i></button>",
-                        nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa-solid fa-angles-right behavior-next'></i></button>",
-                    });
-                }
-            });
-        </script>
-        <?php
-        if (isset($data['js'])) {
-
-            foreach ($data['js'] as $item) {
-        ?>
-                <script src="<?php echo _PUBLIC . '/client/assets/js/' . $item . '.js' ?>"></script>
-        <?php
+                $('.banner-slider').slick({
+                    speed: 300,
+                    slidesToShow: 1,
+                    arrows: true,
+                    prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa-solid fa-angles-left behavior-prev'></i></button>",
+                    nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa-solid fa-angles-right behavior-next'></i></button>",
+                });
             }
-        }
+        });
+    </script>
+    <?php
+    if (isset($data['js'])) {
 
-        ?>
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script>
-            AOS.init();
-        </script>
+        foreach ($data['js'] as $item) {
+    ?>
+            <script src="<?php echo _PUBLIC . '/client/assets/js/' . $item . '.js' ?>"></script>
+    <?php
+        }
+    }
+
+    ?>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>

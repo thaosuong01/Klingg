@@ -24,8 +24,7 @@
   .header .nav-header .nav-menu .menu {
     display: none;
   }
-  .header .nav-header .nav-logo {
-    padding-left: 0;
+  .header .nav-header .nav-logo {    padding-left: 0;
     padding-right: 3%;
   }
   .header .nav-header .nav-logo img {
