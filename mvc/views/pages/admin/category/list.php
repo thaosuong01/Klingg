@@ -62,6 +62,8 @@ if (!empty($_SESSION['msg'])) {
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Created at</th>
+            <th scope="col">Updated at</th>
+
             <th class="text-center" scope="col">Edit</th>
             <th class="text-center" scope="col">Delete</th>
         </tr>
@@ -75,6 +77,7 @@ if (!empty($_SESSION['msg'])) {
                     <th scope="row"><?php echo $category['id'] ?></th>
                     <td><?php echo $category['name'] ?></td>
                     <td><?php echo $category['created_at'] ?></td>
+                    <td><?php echo $category['updated_at'] ?></td>
                     <td class="text-center"><a class="text-slate-900" href="<?php echo _WEB_ROOT . '/category/update_category/' . $category['id'] ?>"><i class="far hover:scale-125 hover:text-yellow-500 transition-all duration-300 fa-edit"></i></a></td>
                     <td class="text-center"><a class="text-slate-900 delete_category" href="<?php echo _WEB_ROOT . '/category/delete_category/' . $category['id'] ?>"><i class="fas hover:scale-125 hover:text-red-600 transition-all duration-300 fa-trash-alt"></i></a></td>
                 </tr>

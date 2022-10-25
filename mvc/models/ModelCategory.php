@@ -12,7 +12,7 @@ class ModelCategory extends DB
     }
     function getAllCl()
     {
-        $sql = "SELECT category.name, count(product.cate_id) as count_cate FROM category INNER JOIN product ON category.id = product.cate_id GROUP BY category.name ORDER BY name";
+        $sql = "SELECT category.id, category.name, count(product.cate_id) as count_cate FROM category INNER JOIN product ON category.id = product.cate_id GROUP BY category.name ORDER BY name";
         return $this->pdo_query($sql);
     }
     function insertCate($name, $created_at)

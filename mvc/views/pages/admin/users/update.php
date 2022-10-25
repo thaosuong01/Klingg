@@ -10,8 +10,13 @@ if (!empty($data['msg'])) {
       <label for="exampleInputEmail1" class="form-label">Name user</label>
       <input type="text" class="form-control" name="username" placeholder="Name user" value="<?php echo $data['user']['name'] ?>">
     </div>
-
-    <div class="mb-3 col-span-6 h-[70px]" id="avatar-upload">
+    <?php
+    $mb = 'mb-3';
+    if ($data['user']['avatar'] != '') {
+      $mb = 'mb-5';
+    }
+    ?>
+    <div class="<?php echo $mb ?> col-span-6 h-[70px]" id="image-upload">
       <label for="image" class="form-label flex flex-col justify-center" id="upload-img">
         <span>Avatar</span>
         <div class="flex items-center gap-3 bg-[#fff] mt-2 px-2 py-1 rounded border border-[#99a1a8] w-[483px]">

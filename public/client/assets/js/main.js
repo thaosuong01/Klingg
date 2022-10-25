@@ -15,12 +15,12 @@ window.addEventListener('load', function () {
         navList.style.transform = "translateX(0)";
     })
     )
-    closeMenu.addEventListener('click', function () {
+    closeMenu?.addEventListener('click', function () {
         menuList.classList.remove('open-menu');
         navList.style.transform = "translateX(-100%)";
     })
 
-    menuList.addEventListener('click', function (e) {
+    menuList?.addEventListener('click', function (e) {
         if (e.target.contains(navList)) {
             menuList.classList.remove('open-menu');
             navList.style.transform = "translateX(-100%)";
@@ -41,12 +41,12 @@ window.addEventListener('load', function () {
         cartContent.style.transform = "translateX(0)";
     }))
 
-    closeCart.addEventListener('click', function () {
+    closeCart?.addEventListener('click', function () {
         modalCart.classList.remove('open-cart');
         cartContent.style.transform = "translateX(100%)";
     })
 
-    modalCart.addEventListener('click', function (e) {
+    modalCart?.addEventListener('click', function (e) {
         if (e.target.contains(cartContent)) {
             modalCart.classList.remove('open-cart');
             cartContent.style.transform = "translateX(100%)";
@@ -58,12 +58,12 @@ window.addEventListener('load', function () {
     const searchBox = document.querySelector('.search-header');
     const search = document.querySelectorAll('.nav-search');
     const searchClose = document.querySelector('.search-box-close-icon');
-    const searchHeight = searchBox.offsetHeight;
+    const searchHeight = searchBox && searchBox.offsetHeight;
     const header = document.querySelector('.header');
     [...search].forEach(item => item.addEventListener('click', function (e) {
         e.stopImmediatePropagation();
         let positionSeachBox = searchBox.getBoundingClientRect();
-        if(positionSeachBox.top < 0){
+        if (positionSeachBox.top < 0) {
             headerCurrent.style.top = `${-1 * positionSeachBox.top}px`;
             searchBox.classList.add('open-search');
             searchBox.style.transform = "translateY(0)";
@@ -71,7 +71,7 @@ window.addEventListener('load', function () {
         }
     }))
 
-    searchClose.addEventListener('click', function () {
+    searchClose?.addEventListener('click', function () {
         searchBox.classList.remove('open-search');
         searchBox.style.transform = "translateY(-100%)";
         header.style.paddingTop = `${0}px`;
@@ -116,43 +116,48 @@ window.addEventListener('load', function () {
     window.addEventListener('scroll', function (e) {
         e.stopImmediatePropagation();
         let srcollWindow = window.pageYOffset;
-        if (srcollWindow >= 10) {
-            headerActive.style.visibility = "visible";
-            headerActive.style.position = "fixed";
+        if (headerActive) {
+            if (srcollWindow >= 10) {
+                headerActive.style.visibility = "visible";
+                headerActive.style.position = "fixed";
 
-            headerActive.style.transform = 'translateY(0)';
-            headerActive.style.opacity = '1';
-
-
-            headerCurrent.style.transform = 'translateY(-150%)';
-
-            headerCurrent.style.position = "static";
+                headerActive.style.transform = 'translateY(0)';
+                headerActive.style.opacity = '1';
 
 
+                headerCurrent.style.transform = 'translateY(-100%)';
 
-        } else {
-            headerActive.style.opacity = '0';
-            headerActive.style.visibility = "hidden";
-            headerActive.style.position = "static";
-            this.document.querySelector('.index-header').style.paddingTop = "unset";
-            headerActive.style.transform = 'translateY(-40px)';
-
-            headerCurrent.style.position = "fixed";
-
-            headerCurrent.style.transform = 'translateY(0px)';
+                headerCurrent.style.position = "static";
 
 
+
+            } else {
+                headerActive.style.opacity = '0';
+                headerActive.style.visibility = "hidden";
+                headerActive.style.position = "static";
+                this.document.querySelector('.index-header').style.paddingTop = "unset";
+                headerActive.style.transform = 'translateY(-40px)';
+
+                headerCurrent.style.position = "fixed";
+
+                headerCurrent.style.transform = 'translateY(0px)';
+
+
+            }
         }
+
 
         // icon Top
         // const  productTrending =document.querySelector('.product-trending');
         // let positionCurrent = productTrending.getBoundingClientRect();
         const iconTop = document.querySelector('.icon-top');
-        if (srcollWindow >= 400) {
-            iconTop.classList.add('show-icon-top');
-        }
-        else {
-            iconTop.classList.remove('show-icon-top');
+        if (iconTop) {
+            if (srcollWindow >= 400) {
+                iconTop.classList.add('show-icon-top');
+            }
+            else {
+                iconTop.classList.remove('show-icon-top');
+            }
         }
     })
 

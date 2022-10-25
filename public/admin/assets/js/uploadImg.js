@@ -6,7 +6,7 @@ function readURL(input) {
             $("#img-preview").remove();
 
             const showImg = `
-                <img src="${e.target.result}" alt="IMG UPLOAD" style="width: 50px; height: 50px; margin-top: 5px; max-width: 100%; object-fit: cover; object-position: center;" id="img-preview"/>
+                <img src="${e.target.result}" alt="IMG UPLOAD"  style="width: 50px; height: 50px; margin-top: 5px; max-width: 100%; object-fit: cover; object-position: center;" id="img-preview"/>
             `
 
             $('#image-upload').css("height", "100px");
@@ -32,7 +32,7 @@ window.onload = function() {
         picReader.addEventListener("load", function(event) {
           var picFile = event.target;
           var div = document.createElement("div");
-          div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
+          div.innerHTML = "<img class='thumbnail my-3' src='" + picFile.result + "'" +
             "title='" + picFile.name + "'/>";
           output.insertBefore(div, null);
         });        

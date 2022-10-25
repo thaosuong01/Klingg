@@ -28,6 +28,7 @@ class User extends Controller
         $this->users = $this->model('ModelUser');
         $this->groups = $this->model('ModelGroup');
     }
+
     function handleRegister()
     {
         if (isset($_POST['register']) && $_POST['register'] != '') {
@@ -123,9 +124,8 @@ class User extends Controller
         if (isset($_POST['search']) && ($_POST['search'] != '')) {
             $keyword = $_POST['keyword_user'];
             $_POST['search'] = '';
-            if(!empty($_POST['group'])){
+            if (!empty($_POST['group'])) {
                 $gr_id = $_POST['group'];
-
             }
         }
         $users = $this->users->getAll($keyword, 0, (int)$gr_id);
@@ -135,7 +135,9 @@ class User extends Controller
             'users' => $users,
             'groups' => $groups,
             'js' => ['ajax', 'search'],
-            'title'=> 'User'
+            'title' => 'User',
+            'bg'=> 'active',
+            'pageactive' => 'user'
         ]);
     }
 
@@ -189,8 +191,10 @@ class User extends Controller
             'groups' => $groups,
             'msg' => $msg,
             'type' => $type,
-            'title'=> 'User',
-            'js' => ['uploadImg']
+            'title' => 'User',
+            'js' => ['uploadImg'],
+            'bg' => 'active',
+            'pageactive' => 'user'
         ]);
     }
 
@@ -201,7 +205,7 @@ class User extends Controller
         if (isset($_POST['update_user']) && ($_POST['update_user'])) {
 
             $name = $_POST['username'];
-            $avatar = $this->processImg();            
+            $avatar = $this->processImg();
             $email = $_POST['email'];
             $password = $_POST['password'];
             if (!empty($password)) {
@@ -247,7 +251,9 @@ class User extends Controller
                     'user' => $user,
                     'msg' => $msg,
                     'type' => $type,
-                    'js' => ['uploadImg']
+                    'js' => ['uploadImg'],
+                    'bg' => 'active',
+                    'pageactive' => 'user'
                 ]);
             } else {
                 $_SESSION['msg'] = $msg;
@@ -260,7 +266,9 @@ class User extends Controller
                 'page' => 'users/update',
                 'user' => $user,
                 'groups' => $groups,
-                'js' => ['uploadImg']
+                'js' => ['uploadImg'],
+                'bg' => 'active',
+                'pageactive' => 'user'
             ]);
         }
     }
@@ -275,14 +283,17 @@ class User extends Controller
         }
     }
 
-    function processImg() {
-        if(isset($_FILES['avatar'])) {
+    function processImg()
+    {
+        if (!empty($_FILES['avatar'])) {
             $date = new DateTimeImmutable();
             $fileNameArr = explode(".", $_FILES['avatar']['name']);
-            $target_file = _UPLOAD . '/avt/' .  basename($date->getTimestamp() . "." . $fileNameArr[1]);
+            if (isset($fileNameArr[1])) {
+                $target_file = _UPLOAD . '/avt/' .  basename($date->getTimestamp() . "." . $fileNameArr[1]);
 
-            if (move_uploaded_file($_FILES['avatar']['tmp_name'], $target_file)) {
-                return $date->getTimestamp() . "." . $fileNameArr[1];
+                if (move_uploaded_file($_FILES['avatar']['tmp_name'], $target_file)) {
+                    return $date->getTimestamp() . "." . $fileNameArr[1];
+                }
             }
         }
     }

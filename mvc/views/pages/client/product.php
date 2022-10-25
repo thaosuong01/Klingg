@@ -20,20 +20,20 @@
                         </h5>
                         <div class="filter-panel">
                             <ul>
-                                <?php foreach($data['categories'] as $category) {
+                                <?php foreach ($data['categories'] as $category) {
                                 ?>
-                                <li>
-                                    <a href="#">
-                                        <?php echo $category['name'] ?>
-                                    </a>
-                                    <span>(</span>
-                                    <span class="num"><?php echo $category['count_cate'] ?></span>
-                                    <span>)</span>
-                                </li>
+                                    <li>
+                                        <a class="category" href="#" data-id="<?php echo $category['id'] ?>" data-url="<?php echo _WEB_ROOT  . '/ajax' ?>" data-linkdetail="<?php echo _WEB_ROOT . '/detail/index/' ?>" data-user="<?php echo isset($_SESSION['user']) ? $_SESSION['user']['id'] : 'not logged in' ?>" data-pathimg="<?php echo _PATH_IMG_PRODUCT ?>" >
+                                            <?php echo $category['name'] ?>
+                                        </a>
+                                        <span>(</span>
+                                        <span class="num"><?php echo $category['count_cate'] ?></span>
+                                        <span>)</span>
+                                    </li>
                                 <?php
                                 }
                                 ?>
-                              
+
                             </ul>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                                             <img src="<?php echo _PATH_IMG_PRODUCT . $product['detail_img'] ?>" alt="" class="last-img">
                                             <div class="product-icon">
                                                 <div class="product-button row">
-                                                    <div data-url="<?php echo _WEB_ROOT . '/ajax' ?>" data-pathimg="<?php echo _PATH_IMG_PRODUCT ?>" data-id="<?php echo $product['id'] ?>" class="add-to-cart product-button__icon col col-3">
+                                                    <div data-url="<?php echo _WEB_ROOT . '/ajax' ?>" data-pathimg="<?php echo _PATH_IMG_PRODUCT ?>" data-id="<?php echo $product['id'] ?>" data-user="<?php echo isset($_SESSION['user']) ? $_SESSION['user']['id'] : 'not logged in' ?>" class="add-to-cart product-button__icon col col-3">
                                                         <i class="fa fa fa-shopping-bag"></i>
                                                     </div>
                                                     <div class="product-button__icon col col-3">
@@ -98,7 +98,7 @@
                                             </p>
 
                                             <div class="product-link__title">
-                                                <a href="#"> <?php echo $product['name'] ?>
+                                                <a href="<?php echo _WEB_ROOT . '/detail/index/' . $product['id'] ?>"> <?php echo $product['name'] ?>
                                                 </a>
                                             </div>
 

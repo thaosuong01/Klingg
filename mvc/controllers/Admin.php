@@ -5,13 +5,14 @@ class Admin extends Controller
     private $users;
     function index()
     {
-        if(isset($_SESSION['user']) && $_SESSION['user']['gr_id'] == 1){
+        if (isset($_SESSION['user']) && $_SESSION['user']['gr_id'] == 1) {
             return $this->view('admin', [
                 'page' => 'dashboard',
+                'bg' => 'active',
+                'pageactive' => 'dashboard'
             ]);
-        }
-        else {
-            header('Location: ' . _WEB_ROOT. '');
+        } else {
+            header('Location: ' . _WEB_ROOT . '');
         }
     }
 
@@ -19,13 +20,12 @@ class Admin extends Controller
     {
         $this->groups = $this->model('ModelGroup');
         $this->users = $this->model('ModelUser');
-
     }
     // Group user
     function list_group()
     {
         $keyword = '';
-        if(isset($_POST['search']) && ($_POST['search'] != '')) {
+        if (isset($_POST['search']) && ($_POST['search'] != '')) {
             $keyword = $_POST['keyword_group'];
             $_POST['search'] = '';
         }
@@ -33,8 +33,10 @@ class Admin extends Controller
         return $this->view('admin', [
             'page' => 'groups/list',
             'groups' => $groups,
-            'js' => ['ajax','search'],
-            'title'=> 'User Group'
+            'js' => ['ajax', 'search'],
+            'title' => 'User Group',
+            'bg' => 'active',
+            'pageactive' => 'group'
         ]);
     }
 
@@ -75,7 +77,9 @@ class Admin extends Controller
         return $this->view('admin', [
             'page' => 'groups/add',
             'msg' => $msg,
-            'type' => $type
+            'type' => $type,
+            'bg' => 'active',
+            'pageactive' => 'group'
         ]);
     }
 
@@ -118,7 +122,9 @@ class Admin extends Controller
                     'page' => 'groups/update',
                     'group' => $group,
                     'msg' => $msg,
-                    'type' => $type
+                    'type' => $type,
+                    'bg' => 'active',
+                    'pageactive' => 'group'
                 ]);
             } else {
                 $_SESSION['msg'] = $msg;
@@ -130,6 +136,8 @@ class Admin extends Controller
             return $this->view('admin', [
                 'page' => 'groups/update',
                 'group' => $group,
+                'bg' => 'active',
+                'pageactive' => 'group'
             ]);
         }
     }
@@ -137,10 +145,9 @@ class Admin extends Controller
     function delete_group($id)
     {
         $users = $this->users->checkGroupUser($id);
-        if(!empty($users)) {
+        if (!empty($users)) {
             echo count($users);
-        }
-        else {
+        } else {
             $status = $this->groups->deleteGroup($id);
             if ($status) {
                 echo -1;
@@ -149,5 +156,4 @@ class Admin extends Controller
             }
         }
     }
-    
 }

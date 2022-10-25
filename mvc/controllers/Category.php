@@ -11,7 +11,7 @@ class Category extends Controller
     function list_category()
     {
         $keyword = '';
-        if(isset($_POST['search']) && ($_POST['search'] != '')) {
+        if (isset($_POST['search']) && ($_POST['search'] != '')) {
             $keyword = $_POST['keyword_category'];
             $_POST['search'] = '';
         }
@@ -21,7 +21,9 @@ class Category extends Controller
             'page' => 'category/list',
             'categories' => $categories,
             'js' => ['ajax', 'search'],
-            'title' => 'Category'
+            'title' => 'Category',
+            'bg' => 'active',
+            'pageactive' => 'category'
         ]);
     }
 
@@ -63,7 +65,9 @@ class Category extends Controller
         return $this->view('admin', [
             'page' => 'category/add',
             'msg' => $msg,
-            'type' => $type
+            'type' => $type,
+            'bg' => 'active',
+            'pageactive' => 'category'
         ]);
     }
 
@@ -75,7 +79,7 @@ class Category extends Controller
 
         if (isset($_POST['update_category']) && ($_POST['update_category'])) {
             $name = $_POST['categoryname'];
-            $updated_at = date('Y-m.d H:i:s');
+            $updated_at = date('Y-m-d H:i:s');
             $categories = $this->categories->getAll();
 
             $check = 0;
@@ -108,16 +112,18 @@ class Category extends Controller
             'page' => 'category/update',
             'category' => $category,
             'msg' => $msg,
-            'type' => $type
+            'type' => $type,
+            'bg' => 'active',
+            'pageactive' => 'category'
         ]);
     }
 
-    function delete_category($id) {
+    function delete_category($id)
+    {
         $status = $this->categories->deleteCate($id);
-        if($status) {
+        if ($status) {
             echo -1;
-        }
-        else {
+        } else {
             echo -2;
         }
     }

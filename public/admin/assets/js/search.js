@@ -56,7 +56,10 @@ formSunbmit(form_user, table_user);
 
 // Select user group
 let selectGroupUser = document.querySelector('.select-group');
+if(selectGroupUser){
+    selectGroupUser.value = JSON.parse(localStorage.getItem('idSelect'));
 
+}
 selectGroupUser?.addEventListener("change", function (e) {
     localStorage.setItem("idSelect", JSON.stringify(e.target.value));
     setLoading(table_user);
@@ -81,11 +84,35 @@ formSunbmit(form_product, table_product);
 
 // select category
 let selectCategory = document.querySelector('.select-category');
+if(selectCategory){
+    selectCategory.value = JSON.parse(localStorage.getItem('idSelect'));
 
+}
 selectCategory?.addEventListener("change", function (e) {
     localStorage.setItem("idSelect", JSON.stringify(e.target.value));
     setLoading(table_product);
     setTimeout(() => {
         form_product.submit();
+    }, 1500);
+});
+
+// bill
+let input_bill = document.querySelector('.input_bill');
+let table_bill = document.querySelector('.table_bill');
+let form_bill = document.querySelector('.form_bill');
+searchInput(input_bill, table_bill, form_bill);
+formSunbmit(form_bill, table_bill);
+
+// select status
+let selectStatus = document.querySelector('.select-status');
+if(selectStatus){
+    selectStatus.value = JSON.parse(localStorage.getItem('idSelect'));
+
+}
+    selectStatus?.addEventListener("change", function (e) {
+    localStorage.setItem("idSelect", JSON.stringify(e.target.value));
+    setLoading(table_bill);
+    setTimeout(() => {
+        form_bill.submit();
     }, 1500);
 });

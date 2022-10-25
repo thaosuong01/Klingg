@@ -130,7 +130,7 @@
                                 <img src="<?php echo _PATH_IMG_PRODUCT . $trendpro['detail_img'] ?>" alt="" class="last-img">
                                 <div class="trending-icon">
                                     <div class="trending-button row">
-                                        <div data-url="<?php echo _WEB_ROOT . '/ajax' ?>" data-id="<?php echo $trendpro['id'] ?>" class="add-to-cart trending-button__icon col col-3">
+                                        <div data-url="<?php echo _WEB_ROOT . '/ajax' ?>" data-id="<?php echo $trendpro['id'] ?>" data-user="<?php echo isset($_SESSION['user']) ? $_SESSION['user']['id'] : 'not logged in' ?>" class="add-to-cart trending-button__icon col col-3">
                                             <i class="fa fa fa-shopping-bag"></i>
                                         </div>
                                         <div class="trending-button__icon col col-3">
@@ -153,7 +153,7 @@
                                 </p>
 
                                 <div class="trending-link__title">
-                                    <a href="#">
+                                    <a href="<?php echo _WEB_ROOT . '/detail/index/' . $trendpro['id'] ?>">
                                         <?php echo $trendpro['name'] ?>
                                     </a>
                                 </div>

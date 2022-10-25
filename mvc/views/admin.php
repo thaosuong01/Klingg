@@ -5,20 +5,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <?php
-  if(isset($data['title'])) {
-    ?>
+  if (isset($data['title'])) {
+  ?>
     <title>Admin | <?php echo $data['title'] ?></title>
-<?php
-  }
-  else {
-    ?>
+  <?php
+  } else {
+  ?>
     <title>Admin | Dashboard</title>
-    <?php
+  <?php
   }
   ?>
 
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;1,300&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo _PUBLIC . '/admin/plugins/fontawesome-free/css/all.min.css' ?>">
   <!-- Ionicons -->
@@ -39,16 +39,20 @@
   <link rel="stylesheet" href="<?php echo _PUBLIC . '/admin/plugins/summernote/summernote-bs4.min.css' ?>">
   <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-minimal@4/minimal.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-
+  <link rel="shortcut icon" href="//cdn.shopify.com/s/files/1/0461/9036/2778/files/favicon_1_16x16.png?v=1630996498" type="image/png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+  </style>
 
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
-
+    <!-- Preloader -->
 
 
     <!-- Navbar -->
@@ -59,148 +63,30 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="index3.html" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Contact</a>
+          <a href="<?php echo _WEB_ROOT . '/admin/dasboard' ?>" class="nav-link">Home</a>
         </li>
       </ul>
 
       <!-- Right navbar links -->
-      <ul class="navbar-nav ml-auto">
-        <!-- Navbar Search -->
-        <li class="nav-item">
-          <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-            <i class="fas fa-search"></i>
-          </a>
-          <div class="navbar-search-block">
-            <form class="form-inline">
-              <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                  <button class="btn btn-navbar" type="submit">
-                    <i class="fas fa-search"></i>
-                  </button>
-                  <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </li>
+      <div class="user-panel d-flex navbar-nav ml-auto">
+        <div class="image">
+          <img src="<?php echo _PATH_AVATAR . $_SESSION['user']['avatar'] ?>" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block"><?php echo $_SESSION['user']['name'] ?></a>
+        </div>
+      </div>
 
-        <!-- Messages Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-comments"></i>
-            <span class="badge badge-danger navbar-badge">3</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    Brad Diesel
-                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">Call me whenever you can...</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    John Pierce
-                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">I got your message bro</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    Nora Silvester
-                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">The subject goes here</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-          </div>
-        </li>
-        <!-- Notifications Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">15</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-item dropdown-header">15 Notifications</span>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 new messages
-              <span class="float-right text-muted text-sm">3 mins</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users mr-2"></i> 8 friend requests
-              <span class="float-right text-muted text-sm">12 hours</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 new reports
-              <span class="float-right text-muted text-sm">2 days</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-            <i class="fas fa-expand-arrows-alt"></i>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
-            <i class="fas fa-th-large"></i>
-          </a>
-        </li>
-      </ul>
     </nav>
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <aside class="main-sidebar sidebar-black-primary elevation-4">
       <!-- Sidebar -->
       <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div class="image">
-            <img src="<?php echo _PATH_AVATAR . $_SESSION['user']['avatar'] ?>" class="img-circle elevation-2" alt="User Image">
-          </div>
-          <div class="info">
-            <a href="#" class="d-block"><?php echo $_SESSION['user']['name'] ?></a>
-          </div>
+        <div class="navbar-nav mt-3 pb-3 mb-3 ">
+          <img src="https://cdn.shopify.com/s/files/1/0461/9036/2778/files/logo_41be5bb0-ee12-4cb7-8ae7-3267b91b49e3_300x300.png?v=1598248765" alt="" class="w-[160px] mx-auto">
         </div>
 
         <!-- SidebarSearch Form -->
@@ -214,49 +100,63 @@
             </div>
           </div>
         </div>
-
+        <?php
+        $bg = '';
+        $text = 'text-black';
+        if (isset($data['bg']) && $data['bg']  != "") {
+          $bg = 'bg-[#000]';
+        }
+        ?>
         <!-- Sidebar Menu -->
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-            <li class="nav-item menu-open">
-              <a href="<?php echo _WEB_ROOT . '/admin/dashboard' ?>" class="nav-link active">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
+            <li class="nav-item <?php echo $data['pageactive'] == 'dashboard' ? $bg : "" ?> menu-open rounded">
+              <a href="<?php echo _WEB_ROOT . '/admin/dashboard' ?>" class="<?php echo $data['pageactive'] == 'dashboard' ? 'text-white' : 'text-black' ?> hover:text-[#fff] d-flex py-2 px-3 hover:bg-[#eb6420] rounded">
+                <i class="mr-2 mt-[2px] nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Dashboard
                 </p>
               </a>
             </li>
-            <li class="nav-item hover:bg-slate-600 rounded">
-              <a class="text-white d-flex align-items-center py-2 px-3" href="<?php echo _WEB_ROOT . '/admin/list_group' ?>" class="nav-link">
-                <i class="mr-2 nav-icon bi bi-columns-gap"></i>
+            <li class="nav-item <?php echo $data['pageactive'] == 'group' ? $bg : "" ?>   hover:bg-[#eb6420] rounded ">
+              <a class="<?php echo $data['pageactive'] == 'group' ? 'text-white' : 'text-black' ?> hover:text-[#fff] active d-flex align-items-center py-2 px-3" href="<?php echo _WEB_ROOT . '/admin/list_group' ?>" class="nav-link">
+                <i class="mr-2 nav-icon fas fa-users"></i>
                 <p>
                   User Group
                 </p>
               </a>
             </li>
-            <li class="nav-item hover:bg-slate-600 rounded">
-              <a class="text-white d-flex align-items-center py-2 px-3" href="<?php echo _WEB_ROOT . '/user/list_user' ?>" class="nav-link">
-                <i class="mr-2 nav-icon bi bi-grid-fill"></i>
+            <li class="nav-item <?php echo $data['pageactive'] == 'user' ? $bg : "" ?>  hover:bg-[#eb6420] rounded">
+              <a class="<?php echo $data['pageactive'] == 'user' ? 'text-white' : 'text-black' ?> hover:text-[#fff] d-flex align-items-center py-2 px-3" href="<?php echo _WEB_ROOT . '/user/list_user' ?>" class="nav-link">
+                <i class="mr-2 nav-icon bi bi-person-fill"></i>
                 <p>
                   User
                 </p>
               </a>
             </li>
-            <li class="nav-item hover:bg-slate-600 rounded">
-              <a class="text-white d-flex align-items-center py-2 px-3" href="<?php echo _WEB_ROOT . '/category/list_category' ?>" class="nav-link">
-                <i class="mr-2 nav-icon bi bi-columns-gap"></i>
+            <li class="nav-item <?php echo $data['pageactive'] == 'category' ? $bg : "" ?>  hover:bg-[#eb6420] rounded">
+              <a class="<?php echo $data['pageactive'] == 'category' ? 'text-white' : 'text-black' ?> hover:text-[#fff] d-flex align-items-center py-2 px-3" href="<?php echo _WEB_ROOT . '/category/list_category' ?>" class="nav-link">
+                <i class="mr-2 nav-icon bi bi-card-list"></i>
                 <p>
                   Category
                 </p>
               </a>
             </li>
-            <li class="nav-item hover:bg-slate-600 rounded">
-              <a class="text-white d-flex align-items-center py-2 px-3" href="<?php echo _WEB_ROOT . '/product/list_product' ?>" class="nav-link">
-                <i class="mr-2 nav-icon bi bi-grid-fill"></i>
+            <li class="nav-item <?php echo $data['pageactive'] == 'product' ? $bg : "" ?>  hover:bg-[#eb6420] rounded">
+              <a class="<?php echo $data['pageactive'] == 'product' ? 'text-white' : 'text-black' ?> hover:text-[#fff] d-flex align-items-center py-2 px-3" href="<?php echo _WEB_ROOT . '/product/list_product' ?>" class="nav-link">
+                <i class="mr-2 nav-icon bi bi-handbag-fill"></i>
                 <p>
                   Product
+                </p>
+              </a>
+            </li>
+            <li class="nav-item <?php echo $data['pageactive'] == 'bill' ? $bg : "" ?>  hover:bg-[#eb6420] rounded">
+              <a class="<?php echo $data['pageactive'] == 'bill' ? 'text-white' : 'text-black' ?> hover:text-[#fff] d-flex align-items-center py-2 px-3" href="<?php echo _WEB_ROOT . '/bill/list_bill' ?>" class="nav-link">
+                <i class="mr-2 nav-icon bi bi-receipt"></i>
+                <p>
+                  Bills
                 </p>
               </a>
             </li>
@@ -381,7 +281,10 @@
   ?>
   <script>
     setTimeout(function() {
-      document.getElementById("toast-success").classList.add("hidden");
+      if(document.getElementById("toast-success")){
+
+        document.getElementById("toast-success").classList.add("hidden");
+      }
     }, 3000);
   </script>
 </body>

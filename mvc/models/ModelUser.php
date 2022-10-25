@@ -20,7 +20,7 @@ class ModelUser extends DB
 
     function InsertUser($name, $email, $password, $create_at)
     {
-        $insert = "INSERT INTO users(gr_id, name, email, password, created_at) VALUE(8, '$name', '$email', '$password', '$create_at')";
+        $insert = "INSERT INTO users(gr_id, name, email, password, created_at) VALUE(2, '$name', '$email', '$password', '$create_at')";
         return $this->pdo_execute($insert);
     }
 
@@ -78,5 +78,11 @@ class ModelUser extends DB
     {
         $delete = "DELETE FROM users WHERE id = '$id'";
         return $this->pdo_execute($delete);
+    }
+
+    public function getone_UserID($id)
+    {
+        $sql = "SELECT * FROM users where id= '$id'";
+        return  $this->pdo_query_one($sql);
     }
 }

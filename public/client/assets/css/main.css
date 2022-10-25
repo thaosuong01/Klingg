@@ -1026,7 +1026,7 @@ main .index-container .index-ins .ins-desc {
   font-size: 1.8rem;
   font-weight: 800;
   line-height: 2rem;
-  padding: 20px 12px;
+  padding: 10px 12px;
   margin: 0;
 }
 
@@ -1035,7 +1035,7 @@ main .index-container .index-ins .ins-desc {
   position: absolute;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
   width: 100%;
-  top: 70px;
+  top: 50px;
 }
 
 .modal-cart .cart-container .cart-content .cart-empty {
@@ -1055,7 +1055,7 @@ main .index-container .index-ins .ins-desc {
   color: #fff;
   background-color: #000;
   font-family: "Josefin Sans", sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: none;
   text-decoration: none;
   padding: 14px 41px;
@@ -1178,16 +1178,12 @@ main .index-container .index-ins .ins-desc {
   cursor: pointer;
 }
 
-.modal-cart .cart-container .cart-product .cart-product-list::after {
-  content: "";
-  position: absolute;
-  border-bottom: 1px solid #e9e9e9;
-  width: 100%;
-  bottom: -10%;
+.modal-cart .cart-container .cart-footer {
+  padding: 12px;
 }
 
-.modal-cart .cart-container .cart-product .sub-total {
-  padding-top: 30px;
+.modal-cart .cart-container .cart-footer .sub-total {
+  padding-top: 20px;
   font-family: "Josefin Sans", sans-serif;
   font-size: none;
   font-weight: 600;
@@ -1199,7 +1195,7 @@ main .index-container .index-ins .ins-desc {
   position: relative;
 }
 
-.modal-cart .cart-container .cart-product .sub-total::after {
+.modal-cart .cart-container .cart-footer .sub-total::after {
   content: "";
   position: absolute;
   border-bottom: 1px solid #e9e9e9;
@@ -1207,7 +1203,7 @@ main .index-container .index-ins .ins-desc {
   bottom: -12%;
 }
 
-.modal-cart .cart-container .cart-product .cart-bottom .total-text p {
+.modal-cart .cart-container .cart-footer .cart-bottom .total-text p {
   font-family: "Josefin Sans", sans-serif;
   font-size: 0.9rem;
   font-weight: none;
@@ -1218,7 +1214,7 @@ main .index-container .index-ins .ins-desc {
   cursor: context-menu;
 }
 
-.modal-cart .cart-container .cart-product .cart-bottom .cart-checkout {
+.modal-cart .cart-container .cart-footer .cart-bottom .cart-checkout {
   border: none;
   background-color: #000;
   color: #fff;
@@ -1228,7 +1224,7 @@ main .index-container .index-ins .ins-desc {
   transition: all linear 0.3s;
 }
 
-.modal-cart .cart-container .cart-product .cart-bottom .cart-view {
+.modal-cart .cart-container .cart-footer .cart-bottom .cart-view {
   margin-top: 16px;
   border: none;
   background-color: #000;
@@ -1244,8 +1240,8 @@ main .index-container .index-ins .ins-desc {
   transition: all linear 0.3s;
 }
 
-.modal-cart .cart-container .cart-product .cart-bottom .cart-checkout:hover,
-.modal-cart .cart-container .cart-product .cart-bottom .cart-view:hover {
+.modal-cart .cart-container .cart-footer .cart-bottom .cart-checkout:hover,
+.modal-cart .cart-container .cart-footer .cart-bottom .cart-view:hover {
   background-color: #eb6420;
   color: none;
   cursor: pointer;

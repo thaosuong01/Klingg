@@ -17,6 +17,22 @@ class ModelProduct extends DB
         return $this->pdo_query($pro);
     }
 
+    function getAllCate($keyword = '', $id = 0, $cate_id = 0)
+    {
+        $pro = "SELECT * FROM product WHERE 1";
+        if (!empty($keyword)) {
+            $pro .= " AND  name like '%" . $keyword . "%'";
+        }
+
+        if ($id > 0) {
+            $pro .= " AND id <> $id";
+        }
+        if ($cate_id > 0) {
+            $pro .= " AND cate_id = $cate_id";
+        }
+        return $this->pdo_query($pro);
+    }
+
     function insertPro($name, $image, $cate_id, $price, $desc, $create_at)
     {
         $pro = "INSERT INTO product(name, image, cate_id, price, description, created_at) VALUE('$name', '$image', '$cate_id','$price', '$desc', '$create_at')";
@@ -25,7 +41,7 @@ class ModelProduct extends DB
 
     function addImageProduct($productId, $image, $create_at)
     {
-        $insert = "INSERT INTO img_product(product_id, image, created_at) VALUE($productId, '$image', '$create_at')";
+        $insert = "INSERT INTO img_product(product_id, image, created_at) VALUE('$productId', '$image', '$create_at')";
         return $this->pdo_execute($insert);
     }
 
@@ -79,7 +95,7 @@ class ModelProduct extends DB
 
     function getTrendPro()
     {
-        $pro = "SELECT * FROM product ORDER BY view DESC LIMIT 3 ";
+        $pro = "SELECT * FROM product ORDER BY view DESC LIMIT 3";
         return $this->pdo_query($pro);
     }
 
@@ -102,6 +118,12 @@ class ModelProduct extends DB
             return [];
         }
     }
+
+    function getProInCate($id, $cate_id) {
+        $pro = "SELECT * FROM product WHERE cate_id = '$cate_id' AND id <> '$id'";
+        return $this->pdo_query($pro);
+    }
+    
 
     function addProductCart($id, $number = 1)
     {

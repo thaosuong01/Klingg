@@ -116,11 +116,13 @@
                 ?>
                         <img class="header-account-icon w-[30px] h-[30px] object-cover rounded-full" src="<?php echo _PATH_AVATAR . $_SESSION['user']['avatar'] ?>" alt="">
                     <?php
-                    }
+                    } else {
                     ?>
-                <?php
+                        <img class="header-account-icon w-[30px] h-[30px] object-cover rounded-full" src="https://ss-images.saostar.vn/wp700/pc/1613810558698/Facebook-Avatar_3.png" alt="">
+                    <?php
+                    }
                 } else {
-                ?>
+                    ?>
                     <img class="header-account-icon w-[30px] h-[30px] object-cover rounded-full" src="https://ss-images.saostar.vn/wp700/pc/1613810558698/Facebook-Avatar_3.png" alt="">
                 <?php
                 }
@@ -182,20 +184,27 @@
                         <i class="fa-solid fa-angle-right icon-right"></i>
                     </div>
                     <ul class="list">
-                        <li class="item"><a href="#">Crossbody Bags</a></li>
-                        <li class="item"><a href="#">Hobo Bag</a></li>
-                        <li class="item"><a href="#">Satchel Bag</a></li>
+                        <?php foreach ($data['categories'] as $category) {
+                        ?>
+                            <li class="item">
+                                <a href="<?php echo _WEB_ROOT . '/product?cate_id=' . $category['id'] ?>" >
+                                    <?php echo $category['name'] ?>
+                                </a>
+                            </li>
+                        <?php
+                        }
+                        ?>
                     </ul>
                 </li>
                 <li class="menu-item menu-item-list">
                     <div class="hover-menu">
-                        <a href="pages.php">Pages</a>
+                        <a href="<?php echo _WEB_ROOT . '/about' ?>">Pages</a>
                         <i class="fa-solid fa-angle-right icon-right"></i>
                     </div>
                     <ul class="list">
-                        <li class="item"><a href="pages.php">About</a></li>
-                        <li class="item"><a href="contact.php">Contact</a></li>
-                        <li class="item"><a href="blog.php">Blog</a></li>
+                        <li class="item"><a href="<?php echo _WEB_ROOT . '/about' ?>">About</a></li>
+                        <li class="item"><a href="<?php echo _WEB_ROOT . '/contact' ?>">Contact</a></li>
+                        <li class="item"><a href="<?php echo _WEB_ROOT . '/blog' ?>">Blog</a></li>
                     </ul>
                 </li>
             </ul>
