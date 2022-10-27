@@ -108,7 +108,7 @@ body {
 .search-header .search-box .search-box-icon {
   background-color: #000;
   color: #fff;
-  padding: 13px 20px 12px;
+  padding: 10px 16px 8px 16px;
   margin-left: 16px;
   transition: all linear 0.3s;
 }
@@ -855,6 +855,10 @@ header .header-menu .nav-list .menu-list .menu-item .list .item:hover a {
   transition: all linear 0.3s;
 }
 
+.modal-cart .cart-container .cart-product .cart-product-list .cart-product-item .cart-product--info {
+  width: 160px;
+}
+
 .modal-cart .cart-container .cart-product .cart-product-list .cart-product-item .cart-product--info a {
   text-decoration: none;
   color: #000;
@@ -1190,4 +1194,4 @@ footer .end-of-page .icon-top:hover {
   background-color: #eb6420;
   color: none;
   cursor: pointer;
-}/*# sourceMappingURL=cart.css.map */
+}

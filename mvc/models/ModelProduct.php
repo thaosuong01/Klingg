@@ -1,7 +1,13 @@
 <?php
 class ModelProduct extends DB
 {
-    function getAll($keyword = '', $id = 0, $cate_id = 0)
+    function countPro() {
+        $number = "SELECT * FROM product";
+        return count($this->pdo_query($number));
+
+    }
+    
+    function getAll($keyword = '', $id = 0, $cate_id = 0, $per_page = 12, $offset = 0)
     {
         $pro = "SELECT * FROM product WHERE 1";
         if (!empty($keyword)) {
@@ -14,6 +20,7 @@ class ModelProduct extends DB
         if ($cate_id > 0) {
             $pro .= " AND cate_id = $cate_id";
         }
+        $pro .= " LIMIT $offset, $per_page";
         return $this->pdo_query($pro);
     }
 

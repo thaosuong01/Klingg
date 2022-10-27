@@ -89,8 +89,8 @@ if (!empty($_SESSION['msg'])) {
                     <td class="h-[50px] leading-[50px]" scope="row"><?php echo $product['id'] ?></td>
                     <td class="h-[50px] leading-[50px]"><?php echo $product['name'] ?></td>
                     <td class="h-[50px] leading-[50px] w-10"><img src="<?php echo _PATH_IMG_PRODUCT . $product['image'] ?>"></td>
-                    <td class="h-[50px] leading-[50px]"><?php echo getNameCate($product['cate_id'])['name'] ?></td>
-                    <td class="h-[50px] leading-[50px]"><?php echo $product['price'] ?></td>
+                    <td class="h-[50px] leading-[50px] text-green-600"><?php echo getNameCate($product['cate_id'])['name'] ?></td>
+                    <td class="h-[50px] leading-[50px]  text-yellow-500"><?php echo $product['price'] ?></td>
                     <td class="h-[50px] leading-[50px]"><?php echo $product['created_at'] ?></td>
                     <td class="h-[50px] leading-[50px] text-center"><a class="text-slate-900" href="<?php echo _WEB_ROOT . '/product/update_product/' . $product['id'] ?>"><i class="far hover:scale-125 hover:text-yellow-500 transition-all duration-300 fa-edit"></i></a></td>   
                     <td class="h-[50px] leading-[50px] text-center"><a class="text-slate-900 delete_product" href="<?php echo _WEB_ROOT . '/product/delete_product/' . $product['id'] ?>"><i class="fas hover:scale-125 hover:text-red-600 transition-all duration-300 fa-trash-alt"></i></a></td>

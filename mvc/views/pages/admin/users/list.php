@@ -89,8 +89,8 @@ if (!empty($_SESSION['msg'])) {
                     <td class="h-[50px] leading-[50px]" scope="row"><?php echo $user['id'] ?></td>
                     <td class="h-[50px] leading-[50px]"><?php echo $user['name'] ?></td>
                     <td class="h-[50px] leading-[50px]"><img src="<?php echo _PATH_AVATAR . $user['avatar'] ?>" class="w-10"></td>
-                    <td class="h-[50px] leading-[50px]"><?php echo getNameUserGroup($user['gr_id']) ?></td>
-                    <td class="h-[50px]"><?php echo '<p>' . $user['phone'] . '</p>' . '<p>' . $user['email'] . '</p>' . '<p>' . $user['address'] . '</p>' ?></td>
+                    <td class="h-[50px] leading-[50px] text-green-600"><?php echo getNameUserGroup($user['gr_id']) ?></td>
+                    <td class="h-[50px] leading-[50px]"><?php echo $user['email'] ?></td>
                     <td class="h-[50px] leading-[50px]"><?php echo $user['created_at'] ?></td>
                     <td class="h-[50px] leading-[50px] text-center"><a class="text-slate-900" href="<?php echo _WEB_ROOT . '/user/update_user/' . $user['id'] ?>"><i class="far hover:scale-125 hover:text-yellow-500 transition-all duration-300 fa-edit"></i></a></td>
                     <td class="h-[50px] leading-[50px] text-center"><a class="text-slate-900 delete_user" href="<?php echo _WEB_ROOT . '/user/delete_user/' . $user['id'] ?>"><i class="fas hover:scale-125 hover:text-red-600 transition-all duration-300 fa-trash-alt"></i></a></td>

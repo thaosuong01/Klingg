@@ -12,7 +12,7 @@
 
     <div class="blog-container container-sm">
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-sm-8" data-aos="fade-right" data-aos-easing="linear">
                 <div class="blog-grid">
                     <div class="blog-grid-header ">
                         <img src="https://cdn.shopify.com/s/files/1/0461/9036/2778/articles/blog-new-01_600x.jpg?v=1630931574" alt="" class="blog-grid-img">
@@ -44,7 +44,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4" data-aos="fade-left" data-aos-easing="linear">
                 <div class="blog-grid">
                     <div class="blog-grid-header">
                         <img src="https://cdn.shopify.com/s/files/1/0461/9036/2778/articles/blog-new-02_770x.jpg?v=1630931757" alt="" class="blog-grid-img">
@@ -77,7 +77,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-3" data-aos="zoom-in" data-aos-easing="linear">
                 <div class="blog-grid">
                     <div class="blog-grid-header">
                         <img src="https://cdn.shopify.com/s/files/1/0461/9036/2778/articles/blog-new-04_770x.jpg?v=1630931731" alt="" class="blog-grid-img">
@@ -107,7 +107,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6" data-aos="zoom-in" data-aos-easing="linear">
                 <div class="blog-grid">
                     <div class="blog-grid-header">
                         <img src="https://cdn.shopify.com/s/files/1/0461/9036/2778/articles/blog-new-03_770x.jpg?v=1630931706" alt="" class="blog-grid-img">
@@ -139,7 +139,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3" data-aos="zoom-in" data-aos-easing="linear">
                 <div class="blog-grid">
                     <div class="blog-grid-header">
                         <img src="https://cdn.shopify.com/s/files/1/0461/9036/2778/articles/blog-new-05_770x.jpg?v=1630931852" alt="" class="blog-grid-img">
@@ -172,7 +172,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col" data-aos="fade-up">
                 <div class="blog-grid">
                     <div class="blog-grid-header ">
                         <img src="https://cdn.shopify.com/s/files/1/0461/9036/2778/articles/blog-new-11_770x.jpg?v=1630933178" alt="" class="blog-grid-img">

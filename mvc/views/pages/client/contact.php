@@ -16,7 +16,7 @@
         </div>
 
         <ul class="contact-section row">
-            <li class="contact-option col col-4">
+            <li class="contact-option col col-4" data-aos="zoom-in" data-aos-easing="linear">
                 <div class="contact-option-icon">
                     <i class="fa-solid fa-phone"></i>
 
@@ -32,7 +32,7 @@
                     </p>
                 </div>
             </li>
-            <li class="contact-option col col-4">
+            <li class="contact-option col col-4" data-aos="zoom-in" data-aos-easing="linear">
                 <div class="contact-option-icon">
                     <i class="fa-solid fa-envelope"></i>
                 </div>
@@ -44,7 +44,7 @@
                     </p>
                 </div>
             </li>
-            <li class="contact-option col col-4">
+            <li class="contact-option col col-4" data-aos="zoom-in" data-aos-easing="linear">
                 <div class="contact-option-icon">
                     <i class="fa-solid fa-location-arrow"></i>
                 </div>
@@ -63,7 +63,7 @@
                 Contact Form
             </h4>
             <form class="contact-form-input container" action="#" method="post">
-                <div class="row">
+                <div class="row" data-aos="fade-up" data-aos-easing="linear">
                     <div class="col col-4 contact-col">
                         <input type="text" id="name" class="contact-name" placeholder="Name" value>
                         <p class="error error-name"></p>
@@ -77,7 +77,7 @@
                         <p class="error error-phone"></p>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" data-aos="fade-up" data-aos-easing="linear">
                     <div class="col contact-message">
                         <textarea name="message" id="form-message" rows="10" placeholder="How can we help you?"></textarea>
                         <p class="error error-message"></p>

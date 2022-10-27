@@ -4,6 +4,5 @@ window.addEventListener('load', function() {
     payment?.addEventListener('click', function(e) {
         e.preventDefault();
         
-        console.log('aaa');
     })
 })

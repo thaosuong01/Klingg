@@ -133,9 +133,7 @@
                     onApprove: async function(data, actions) {
                         Swal.fire({
                             icon: "success",
-                            title: "Oops...",
-                            text: "tt tc!",
-                            footer: '<a href="">Why do I have this issue?</a>',
+                            text: "Payment success!",
                         });
                         // const order = await actions.order.capture();
                         // console.log(order);
@@ -158,8 +156,7 @@
                                     loading.classList.add("hidden");
                                     Swal.fire({
                                         icon: "error",
-                                        title: "Oops...",
-                                        text: "Vui lòng chọn phương thức thanh toán!",
+                                        text: "Please choose a payment method",
                                         footer: '<a href="">Why do I have this issue?</a>',
                                     });
                                 },
@@ -170,8 +167,7 @@
                         console.log(err);
                         Swal.fire({
                             icon: "error",
-                            title: "Oops...",
-                            text: "Vui lòng chọn phương thức thanh toán!",
+                            text: "Please choose a payment method!",
                             footer: '<a href="">Why do I have this issue?</a>',
                         });
                     },

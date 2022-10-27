@@ -10,6 +10,7 @@ window.addEventListener('load', function () {
             const url = e.target.parentElement.dataset.url;
             const path_img = e.target.parentElement.dataset.pathimg;
             const user = e.target.parentElement.dataset.user;
+            
             if (user == 'not logged in') {
                 Swal.fire('You need to login to make a purchase')
             }
@@ -74,7 +75,6 @@ window.addEventListener('load', function () {
             dataType: "text",
             success: function (data) {
                 let response = JSON.parse(data);
-                console.log(response)
                 cartContent.innerHTML = "";
                 cartFooter.classList.remove('hidden');
                 cartEmpty.classList.add('hidden');
@@ -110,7 +110,7 @@ window.addEventListener('load', function () {
                     Swal.fire({
                         position: "center-center",
                         icon: "success",
-                        title: "More successful products",
+                        title: "Product added to cart successfully",
                         showConfirmButton: false,
                         timer: 1500,
                     });

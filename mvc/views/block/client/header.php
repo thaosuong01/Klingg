@@ -1,13 +1,13 @@
 <div class="search-header">
-    <div class="search-box">
-        <input type="text" class="search-box-input" placeholder="Search Our Store">
-        <div class="search-box-icon">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
+    <form action="<?php echo _WEB_ROOT . '/product' ?>" method="GET" class="search-box">
+        <input type="text" class="search-box-input" placeholder="Search Our Store" name="search">
+        <button type="submit" class="search-box-icon">
+            <i class="fa-solid fa-magnifying-glass text-xl"></i>
+        </button>
         <div class="search-box-close">
             <i class="fa-solid fa-xmark search-box-close-icon"></i>
         </div>
-    </div>
+    </form>
 </div>
 
 <header class="header">
@@ -184,10 +184,11 @@
                         <i class="fa-solid fa-angle-right icon-right"></i>
                     </div>
                     <ul class="list">
-                        <?php foreach ($data['categories'] as $category) {
+                        <?php
+                        foreach ($data['categories'] as $category) {
                         ?>
                             <li class="item">
-                                <a href="<?php echo _WEB_ROOT . '/product?cate_id=' . $category['id'] ?>" >
+                                <a href="<?php echo _WEB_ROOT . '/product?cate_id=' . $category['id'] ?>">
                                     <?php echo $category['name'] ?>
                                 </a>
                             </li>

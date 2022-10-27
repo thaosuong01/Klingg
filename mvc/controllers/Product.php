@@ -4,6 +4,8 @@ class Product extends Controller
 
     private $products;
     private $categories;
+    private $per_page = 12;
+    private $offset = 0;
 
     function __construct()
     {
@@ -14,11 +16,34 @@ class Product extends Controller
     function index()
     {
         $cate_id = 0;
-        if (isset($_GET['cate_id'])) {
+     
+        $keyword = '';
+        $allProductNum = $this->products->countPro();
+
+        $maxPage = ceil($allProductNum / $this->per_page);
+
+        if (!empty($_GET['page'])) {
+            $page = $_GET['page'];
+            if ($page < 1 || $page > $maxPage) {
+                $page = 1;
+            }
+        } else {
+            $page = 1;
+        }
+      
+        $this->offset = ($page - 1) * $this->per_page;
+
+        if(isset($_GET['search'])) {
+            $keyword = $_GET['search'];
+            $cate_id = 0;
+        }
+        else if (isset($_GET['cate_id'])) {
             $cate_id = $_GET['cate_id'];
+            $keyword = '';
         }
 
-        $products = $this->products->getAll('', 0, $cate_id);
+        $products = $this->products->getAll($keyword, 0, $cate_id, $this->per_page, $this->offset);
+        
         $categories = $this->categories->getAllCl();
 
         $productNew = [];
@@ -35,6 +60,8 @@ class Product extends Controller
             'js' => ['ajax'],
             'products' => $productNew,
             'categories' => $categories,
+            'maxPage' => $maxPage,
+            'pageNum' => $page
         ]);
     }
 

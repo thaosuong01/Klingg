@@ -12,7 +12,7 @@
 
     <div class="shifter-page">
         <ul class="shifter-list row">
-            <li class="shifter-item col col-4">
+            <li class="shifter-item col col-4" data-aos="fade-up" data-aos-easing="linear">
                 <div class="shifter-img">
                     <img src="https://cdn.shopify.com/s/files/1/0461/9036/2778/files/abo-3.jpg?v=1599123228" alt="">
                     <div class="shifter-desc">
@@ -26,7 +26,7 @@
                 </div>
             </li>
 
-            <li class="shifter-item col col-4">
+            <li class="shifter-item col col-4" data-aos="fade-up" data-aos-easing="linear">
                 <div class="shifter-img">
                     <img src="https://cdn.shopify.com/s/files/1/0461/9036/2778/files/abo-2.jpg?v=1599123328" alt="">
                     <div class="shifter-desc">
@@ -40,7 +40,7 @@
                 </div>
             </li>
 
-            <li class="shifter-item col col-4">
+            <li class="shifter-item col col-4" data-aos="fade-up" data-aos-easing="linear">
                 <div class="shifter-img">
                     <img src="https://cdn.shopify.com/s/files/1/0461/9036/2778/files/abo-1.jpg?v=1599123352" alt="">
                     <div class="shifter-desc">
@@ -60,52 +60,51 @@
     <div class="page-icon-text">
         <div class="page-icon-list row">
             <div class="page-icon-item col col-3">
-                <div class="page-icon-bg">
-
+                <div class="page-icon-bg" data-aos="zoom-in" data-aos-easing="linear" data-duration="3000" >
                     <div class="page-icon-image">
                         <img src="https://cdn.shopify.com/s/files/1/0461/9036/2778/files/icon-1_0c05a5a2-6bb6-4311-a530-6b3b3638deb8.png?v=1599123592" alt="">
                     </div>
                 </div>
-                <div class="page-icon-content">
+                <div class="page-icon-content" data-aos="fade-right" data-aos-easing="linear" data-duration="1000">
                     <h4 class="page-main-title">Tote Bags</h4>
                     <p class="page-main-desc">Aliquam actumim nunc arcu convallisums ultricies.</p>
                 </div>
             </div>
 
             <div class="page-icon-item col col-3">
-                <div class="page-icon-bg">
+                <div class="page-icon-bg" data-aos="zoom-in" data-aos-easing="linear" data-duration="3000" >
 
                     <div class="page-icon-image">
                         <img src="https://cdn.shopify.com/s/files/1/0461/9036/2778/files/icon-2_55a6024c-b046-4a93-8a2b-702c3851f851.png?v=1599123605" alt="">
                     </div>
                 </div>
-                <div class="page-icon-content">
+                <div class="page-icon-content" data-aos="fade-right" data-aos-easing="linear" data-duration="1000">
                     <h4 class="page-main-title">Saddle Bags</h4>
                     <p class="page-main-desc">Pellentesque habitant morbi tristique senectuse.</p>
                 </div>
             </div>
 
             <div class="page-icon-item col col-3">
-                <div class="page-icon-bg">
+                <div class="page-icon-bg" data-aos="zoom-in" data-aos-easing="linear" data-duration="3000" >
 
                     <div class="page-icon-image">
                         <img src="https://cdn.shopify.com/s/files/1/0461/9036/2778/files/icon-3_0e465526-4957-4f2d-a6ec-ea7e7abdbc49.png?v=1599123620" alt="">
                     </div>
                 </div>
-                <div class="page-icon-content">
+                <div class="page-icon-content" data-aos="fade-right" data-aos-easing="linear" data-duration="1000">
                     <h4 class="page-main-title">Bowling Bags</h4>
                     <p class="page-main-desc">Nunc consequat nibhutrium um pretium vestibulum.</p>
                 </div>
             </div>
 
             <div class="page-icon-item col col-3">
-                <div class="page-icon-bg">
+                <div class="page-icon-bg" data-aos="zoom-in" data-aos-easing="linear" data-duration="3000" >
 
                     <div class="page-icon-image">
                         <img src="https://cdn.shopify.com/s/files/1/0461/9036/2778/files/icon-4_bbcfa877-b9fe-43ae-97b3-54bcca6f47ce.png?v=1599123632" alt="">
                     </div>
                 </div>
-                <div class="page-icon-content">
+                <div class="page-icon-content" data-aos="fade-right" data-aos-easing="linear" data-duration="1000">
                     <h4 class="page-main-title">Satchel Bags</h4>
                     <p class="page-main-desc">Suspendisse vehicula quam egetes orcsis sagittis.</p>
                 </div>
@@ -116,7 +115,7 @@
 
     <div class="page-box">
         <div class="page-box-info row">
-            <div class="page-box-content col-12 col-md-8">
+            <div class="page-box-content col-12 col-md-8" data-aos="fade-right" data-aos-easing="linear">
                 <div class="page-box-title">
                     <h2 class="heading-title">Join Us :</h2>
                     <h2 class="main-title">let's get our hands Beautiful</h2>
@@ -125,7 +124,7 @@
                     fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget
                     bibendum sodales, augue velit cursus nunc.</p>
             </div>
-            <div class="page-box-button col-6 col-md-4">
+            <div class="page-box-button col-6 col-md-4" data-aos="fade-left" data-aos-easing="linear">
                 <a href="#" class="page-box-btn"><span>Shop Now</span></a>
             </div>
         </div>
@@ -138,7 +137,7 @@
                 <p class="page-team-desc">They worked while the...</p>
             </div>
             <div class="page-team-list row">
-                <div class="page-team-item col col-3">
+                <div class="page-team-item col col-3" data-aos="fade-up" data-aos-easing="linear">
                     <div class="page-team-image">
                         <img src="https://cdn.shopify.com/s/files/1/0461/9036/2778/files/team-01_800x.jpg?v=1630993997" alt="">
 
@@ -166,7 +165,7 @@
                     </div>
                 </div>
 
-                <div class="page-team-item col col-3">
+                <div class="page-team-item col col-3" data-aos="fade-up" data-aos-easing="linear">
                     <div class="page-team-image">
                         <img src="https://cdn.shopify.com/s/files/1/0461/9036/2778/files/team-02_800x.jpg?v=1630994019" alt="">
 
@@ -194,7 +193,7 @@
                     </div>
                 </div>
 
-                <div class="page-team-item col col-3">
+                <div class="page-team-item col col-3" data-aos="fade-up" data-aos-easing="linear">
                     <div class="page-team-image">
                         <img src="https://cdn.shopify.com/s/files/1/0461/9036/2778/files/team-03_800x.jpg?v=1630994042" alt="">
 
@@ -222,7 +221,7 @@
                     </div>
                 </div>
 
-                <div class="page-team-item col col-3">
+                <div class="page-team-item col col-3" data-aos="fade-up" data-aos-easing="linear">
                     <div class="page-team-image">
                         <img src="https://cdn.shopify.com/s/files/1/0461/9036/2778/files/team-04_800x.jpg?v=1630994075" alt="">
 
