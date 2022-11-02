@@ -37,7 +37,7 @@ if (!empty($data['msg'])) {
     <div class="mb-3 col-span-6">
       <label for="exampleInputEmail1" class="form-label">User group</label><br>
       <select name="group" id="groupuser" class="custom-select" required>
-        <option>Select....</option>
+        <option>---Select---</option>
         <?php
         foreach ($data['groups'] as $group) {
         ?>

@@ -8,6 +8,9 @@ class Category extends Controller
         $this->categories = $this->model('ModelCategory');
     }
 
+    private $per_page = 5;
+    private $offset = 0;
+
     function list_category()
     {
         $keyword = '';
@@ -16,10 +19,27 @@ class Category extends Controller
             $_POST['search'] = '';
         }
 
-        $categories = $this->categories->getAll($keyword);
+        $allProductNum = $this->categories->countPro();
+
+        $maxPage = ceil($allProductNum / $this->per_page);
+
+        if (!empty($_GET['page'])) {
+            $page = $_GET['page'];
+            if ($page < 1 || $page > $maxPage) {
+                $page = 1;
+            }
+        } else {
+            $page = 1;
+        }
+      
+        $this->offset = ($page - 1) * $this->per_page;
+
+        $categories = $this->categories->getAll($keyword, $this->per_page, $this->offset);
         return $this->view('admin', [
             'page' => 'category/list',
             'categories' => $categories,
+            'maxPage' => $maxPage,
+            'pageNum' => $page,
             'js' => ['ajax', 'search'],
             'title' => 'Category',
             'bg' => 'active',

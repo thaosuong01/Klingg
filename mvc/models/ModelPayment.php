@@ -1,6 +1,12 @@
 <?php
 class ModelPayment extends DB
 {
+    function countPro()
+    {
+        $number = "SELECT * FROM bill";
+        return count($this->pdo_query($number));
+    }
+
     function insertBill($phone, $address, $total, $method, $user_id, $created_at)
     {
         $insert = "INSERT INTO bill(phone, address, total, method, price_ship, user_id, created_at) VALUE('$phone', '$address', '$total', '$method', 2, '$user_id', '$created_at')";
@@ -16,15 +22,33 @@ class ModelPayment extends DB
 
     function getBill($keyword = '', $status = -1)
     {
-        $sql = "SELECT * FROM bill WHERE 1";
+        $sql = "SELECT bill.*, users.name,users.email FROM  bill INNER JOIN users ON bill.user_id = users.id";
         if (!empty($keyword)) {
-            $sql .= " AND  name like '%" . $keyword . "%'";
+            $sql .= " AND name like '%" . $keyword . "%'";
         }
         if ($status > -1) {
             $sql .= " AND status = $status";
         }
         $sql .= " order by id desc";
         return $this->pdo_query($sql);
+    }
+
+    function getAllBill($keyword = '', $status = -1, $per_page = 5, $offset = 0)
+    {
+        $bill = "SELECT bill.*, users.name,users.email FROM  bill INNER JOIN users ON bill.user_id = users.id";
+        if (!empty($keyword)) {
+            $bill .= " AND name like '%" . $keyword . "%'";
+        }
+
+        if ($status > -1) {
+            $bill .= " AND status = $status";
+        }
+
+        $bill .= " order by id desc";
+
+        $bill .= " LIMIT $offset, $per_page";
+        
+        return $this->pdo_query($bill);
     }
 
     function getOneBill($id)

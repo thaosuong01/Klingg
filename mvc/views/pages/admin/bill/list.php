@@ -1,9 +1,8 @@
 <div class="mb-3 flex gap-3">
     <div class="flex-1 flex justify-end">
-        <form class="input flex form_bill" action="" method="POST">
+        <form class="input flex form_bill" action="" method="GET">
             <div class="flex gap-3">
                 <select name="status" id="status" class="custom-select w-[160px] select-status" required>
-                    <option>Select....</option>
                     <option value="0">Proccessing</option>
                     <option value="1">In transit</option>
                     <option value="2">Delivered</option>
@@ -81,8 +80,8 @@ if (!empty($_SESSION['msg'])) {
                 <tr>
                     <td class="h-[50px] leading-[50px]" scope="row"><?php echo $bill['id'] ?></td>
                     <td class="h-[50px] ">
-                        <p class="text-slate-500 m-0">Name: <span class="text-black"><?php echo $data['users']['name'] ?></span></p>
-                        <p class="text-slate-500 m-0">Email: <span class="text-black"><?php echo $data['users']['email'] ?></span></p>
+                        <p class="text-slate-500 m-0">Name: <span class="text-black"><?php echo $bill['name'] ?></span></p>
+                        <p class="text-slate-500 m-0">Email: <span class="text-black"><?php echo $bill['email'] ?></span></p>
                         <p class="text-slate-500 m-0">Phone: <span class="text-black"><?php echo $bill['phone'] ?></span></p>
                         <p class="text-slate-500 m-0">Address: <span class="text-black"><?php echo $bill['address'] ?></span></p>
                     </td>
@@ -119,3 +118,53 @@ if (!empty($_SESSION['msg'])) {
         ?>
     </tbody>
 </table>
+<ul class="bill-footer flex justify-end list-none px-3 mt-4">
+    <?php
+    $search = '';
+    $status = -1;
+    $keyword = '';
+
+    // print_r($_GET);
+    // die;
+    if(!empty($_GET['keyword_bill'])){
+        $keyword = $_GET['keyword_bill'];
+    }
+    if(!empty($_GET['search'])){
+        $search = $_GET['search'];
+    }
+
+    if(isset($_GET['status']) && $_GET['status'] > -1){
+        $status = $_GET['status'];
+    }
+
+    $page = $data['pageNum'];
+    $maxPage = $data['maxPage'];
+    if ($page > 1) {
+        $prevPage = $page - 1;
+        echo '<li class="w-[40px] h-[40px] px-1 mx-1"><a class="rounded-full w-full border pt-[6px] pb-[5px] pl-[8px] pr-[10px] leading-none text-center text-black hover:bg-[#eb6420] hover:text-[#fff] text-[1.2rem]" href="' . _WEB_ROOT . '/bill/list_bill?page=' . $prevPage . '&status='.$status.'&search='.$search.'&keyword_bill='.$keyword.'"><i class="fas fa-angle-double-left"></i></a></li>';
+    }
+    ?>
+
+    <?php
+    $begin = $page - 2;
+    if ($begin < 1) {
+        $begin = 1;
+    }
+    $end  = $page + 2;
+    if ($end > $maxPage) {
+        $end = $maxPage;
+    }
+
+
+    for ($i = $begin; $i <= $end; $i++) {
+    ?>
+        <li class="w-[40px] h-[40px] px-1"><a class="rounded-full w-full border pt-[6px] pb-[4px] px-[11px] leading-none text-center text-black hover:bg-[#eb6420] hover:text-[#fff] text-[1.2rem] <?php echo ($i == $page) ? 'bg-[#000] text-[#fff]' : false ?>" href="<?php echo _WEB_ROOT . '/bill/list_bill?page=' . $i .'&search='.$search.'&keyword_bill='.$keyword.'&status='.$status?>"><?php echo $i ?></a></li>
+    <?php } ?>
+
+    <?php
+    if ($page < $maxPage) {
+        $nextPage = $page + 1;
+        echo '<li class="w-[40px] h-[40px] px-1 mx-1"><a class="rounded-full w-full border pt-[6px] pb-[5px] pl-[10px] pr-[8px] leading-none text-center text-black hover:bg-[#eb6420] hover:text-[#fff] text-[1.2rem]" href="' . _WEB_ROOT . '/bill/list_bill?page=' . $nextPage . '&status='.$status.'&search='.$search.'&keyword_bill='.$keyword.'"><i class="fas fa-angle-double-right"></i></a></li>';
+    }
+    ?>
+</ul>

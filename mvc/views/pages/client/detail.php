@@ -20,7 +20,7 @@
                         foreach ($data['productImg'] as $image) {
                     ?>
                             <div style="height: 500px;" data-dot-img="<?php echo _PATH_IMG_PRODUCT . $image['image'] ?>">
-                                    <img class="img-item-center" src="<?php echo _PATH_IMG_PRODUCT . $image['image'] ?>" alt="" />
+                                <img class="img-item-center" src="<?php echo _PATH_IMG_PRODUCT . $image['image'] ?>" alt="" />
                             </div>
                     <?php
                         }
@@ -101,13 +101,12 @@
                 <h4>Customer review</h4>
             </div>
             <div class="write-to-button">
-                <span class="review-star">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-regular fa-star-half-stroke"></i>
-                    <i class="fa-regular fa-star"></i>
-                </span>
+
+                <div class="flex items-center gap-3">
+                    <div class="rateyo" data-rateyo-rating="<?php echo $data['avgStar'] ?>" data-rateyo-read-only="true">
+                    </div>
+                    <span class="mt-2 text-xl"><?php echo $data['avgStar'] ?></span>
+                </div>
                 <span class="write-review">Write a review</span>
             </div>
             <div class="review-container">
@@ -116,28 +115,14 @@
                     <h4 class="review-title">
                         Write a review
                     </h4>
-                    <form class="review-form-input" action="#" method="post">
-                        <div class="review-input">
-                            <input type="text" id="name" class="name" placeholder="Enter your name" value>
-                            <p class="error error-name"></p>
-                        </div>
-                        <div class="review-input">
-                            <input type="text" id="email" class="email" placeholder="john.@example.com" value>
-                            <p class="error error-email"></p>
-                        </div>
-                        <span class="rating">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                        </span>
-                        <div class="review-input">
-                            <input type="text" id="title" class="title" placeholder="Give your review a title" value>
-                            <p class="error error-title"></p>
+                    <form class="review-form-input" action="<?php echo _WEB_ROOT . '/detail/add_comment' ?>" method="post" data-userid="<?php echo $_SESSION['user']['id'] ?>" data-proid="<?php echo $data['product']['id'] ?>">
+
+                        <div class="flex items-center gap-3">
+                            <div id="rateYo" class="my-3"></div>
+                            <span class="num_start mt-2">0</span>
                         </div>
                         <div class="review-comment">
-                            <textarea name="comment" id="form-comment" rows="10" placeholder="Write your comments here (500)"></textarea>
+                            <textarea class="comment" name="comment" id="form-comment" rows="10" placeholder="Write your comments here (500)"></textarea>
                             <p class="error error-comment"></p>
                         </div>
                         <div class="button-submit">
@@ -145,27 +130,28 @@
                         </div>
                     </form>
                 </div>
-                <div class="review-post">
-                    <span class="review-star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-regular fa-star-half-stroke"></i>
-                        <i class="fa-regular fa-star"></i>
-                    </span>
-                    <div class="review-header">
-                        <div class="review-name">
-                            <h6> Sed elementum tempus egestas</h6>
-                        </div>
-                        <div class="review-date">
-                            <p><b>Brinley</b> on <b>Mar 27, 2022</b></p>
-                        </div>
-                    </div>
-                    <div class="review-content">
-                        <p>Ultricies lacus sed turpis tincidunt id aliquet risus. Felis donec et odio
-                            pellentesque
-                            diam.</p>
-                    </div>
+                <div class="list_comment">
+                    <?php
+                    if (!empty($data['comments'])) {
+                        foreach ($data['comments'] as $item) {
+                    ?>
+                            <div class="review-post">
+                                <div class="rateyo" data-rateyo-rating="<?php echo $item['rating'] ?>" data-rateyo-read-only="true"></div>
+                                <div class="review-header">
+
+                                    <div class="review-date">
+                                        <p><b><?php echo $item['name'] ?></b> on <b><?php echo $item['created_at'] ?></b></p>
+                                    </div>
+                                </div>
+                                <div class="review-content">
+                                    <p><?php echo $item['comment'] ?></p>
+                                </div>
+                            </div>
+                    <?php
+                        }
+                    } else {
+                    }
+                    ?>
                 </div>
             </div>
         </div>

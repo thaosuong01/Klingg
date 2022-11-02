@@ -1231,4 +1231,32 @@ footer .end-of-page .icon-top:hover {
   cursor: pointer;
 }
 
+.irs--flat .irs-grid-text,
+.irs--flat .irs-min,
+.irs--flat .irs-max {
+  color: #000;
+}
+
+.irs--flat .irs-bar,
+.irs-bar,
+.irs--flat .irs-handle>i:first-child,
+.irs--flat .irs-from,
+.irs--flat .irs-to,
+.irs--flat .irs-single,
+.irs--flat .irs-handle.state_hover>i:first-child,
+.irs--flat .irs-handle:hover>i:first-child {
+  background-color: #eb6420;
+}
+
+.irs--flat .irs-from:before,
+.irs--flat .irs-to:before,
+.irs--flat .irs-single:before {
+  border-top-color: #eb6420;
+
+}
+
+.swal2-title {
+  font-size: 1.4rem !important;
+}
+
 /*# sourceMappingURL=product.css.map */

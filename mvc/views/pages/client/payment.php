@@ -61,8 +61,16 @@
                                     Standard Shipping</span></p><span class="font-semibold pt-[3px]">$ <?php echo number_format($data['bill']['price_ship'], 2) ?></span>
                         </div>
                     </div>
+                    <div class="step-footer d-flex justify-content-sm-between mt-3 align-items-center">
+                        <div class="product-wishlist-cart">
+                            <a href="<?php echo _WEB_ROOT . '/' ?>">
+                                <button class="dt-sc-btn text-slate-900 hover:text-[#eb6420] transition-all duration-300">
+                                    Return to home
+                                </button>
+                            </a>
+                        </div>
+                    </div>
 
-                    
                 </div>
             </div>
             <?php

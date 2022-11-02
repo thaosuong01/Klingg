@@ -71,7 +71,7 @@ if (!empty($data['msg'])) {
     <div class="mb-3 col-span-6">
       <label for="exampleInputEmail1" class="form-label">Category</label><br>
       <select name="category" id="category" class="custom-select" required>
-        <option>Select....</option>
+        <option>---Select---</option>
         <?php
         foreach ($data['categories'] as $category) {
         ?>

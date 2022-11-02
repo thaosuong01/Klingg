@@ -82,7 +82,12 @@ class ModelUser extends DB
 
     public function getone_UserID($id)
     {
-        $sql = "SELECT * FROM users where id= '$id'";
+        $sql = "SELECT * FROM users where id = '$id'";
         return  $this->pdo_query_one($sql);
+    }
+
+    function getNameUser($id) {
+        $userName = "SELECT name FROM users WHERE id = '$id'";
+        return  $this->pdo_query_one($userName);
     }
 }

@@ -2,7 +2,9 @@
 class Bill extends Controller
 {
     private $bills;
-    private $users;
+    private $per_page = 5;
+    private $offset = 0;
+
     function __construct()
     {
         $this->bills = $this->model('ModelPayment');
@@ -13,25 +15,46 @@ class Bill extends Controller
         $keyword = '';
         $status = -1;
 
-        if (isset($_POST['search']) && ($_POST['search'] != '')) {
-            $keyword = $_POST['keyword_bill'];
-            $_POST['search'] = '';
+        if (isset($_GET['search']) && ($_GET['search'] != '') || !empty($_GET['keyword_bill'])) {
+            if (!empty($_GET['keyword_bill'])) {
+                $keyword =  $_GET['keyword_bill'];
+            }
+            // $_GET['search'] = '';
 
-            if ($_POST['status'] > -1)
-                $status = $_POST['status'];
+            if (isset($_GET['status']) && $_GET['status'] > -1)
+                $status = $_GET['status'];
         }
 
-        $bills = $this->bills->getBill($keyword, $status);
-        $users = $this->users->getone_UserID($bills[0]['user_id']);
+        // echo $status;
+        // die;
+        $countBill = count($this->bills->getBill($keyword, $status));
+
+        $maxPage = ceil($countBill / $this->per_page);
+
+        if (!empty($_GET['page'])) {
+            $page = $_GET['page'];
+            if ($page < 1 || $page > $maxPage) {
+                $page = 1;
+            }
+        } else {
+            $page = 1;
+        }
+
+        $this->offset = ($page - 1) * $this->per_page;
+        $getBills = $this->bills->getBill($keyword, $status);
+
+        $bills = $this->bills->getAllBill($keyword, $status, $this->per_page, $this->offset);
 
         return $this->view('admin', [
             'page' => 'bill/list',
             'js' => ['ajax', 'search'],
             'bills' => $bills,
-            'users' => $users,
+            'getBill' => $getBills,
             'title' => 'Bill',
             'bg' => 'active',
-            'pageactive' => 'bill'
+            'pageactive' => 'bill',
+            'maxPage' => $maxPage,
+            'pageNum' => $page,
         ]);
     }
 

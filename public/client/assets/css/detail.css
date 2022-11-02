@@ -1350,4 +1350,8 @@ footer .end-of-page .icon-top:hover {
   cursor: pointer;
 }
 
+.swal2-title {
+  font-size: 1.4rem !important;
+}
+
 /*# sourceMappingURL=detail.css.map */

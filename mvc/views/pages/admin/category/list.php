@@ -93,3 +93,37 @@ if (!empty($_SESSION['msg'])) {
         ?>
     </tbody>
 </table>
+
+<ul class="product-footer flex justify-end list-none px-3 mt-4">
+    <?php
+    $page = $data['pageNum'];
+    $maxPage = $data['maxPage'];
+    if ($page > 1) {
+        $prevPage = $page - 1;
+        echo '<li class="w-[40px] h-[40px] px-1 mx-1"><a class="rounded-full w-full border pt-[6px] pb-[5px] pl-[8px] pr-[10px] leading-none text-center text-black hover:bg-[#eb6420] hover:text-[#fff] text-[1.2rem]" href="' . _WEB_ROOT . '/product/list_product?page=' . $prevPage . '"><i class="fas fa-angle-double-left"></i></a></li>';
+    }
+    ?>
+
+    <?php
+    $begin = $page - 2;
+    if ($begin < 1) {
+        $begin = 1;
+    }
+    $end  = $page + 2;
+    if ($end > $maxPage) {
+        $end = $maxPage;
+    }
+
+
+    for ($i = $begin; $i <= $end; $i++) {
+    ?>
+        <li class="w-[40px] h-[40px] px-1"><a class="rounded-full w-full border pt-[6px] pb-[4px] px-[11px] leading-none text-center text-black hover:bg-[#eb6420] hover:text-[#fff] text-[1.2rem] <?php echo ($i == $page) ? 'bg-[#000] text-[#fff]' : false ?>" href="<?php echo _WEB_ROOT . '/product/list_product?page=' . $i ?>"><?php echo $i ?></a></li>
+    <?php } ?>
+
+    <?php
+    if ($page < $maxPage) {
+        $nextPage = $page + 1;
+        echo '<li class="w-[40px] h-[40px] px-1 mx-1"><a class="rounded-full w-full border pt-[6px] pb-[5px] pl-[10px] pr-[8px] leading-none text-center text-black hover:bg-[#eb6420] hover:text-[#fff] text-[1.2rem]" href="' . _WEB_ROOT . '/product/list_product?page=' . $nextPage . '"><i class="fas fa-angle-double-right"></i></a></li>';
+    }
+    ?>
+</ul>

@@ -1,6 +1,12 @@
 let loader = document.querySelectorAll(".loader");
 let keyword = JSON.parse(localStorage.getItem("kyw")) || "";
+let path = window.location.pathname;
+if(localStorage.getItem('path') != path){
+    console
+    localStorage.setItem('path',window.location.pathname);
 
+    localStorage.removeItem("idSelect");
+}
 function setLoading(selector) {
     setTimeout(() => {
         loader.forEach((item) => {
@@ -86,7 +92,6 @@ formSunbmit(form_product, table_product);
 let selectCategory = document.querySelector('.select-category');
 if(selectCategory){
     selectCategory.value = JSON.parse(localStorage.getItem('idSelect'));
-
 }
 selectCategory?.addEventListener("change", function (e) {
     localStorage.setItem("idSelect", JSON.stringify(e.target.value));
@@ -107,7 +112,6 @@ formSunbmit(form_bill, table_bill);
 let selectStatus = document.querySelector('.select-status');
 if(selectStatus){
     selectStatus.value = JSON.parse(localStorage.getItem('idSelect'));
-
 }
     selectStatus?.addEventListener("change", function (e) {
     localStorage.setItem("idSelect", JSON.stringify(e.target.value));

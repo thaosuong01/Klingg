@@ -1,13 +1,20 @@
 <?php
 class ModelCategory extends DB
 {
-    function getAll($keyword = '')
+    function countPro() {
+        $number = "SELECT * FROM category";
+        return count($this->pdo_query($number));
+
+    }
+
+    function getAll($keyword = '', $per_page = 5, $offset = 0)
     {
         if (!empty($keyword)) {
             $sql = "SELECT * FROM category WHERE name like '%" . $keyword . "%'";
         } else {
             $sql = "SELECT * FROM category ORDER BY name";
         }
+        $sql .= " LIMIT $offset, $per_page";
         return $this->pdo_query($sql);
     }
     function getAllCl()

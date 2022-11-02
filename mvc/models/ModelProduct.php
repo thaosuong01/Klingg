@@ -7,7 +7,42 @@ class ModelProduct extends DB
 
     }
     
-    function getAll($keyword = '', $id = 0, $cate_id = 0, $per_page = 12, $offset = 0)
+    function getAll($keyword = '', $id = 0, $cate_id = 0, $per_page = 12, $offset = 0,$min = 0,$max = 400)
+    {
+        $pro = "SELECT * FROM product WHERE 1";
+        $pro .= " AND price BETWEEN  $min AND $max";
+        if (!empty($keyword)) {
+            $pro .= " AND  name like '%" . $keyword . "%'";
+        }
+
+        if ($id > 0) {
+            $pro .= " AND id <> $id";
+        }
+        if ($cate_id > 0) {
+            $pro .= " AND cate_id = $cate_id";
+        }
+      
+        $pro .= " LIMIT $offset, $per_page";
+        return $this->pdo_query($pro);
+    }
+
+    function getAllFilter($keyword = '', $id = 0, $cate_id = 0)
+    {
+        $pro = "SELECT * FROM product WHERE 1";
+        if (!empty($keyword)) {
+            $pro .= " AND  name like '%" . $keyword . "%'";
+        }
+
+        if ($id > 0) {
+            $pro .= " AND id <> $id";
+        }
+        if ($cate_id > 0) {
+            $pro .= " AND cate_id = $cate_id";
+        }
+        return $this->pdo_query($pro);
+    }
+
+    function getAllPro($keyword = '', $id = 0, $cate_id = 0, $per_page = 5, $offset = 0)
     {
         $pro = "SELECT * FROM product WHERE 1";
         if (!empty($keyword)) {

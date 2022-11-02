@@ -16,12 +16,21 @@ class Product extends Controller
     function index()
     {
         $cate_id = 0;
-     
+
         $keyword = '';
+        $min = 0;
+        $max = 400;
+        if(isset($_GET['min'])){
+            $min = $_GET['min'];
+        }
+        if(isset($_GET['max'])){
+            $max = $_GET['max'];
+        }
         $allProductNum = $this->products->countPro();
 
         $maxPage = ceil($allProductNum / $this->per_page);
 
+        $page = 1;
         if (!empty($_GET['page'])) {
             $page = $_GET['page'];
             if ($page < 1 || $page > $maxPage) {
@@ -30,20 +39,17 @@ class Product extends Controller
         } else {
             $page = 1;
         }
-      
+
         $this->offset = ($page - 1) * $this->per_page;
 
-        if(isset($_GET['search'])) {
+        if (isset($_GET['search'])) {
             $keyword = $_GET['search'];
-            $cate_id = 0;
-        }
-        else if (isset($_GET['cate_id'])) {
+        } else if (isset($_GET['cate_id'])) {
             $cate_id = $_GET['cate_id'];
-            $keyword = '';
         }
 
-        $products = $this->products->getAll($keyword, 0, $cate_id, $this->per_page, $this->offset);
-        
+        $products = $this->products->getAll($keyword, 0, $cate_id, $this->per_page, $this->offset,$min,$max);
+
         $categories = $this->categories->getAllCl();
 
         $productNew = [];
@@ -54,37 +60,70 @@ class Product extends Controller
             }
         }
 
+        $flag = 1;
+        if (count($products) < $this->per_page && $page ==1) {
+            $flag = 0;
+        }
+       
         return $this->view('client', [
             'page' => 'product',
             'css' => ['product'],
-            'js' => ['ajax'],
+            'js' => ['ajax', 'filter'],
             'products' => $productNew,
             'categories' => $categories,
             'maxPage' => $maxPage,
-            'pageNum' => $page
+            'pageNum' => $page,
+            'flag' => $flag,
+            'perPage'=>$this->per_page,
+            'min'=>$min,
+            'max'=>$max
         ]);
     }
 
+
     function list_product()
     {
+        $this->per_page = 5;
         $keyword = '';
         $cate_id = 0;
+        if (isset($_GET['search']) && ($_GET['search'] != '') || !empty($_GET['keyword_product']) || !empty($_GET['category'])) {
+         
+            if(!empty($_GET['keyword_product'])){
 
-        if (isset($_POST['search']) && ($_POST['search'] != '')) {
-            $keyword = $_POST['keyword_product'];
-            $_POST['search'] = '';
+                $keyword =  $_GET['keyword_product'];
+            }
+            $_GET['search'] = '';
 
-            if (!empty($_POST['category']))
-                $cate_id = $_POST['category'];
+            if (!empty($_GET['category']))
+                $cate_id = $_GET['category'];
         }
 
-        $products = $this->products->getAll($keyword, 0, (int)$cate_id);
+        // $allProductNum = $this->products->countPro();
+
+        $countProduct = count($this->products->getAllFilter($keyword, 0, $cate_id));
+        $maxPage = ceil($countProduct / $this->per_page);
+
+        if (!empty($_GET['page'])) {
+            $page = $_GET['page'];
+            if ($page < 1 || $page > $maxPage) {
+                $page = 1;
+            }
+        } else {
+            $page = 1;
+        }
+
+        $this->offset = ($page - 1) * $this->per_page;
+
+        $products = $this->products->getAllPro($keyword, 0, (int)$cate_id, $this->per_page, $this->offset);
+
         $categories = $this->categories->getAll();
 
         return $this->view('admin', [
             'page' => 'product/list',
             'products' => $products,
             'categories' => $categories,
+            'maxPage' => $maxPage,
+            'pageNum' => $page,
             'js' => ['ajax', 'search'],
             'title' => 'Product',
             'bg' => 'active',

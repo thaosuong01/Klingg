@@ -85,12 +85,12 @@
       <!-- Sidebar -->
       <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        <div class="navbar-nav mt-3 pb-3 mb-3 ">
+        <a href="<?php echo _WEB_ROOT ?>" class="navbar-nav mt-3 pb-3 mb-3 ">
           <img src="https://cdn.shopify.com/s/files/1/0461/9036/2778/files/logo_41be5bb0-ee12-4cb7-8ae7-3267b91b49e3_300x300.png?v=1598248765" alt="" class="w-[160px] mx-auto">
-        </div>
+        </a>
 
         <!-- SidebarSearch Form -->
-        <div class="form-inline">
+        <!-- <div class="form-inline">
           <div class="input-group" data-widget="sidebar-search">
             <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
             <div class="input-group-append">
@@ -99,7 +99,7 @@
               </button>
             </div>
           </div>
-        </div>
+        </div> -->
         <?php
         $bg = '';
         $text = 'text-black';

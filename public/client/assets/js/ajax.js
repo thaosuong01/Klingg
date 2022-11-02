@@ -336,9 +336,9 @@ window.addEventListener('load', function () {
 
     const category = document.querySelectorAll('.category');
 
-    category?.forEach(item => {
-        item.addEventListener('click', filterCate)
-    })
+    // category?.forEach(item => {
+    //     item.addEventListener('click', filterCate)
+    // })
 
     function filterCate(e) {
         e.preventDefault();
@@ -370,7 +370,7 @@ window.addEventListener('load', function () {
     function renderItemPro(item, path_img, url, user, cateName, linkdetail) {
         let template = `
         <div class="product-item col-xs-12 col-sm-6 col-lg-4 col col-4" data-id="${item.id}">
-            <div class="product-info">
+            <div class="product-info"">
                 <div class="product-img">
                     <img src="${path_img}${item.image}" alt="" class="first-img">
                     <img src="${path_img}${item.detail_img}" alt="" class="last-img">

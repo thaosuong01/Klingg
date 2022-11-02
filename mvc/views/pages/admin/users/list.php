@@ -4,7 +4,6 @@
         <form class="input flex form_user" action="" method="POST">
             <div class="flex gap-3">
                 <select name="group" id="groupuser" class="custom-select w-[160px] select-group" required>
-                    <option>Select....</option>
                     <?php
                     foreach ($data['groups'] as $group) {
                     ?>
@@ -89,7 +88,15 @@ if (!empty($_SESSION['msg'])) {
                     <td class="h-[50px] leading-[50px]" scope="row"><?php echo $user['id'] ?></td>
                     <td class="h-[50px] leading-[50px]"><?php echo $user['name'] ?></td>
                     <td class="h-[50px] leading-[50px]"><img src="<?php echo _PATH_AVATAR . $user['avatar'] ?>" class="w-10"></td>
-                    <td class="h-[50px] leading-[50px] text-green-600"><?php echo getNameUserGroup($user['gr_id']) ?></td>
+                    <?php
+                    $color = '';
+                    if (getNameUserGroup($user['gr_id']) == 'Admin') {
+                        $color = 'text-red-600';
+                    } else {
+                        $color = 'text-green-600';
+                    }
+                    ?>
+                    <td class="h-[50px] leading-[50px] <?php echo $color ?>"><?php echo getNameUserGroup($user['gr_id']) ?></td>
                     <td class="h-[50px] leading-[50px]"><?php echo $user['email'] ?></td>
                     <td class="h-[50px] leading-[50px]"><?php echo $user['created_at'] ?></td>
                     <td class="h-[50px] leading-[50px] text-center"><a class="text-slate-900" href="<?php echo _WEB_ROOT . '/user/update_user/' . $user['id'] ?>"><i class="far hover:scale-125 hover:text-yellow-500 transition-all duration-300 fa-edit"></i></a></td>

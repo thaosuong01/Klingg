@@ -1439,5 +1439,7 @@ footer .end-of-page .icon-top:hover {
   color: none;
   cursor: pointer;
 }
-
+.swal2-title {
+  font-size: 1.4rem !important;
+}
 /*# sourceMappingURL=main.css.map */
