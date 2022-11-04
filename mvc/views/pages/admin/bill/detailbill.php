@@ -44,7 +44,7 @@
             if (isset($data['detailBill'])) {
             ?>
                 <div class="col-span-6">
-                    <div class="bg-gray-50 p-5 h-full">
+                    <div class="bg-gray-50 p-4 h-full">
                         <?php
                         foreach ($data['detailBill'] as $item) {
                         ?>

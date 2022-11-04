@@ -206,10 +206,19 @@ class ModelProduct extends DB
             $_SESSION['cart'] = [];
             array_push($_SESSION['cart'], $itemPro);
         }
+
+        $carts = $this->selectCart($_SESSION['user']['id']);
+        if($carts) {
+            $this->updateCart($_SESSION['user']['id'], json_encode($_SESSION['cart']));
+        }
+        else {
+            $this->insertCart($_SESSION['user']['id'], json_encode($_SESSION['cart']), date('Y-m-d H:i:s'));
+        }
+
         return json_encode($_SESSION['cart']);
     }
 
-    function  removeItem($id)
+    function removeItem($id)
     {
         if (isset($_SESSION['cart']) && $_SESSION['cart']) {
             $keyRemove = -1;
@@ -222,6 +231,23 @@ class ModelProduct extends DB
                 array_splice($_SESSION['cart'], $keyRemove, 1);
             }
         }
+        $this->updateCart($_SESSION['user']['id'], json_encode($_SESSION['cart']));
+
         return json_encode($_SESSION['cart']);
+    }
+
+    function insertCart($user_id, $carts, $create_at) {
+        $item = "INSERT INTO cart(user_id, carts, created_at) VALUE('$user_id', '$carts', '$create_at')";
+        return $this->pdo_execute($item);
+    }
+
+    function selectCart($user_id) {
+        $item = "SELECT * FROM cart WHERE user_id = '$user_id'";
+        return $this->pdo_query_one($item);
+    }
+
+    function updateCart($user_id, $carts) {
+        $item = "UPDATE cart SET carts = '$carts' WHERE user_id = '$user_id'";
+        return $this->pdo_execute($item);
     }
 }

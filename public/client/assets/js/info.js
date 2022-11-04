@@ -13,8 +13,7 @@ window.addEventListener('load', function() {
         const address = addressDetail + ' - ' + city + ' - ' + region;
         const phone = this.querySelector('.phone').value;
         const redirect = this.dataset.redirect;
-        console.log(redirect);
-        const urlReturn = this.dataset.urlreturn
+        const urlReturn = this.dataset.urlreturn;
         const sum = this.querySelector('input[name="sum"]').value;
 
         window.localStorage.setItem('infopayment',JSON.stringify({
@@ -26,7 +25,10 @@ window.addEventListener('load', function() {
         window.localStorage.setItem('redirect',JSON.stringify({
             urlReturn
         }))
-        window.location.href = redirect;
+        if(email && region && firstName && lastName && name && address && city && phone && urlReturn && sum){
+
+            window.location.href = redirect;
+        }
     })
 
 })

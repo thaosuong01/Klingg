@@ -5,7 +5,7 @@
             <div class="path">
                 <a href="<?php echo _WEB_ROOT ?>" class="back-to-home">Home</a>
                 <span>/</span>
-                <a href="<?php echo _WEB_ROOT . '/product' ?>" class="page">Products</a>
+                <a href="<?php echo _WEB_ROOT . '/product' ?>" class="page back-to-home">Products</a>
             </div>
         </div>
     </div>

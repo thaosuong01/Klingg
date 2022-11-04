@@ -676,7 +676,7 @@
   $container.append($brand_variants)
 
   var active_brand_color = null
-  $('.brand-link')[0].classList.forEach(function (className) {
+  $('.brand-link')[0]?.classList.forEach(function (className) {
     if (logo_skins.indexOf(className) > -1 && active_brand_color === null) {
       active_brand_color = className.replace('navbar-', 'bg-')
     }

@@ -9,5 +9,5 @@ if (!empty($data['msg'])) {
         <input type="text" class="form-control" name="categoryname" placeholder="Name category">
     </div>
     <input type="hidden" name="add_category" value="add_category">
-    <button type="submit" class="btn bg-[#000] text-slate-50 mb-3 rounded-lg inline-block hover:bg-[#eb6420] hover:text-slate-50 transition-all duration-300">Add</button>
+    <button type="submit" class="btn bg-[#000] text-slate-50 mb-3 rounded-lg inline-block hover:bg-[#eb6420] hover:text-slate-50 transition-all duration-300">Create</button>
 </form>

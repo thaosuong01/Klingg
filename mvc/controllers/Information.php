@@ -4,7 +4,7 @@ class Information extends Controller {
         return $this->view('client',[
             'page' => 'information',
             'css' => ['information'],
-            'js' => ['ajax', 'info'],
+            'js' => [ 'info', 'validate', 'formvalidate','ajaxk'],
             'header' => 0
         ]);
     }

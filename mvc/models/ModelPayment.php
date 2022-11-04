@@ -47,7 +47,7 @@ class ModelPayment extends DB
         $bill .= " order by id desc";
 
         $bill .= " LIMIT $offset, $per_page";
-        
+
         return $this->pdo_query($bill);
     }
 
@@ -56,18 +56,14 @@ class ModelPayment extends DB
         $sql = "SELECT * FROM bill WHERE id= '$id'";
 
         $sql .= " order by id desc";
-        return
-
-            $this->pdo_query_one($sql);
+        return $this->pdo_query_one($sql);
     }
     function getBillDetail($id)
     {
         $sql = "SELECT * FROM detail_bill WHERE id_bill= '$id'";
 
         $sql .= " order by id desc";
-        return
-
-            $this->pdo_query($sql);
+        return $this->pdo_query($sql);
     }
 
     function editStatus($id, $status, $updated_at)

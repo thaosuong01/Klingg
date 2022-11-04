@@ -72,7 +72,7 @@ class Category extends Controller
                 $status = $this->categories->insertCate($name, $created_at);
                 if ($status) {
                     $type = 'success';
-                    $msg = 'Added category successfully';
+                    $msg = 'Category created successfully';
                     $_SESSION['msg'] = $msg;
                     header('Location:' . _WEB_ROOT . '/category/list_category');
                     return;
@@ -118,7 +118,7 @@ class Category extends Controller
                 $status = $this->categories->updateCate($id, $name, $updated_at);
                 if ($status) {
                     $type = 'success';
-                    $msg = 'Updated category successfully';
+                    $msg = 'Category updated successfully';
                     $_SESSION['msg'] = $msg;
                     header('Location:' . _WEB_ROOT . '/category/list_category');
                     return;

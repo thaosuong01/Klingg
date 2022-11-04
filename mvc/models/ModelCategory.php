@@ -6,7 +6,17 @@ class ModelCategory extends DB
         return count($this->pdo_query($number));
 
     }
+    function chart_getAll(){
+        $sql = "SELECT name FROM category ORDER BY ID";
 
+        return $this->pdo_query($sql);
+    }
+
+    function data_chart_cate(){
+        $sql = "SELECT category.id,count(product.name) as sl_pro FROM category INNER JOIN product ON category.id = product.cate_id GROUP BY category.name ORDER BY category.id";
+
+        return $this->pdo_query($sql);
+    }
     function getAll($keyword = '', $per_page = 5, $offset = 0)
     {
         if (!empty($keyword)) {

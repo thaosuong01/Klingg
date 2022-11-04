@@ -120,3 +120,10 @@ if(selectStatus){
         form_bill.submit();
     }, 1500);
 });
+
+// comment
+let input_comment = document.querySelector('.input_comment');
+let table_comment = document.querySelector('.table_comment');
+let form_comment = document.querySelector('.form_comment');
+searchInput(input_comment, table_comment, form_comment);
+formSunbmit(form_comment, table_comment);

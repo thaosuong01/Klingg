@@ -1,5 +1,5 @@
 <div class="mb-3 flex gap-3">
-    <a class="px-4 py-2 bg-[#000] text-sm text-slate-50 rounded-lg inline-block hover:bg-[#eb6420] hover:text-slate-50 transition-all duration-300" href="<?php echo _WEB_ROOT . '/product/add_product' ?>">Add product</a>
+    <a class="px-4 py-2 bg-[#000] text-sm text-slate-50 rounded-lg inline-block hover:bg-[#eb6420] hover:text-slate-50 transition-all duration-300" href="<?php echo _WEB_ROOT . '/product/add_product' ?>">Create product</a>
     <div class="flex-1 flex justify-end">
         <form class="input flex form_product" action="" method="GET">
             <div class="flex gap-3">
@@ -96,6 +96,9 @@ if (!empty($_SESSION['msg'])) {
                     else if(getNameCate($product['cate_id'])['name'] == 'Crossbody Bags') {
                         $color = 'text-red-500';
                     }
+                    else if(getNameCate($product['cate_id'])['name'] == 'Tote Bags') {
+                        $color = 'text-orange-500';
+                    }
                     else {
                         $color = 'text-blue-500';
                     }
@@ -103,8 +106,8 @@ if (!empty($_SESSION['msg'])) {
                     <td class="h-[50px] leading-[50px] <?php echo $color ?>"><?php echo getNameCate($product['cate_id'])['name'] ?></td>
                     <td class="h-[50px] leading-[50px]  text-yellow-500">$ <?php echo $product['price'] ?></td>
                     <td class="h-[50px] leading-[50px]"><?php echo $product['created_at'] ?></td>
-                    <td class="h-[50px] leading-[50px] text-center"><a class="text-slate-900" href="<?php echo _WEB_ROOT . '/product/update_product/' . $product['id'] ?>"><i class="far hover:scale-125 hover:text-yellow-500 transition-all duration-300 fa-edit"></i></a></td>
-                    <td class="h-[50px] leading-[50px] text-center"><a class="text-slate-900 delete_product" href="<?php echo _WEB_ROOT . '/product/delete_product/' . $product['id'] ?>"><i class="fas hover:scale-125 hover:text-red-600 transition-all duration-300 fa-trash-alt"></i></a></td>
+                    <td class="h-[50px] leading-[50px] text-center"><a class="text-slate-900 hover:scale-125 hover:text-yellow-500 transition-all duration-300 " href="<?php echo _WEB_ROOT . '/product/update_product/' . $product['id'] ?>"><i class="far hover:scale-125 hover:text-yellow-500 transition-all duration-300 fa-edit"></i></a></td>
+                    <td class="h-[50px] leading-[50px] text-center"><a class="text-slate-900 delete hover:scale-125 hover:text-red-600 transition-all duration-300_product" href="<?php echo _WEB_ROOT . '/product/delete_product/' . $product['id'] ?>"><i class="fas hover:scale-125 hover:text-red-600 transition-all duration-300 fa-trash-alt"></i></a></td>
                 </tr>
         <?php
             }

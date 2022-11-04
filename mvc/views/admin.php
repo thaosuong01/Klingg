@@ -11,13 +11,16 @@
   <?php
   } else {
   ?>
-    <title>Admin | Dashboard</title>
+    <title>Admin</title>
   <?php
   }
   ?>
 
   <!-- Google Font: Source Sans Pro -->
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <!-- MDB -->
+
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;1,300&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo _PUBLIC . '/admin/plugins/fontawesome-free/css/all.min.css' ?>">
@@ -40,8 +43,16 @@
   <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-minimal@4/minimal.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
   <link rel="shortcut icon" href="//cdn.shopify.com/s/files/1/0461/9036/2778/files/favicon_1_16x16.png?v=1630996498" type="image/png" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <?php
+  if (isset($data['page']) && $data['page'] == 'dashboard') {
+  ?>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css" rel="stylesheet" />
+
+  <?php
+
+  }
+  ?>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
   <style>
     body {
       font-family: 'Roboto', sans-serif;
@@ -53,7 +64,8 @@
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
     <!-- Preloader -->
-
+    <div class="preloader flex-column justify-content-center align-items-center">
+    </div>
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -108,7 +120,7 @@
         }
         ?>
         <!-- Sidebar Menu -->
-        <nav class="mt-2">
+        <nav class="mt-2 ml-1">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
@@ -124,7 +136,7 @@
               <a class="<?php echo $data['pageactive'] == 'group' ? 'text-white' : 'text-black' ?> hover:text-[#fff] active d-flex align-items-center py-2 px-3" href="<?php echo _WEB_ROOT . '/admin/list_group' ?>" class="nav-link">
                 <i class="mr-2 nav-icon fas fa-users"></i>
                 <p>
-                  User Group
+                  User group
                 </p>
               </a>
             </li>
@@ -138,7 +150,7 @@
             </li>
             <li class="nav-item <?php echo $data['pageactive'] == 'category' ? $bg : "" ?>  hover:bg-[#eb6420] rounded">
               <a class="<?php echo $data['pageactive'] == 'category' ? 'text-white' : 'text-black' ?> hover:text-[#fff] d-flex align-items-center py-2 px-3" href="<?php echo _WEB_ROOT . '/category/list_category' ?>" class="nav-link">
-                <i class="mr-2 nav-icon bi bi-card-list"></i>
+                <i class="mr-2 nav-icon fas fa-boxes"></i>
                 <p>
                   Category
                 </p>
@@ -157,6 +169,14 @@
                 <i class="mr-2 nav-icon bi bi-receipt"></i>
                 <p>
                   Bills
+                </p>
+              </a>
+            </li>
+            <li class="nav-item <?php echo $data['pageactive'] == 'comment' ? $bg : "" ?>  hover:bg-[#eb6420] rounded">
+              <a class="<?php echo $data['pageactive'] == 'comment' ? 'text-white' : 'text-black' ?> hover:text-[#fff] d-flex align-items-center py-2 px-3" href="<?php echo _WEB_ROOT . '/comment/list_comment' ?>" class="nav-link">
+                <i class="mr-2 nav-icon far fa-comments"></i>
+                <p>
+                  Comments
                 </p>
               </a>
             </li>
@@ -181,7 +201,7 @@
               <?php
               } else {
               ?>
-                <h1 class="m-0">Dashboard</h1>
+                <h1 class="m-0"></h1>
               <?php
               }
               ?>
@@ -195,7 +215,7 @@
                 <?php
                 } else {
                 ?>
-                  <li class="breadcrumb-item active">Dashboard</li>
+                  <li class="breadcrumb-item active"></li>
                 <?php
                 }
                 ?>
@@ -233,7 +253,21 @@
   <!-- ./wrapper -->
 
   <!-- jQuery -->
-  <script src="<?php echo _PUBLIC . '/admin/plugins/jquery/jquery.min.js' ?>"></script>
+
+  <?php
+  if (isset($data['page']) && $data['page'] == 'dashboard') {
+  ?>
+    <script src="<?php echo _PUBLIC . '/admin/plugins/jquery/jquery.min.js' ?>"></script>
+  <?php
+  } else {
+  ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <?php
+  }
+  ?>
+
   <!-- jQuery UI 1.11.4 -->
   <script src="<?php echo _PUBLIC . '/admin/plugins/jquery-ui/jquery-ui.min.js' ?>"></script>
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -267,7 +301,11 @@
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="<?php echo _PUBLIC . '/admin/dist/js/pages/dashboard.js' ?>"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
+
+  <script src="https://cdn.tailwindcss.com"></script>
   <?php
   if (isset($data['js'])) {
 
@@ -279,9 +317,18 @@
   }
 
   ?>
+  <?php
+  if (isset($data['page']) && $data['page'] == 'dashboard') {
+
+  ?>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
+  <?php
+
+  }
+  ?>
   <script>
     setTimeout(function() {
-      if(document.getElementById("toast-success")){
+      if (document.getElementById("toast-success")) {
 
         document.getElementById("toast-success").classList.add("hidden");
       }

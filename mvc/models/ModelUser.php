@@ -18,6 +18,24 @@ class ModelUser extends DB
         return $this->pdo_query($sql);
     }
 
+    function getAllUser($keyword = '', $id = 0, $gr_id = 0, $per_page = 5, $offset = 0)
+    {
+        $user = "SELECT * FROM users WHERE 1";
+        if (!empty($keyword)) {
+            $user .= " AND  name like '%" . $keyword . "%'";
+        }
+
+        if ($id > 0) {
+            $user .= " AND id <> $id";
+        }
+        if ($gr_id > 0) {
+            $user .= " AND gr_id = $gr_id";
+        }
+      
+        $user .= " LIMIT $offset, $per_page";
+        return $this->pdo_query($user);
+    }
+
     function InsertUser($name, $email, $password, $create_at)
     {
         $insert = "INSERT INTO users(gr_id, name, email, password, created_at) VALUE(2, '$name', '$email', '$password', '$create_at')";

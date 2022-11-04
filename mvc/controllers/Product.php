@@ -164,7 +164,7 @@ class Product extends Controller
 
             if ($idProduct) {
                 $type = 'success';
-                $msg = 'Added product successfully';
+                $msg = 'Product created successfully';
                 $_SESSION['msg'] = $msg;
                 header('Location: ' . _WEB_ROOT . '/product/list_product');
             } else {
@@ -227,7 +227,7 @@ class Product extends Controller
 
             if ($status) {
                 $type = 'success';
-                $msg = 'Updated product successfully';
+                $msg = 'Product updated successfully';
                 $_SESSION['msg'] = $msg;
                 header('Location: ' . _WEB_ROOT . '/product/list_product');
             } else {

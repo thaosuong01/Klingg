@@ -144,7 +144,7 @@
                                     </div>
                                 </div>
                                 <div class="review-content">
-                                    <p><?php echo $item['comment'] ?></p>
+                                    <p><?php echo $item['comments'] ?></p>
                                 </div>
                             </div>
                     <?php

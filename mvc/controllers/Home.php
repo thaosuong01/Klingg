@@ -7,6 +7,7 @@ class Home extends Controller {
     }
 
     function index() {
+    
         $categories = $this->categories->getAllCl();
         $trendpro = $this->trend->getTrendPro();
         $trendproNew = [];

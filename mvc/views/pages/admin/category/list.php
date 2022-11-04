@@ -1,5 +1,5 @@
 <div class="mb-3 flex gap-3">
-    <a class="px-4 py-2 bg-[#000] text-sm text-slate-50 rounded-lg inline-block hover:bg-[#eb6420] hover:text-slate-50 transition-all duration-300" href="<?php echo _WEB_ROOT . '/category/add_category' ?>">Add category</a>
+    <a class="px-4 py-2 bg-[#000] text-sm text-slate-50 rounded-lg inline-block hover:bg-[#eb6420] hover:text-slate-50 transition-all duration-300" href="<?php echo _WEB_ROOT . '/category/add_category' ?>">Create category</a>
     <div class="flex-1">
         <form class="input flex-1 form_category" action="" method="POST">
             <div class="flex justify-end">
@@ -78,8 +78,8 @@ if (!empty($_SESSION['msg'])) {
                     <td><?php echo $category['name'] ?></td>
                     <td><?php echo $category['created_at'] ?></td>
                     <td><?php echo $category['updated_at'] ?></td>
-                    <td class="text-center"><a class="text-slate-900" href="<?php echo _WEB_ROOT . '/category/update_category/' . $category['id'] ?>"><i class="far hover:scale-125 hover:text-yellow-500 transition-all duration-300 fa-edit"></i></a></td>
-                    <td class="text-center"><a class="text-slate-900 delete_category" href="<?php echo _WEB_ROOT . '/category/delete_category/' . $category['id'] ?>"><i class="fas hover:scale-125 hover:text-red-600 transition-all duration-300 fa-trash-alt"></i></a></td>
+                    <td class="text-center"><a class="text-slate-900 hover:scale-125 hover:text-yellow-500 transition-all duration-300 " href="<?php echo _WEB_ROOT . '/category/update_category/' . $category['id'] ?>"><i class="far hover:scale-125 hover:text-yellow-500 transition-all duration-300 fa-edit"></i></a></td>
+                    <td class="text-center"><a class="text-slate-900 delete hover:scale-125 hover:text-red-600 transition-all duration-300_category" href="<?php echo _WEB_ROOT . '/category/delete_category/' . $category['id'] ?>"><i class="fas hover:scale-125 hover:text-red-600 transition-all duration-300 fa-trash-alt"></i></a></td>
                 </tr>
         <?php
             }

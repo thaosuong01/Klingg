@@ -1,14 +1,20 @@
 <?php
 class ModelGroup extends DB
 {
-    function getAll($keyword = '')
+    function countPro() {
+        $number = "SELECT * FROM group_user";
+        return count($this->pdo_query($number));
+
+    }
+
+    function getAll($keyword = '', $per_page = 5, $offset = 0)
     {
-        if(!empty($keyword)) {
-            $sql = "SELECT * FROM group_user WHERE name like '%".$keyword."%'";
+        if (!empty($keyword)) {
+            $sql = "SELECT * FROM group_user WHERE name like '%" . $keyword . "%'";
+        } else {
+            $sql = "SELECT * FROM group_user ORDER BY name";
         }
-        else {
-            $sql = "SELECT * FROM group_user";
-        }
+        $sql .= " LIMIT $offset, $per_page";
         return $this->pdo_query($sql);
     }
 

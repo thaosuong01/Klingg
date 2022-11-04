@@ -71,7 +71,7 @@ class Bill extends Controller
             $update = $this->bills->editStatus($id, $status, $updated_at);
 
             if ($update) {
-                $msg = 'Update Successfull';
+                $msg = 'Bill updated successfully';
                 $type = 'success';
                 $_SESSION['msg'] = $msg;
                 header('Location:' . _WEB_ROOT . '/bill/list_bill');

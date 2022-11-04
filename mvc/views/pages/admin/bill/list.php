@@ -104,7 +104,7 @@ if (!empty($_SESSION['msg'])) {
                     <td class="h-[50px] leading-[50px] <?php echo $color ?>"><?php echo $status ?></td>
                     <td class="h-[50px] leading-[50px]"><?php echo $bill['created_at'] ?></td>
 
-                    <td class="h-[50px] leading-[50px] text-center"><a class="text-slate-900" href="<?php echo _WEB_ROOT . '/bill/detailbill/' . $bill['id'] ?>"><i class="hover:scale-125 hover:text-blue-600 transition-all duration-300 fas fa-eye"></i></a></td>
+                    <td class="h-[50px] leading-[50px] text-center"><a class="text-slate-900 hover:scale-125 hover:text-yellow-500 transition-all duration-300 " href="<?php echo _WEB_ROOT . '/bill/detailbill/' . $bill['id'] ?>"><i class="hover:scale-125 hover:text-blue-600 transition-all duration-300 fas fa-eye"></i></a></td>
                 </tr>
         <?php
             }

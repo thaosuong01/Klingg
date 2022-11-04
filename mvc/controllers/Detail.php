@@ -27,8 +27,12 @@ class Detail extends Controller {
                 $sumStar += $comment['rating'];
             }
         }
-        
-        $avgStar = number_format((float)$sumStar/count($getComment), 1);
+        if($sumStar == 0) {
+            $avgStar = 0;
+        }
+        else {
+            $avgStar = number_format((float)$sumStar/count($getComment), 1);
+        }
         
         $commentNew = [];
         foreach($getComment as $item) {

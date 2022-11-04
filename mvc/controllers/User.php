@@ -23,10 +23,12 @@ class User extends Controller
 
     private $users;
     private $groups;
+    private $products;
     function __construct()
     {
         $this->users = $this->model('ModelUser');
         $this->groups = $this->model('ModelGroup');
+        $this->products = $this->model('ModelProduct');
     }
 
     function handleRegister()
@@ -94,8 +96,20 @@ class User extends Controller
             if (!empty($user)) {
                 if (password_verify($password, $user['password'])) {
                     $_SESSION['user'] = $user;
+                    $carts = $this->products->selectCart($user['id'])['carts'];
+                    try{
 
-                    header('Location: ' . _WEB_ROOT . '/home');
+                        if ($carts) {
+                            $_SESSION['cart'] = json_decode($carts,true);
+                        } else {
+                            $_SESSION['cart'] = [];
+                        }
+    
+                        header('Location: ' . _WEB_ROOT . '/home');
+                    }catch (Exception $e) {
+                        echo 'Caught exception: ',  $e->getMessage(), "\n";
+                    }
+
                 } else {
                     $_SESSION['msglg'] = 'Incorrect password';
                     $_SESSION['typelg'] = 'danger';
@@ -114,29 +128,55 @@ class User extends Controller
     function logout()
     {
         unset($_SESSION['user']);
+        unset($_SESSION['cart']);
         header('Location: ' . _WEB_ROOT);
     }
 
+    private $per_page = 5;
+    private $offset = 0;
+
     function list_user()
     {
+        $this->per_page = 5;
         $keyword = '';
         $gr_id = 0;
-        if (isset($_POST['search']) && ($_POST['search'] != '')) {
-            $keyword = $_POST['keyword_user'];
-            $_POST['search'] = '';
-            if (!empty($_POST['group'])) {
-                $gr_id = $_POST['group'];
+        if (isset($_POST['search']) && ($_POST['search'] != '') || !empty($_GET['keyword_user']) || !empty($_GET['group'])) {
+            if (!empty($_GET['keyword_user'])) {
+
+                $keyword =  $_GET['keyword_user'];
             }
+            $_GET['search'] = '';
+
+            if (!empty($_GET['group']))
+                $gr_id = $_GET['group'];
         }
-        $users = $this->users->getAll($keyword, 0, (int)$gr_id);
+
+        $countUser = count($this->users->getAll($keyword, 0, $gr_id));
+        $maxPage = ceil($countUser / $this->per_page);
+
+        if (!empty($_GET['page'])) {
+            $page = $_GET['page'];
+            if ($page < 1 || $page > $maxPage) {
+                $page = 1;
+            }
+        } else {
+            $page = 1;
+        }
+
+        $this->offset = ($page - 1) * $this->per_page;
+
+        $users = $this->users->getAllUser($keyword, 0, (int)$gr_id, $this->per_page, $this->offset);
         $groups = $this->groups->getAll();
+
         return $this->view('admin', [
             'page' => 'users/list',
             'users' => $users,
             'groups' => $groups,
+            'maxPage' => $maxPage,
+            'pageNum' => $page,
             'js' => ['ajax', 'search'],
             'title' => 'User',
-            'bg'=> 'active',
+            'bg' => 'active',
             'pageactive' => 'user'
         ]);
     }
@@ -162,7 +202,7 @@ class User extends Controller
             $users = $this->users->getAll();
             $check = 0;
             foreach ($users as $user) {
-                if ($user['name'] == $name) {
+                if ($user['email'] == $email) {
                     $check = 1;
                     break;
                 } else {
@@ -172,12 +212,12 @@ class User extends Controller
 
             if ($check == 1) {
                 $type = 'danger';
-                $msg = 'User name already exists';
+                $msg = 'Email already exists';
             } else {
                 $status = $this->users->insert($name, $avatar, $group, $email, $password, $phone, $address, $desc, $created_at);
                 if ($status) {
                     $type = 'success';
-                    $msg = 'Added user successfully';
+                    $msg = 'User created successfully';
                     $_SESSION['msg'] = $msg;
                     header('Location: ' . _WEB_ROOT . '/user/list_user');
                 } else {
@@ -220,7 +260,7 @@ class User extends Controller
             $check = 0;
 
             foreach ($users as $user) {
-                if ($user['name'] == $name) {
+                if ($user['email'] == $email) {
                     $check = 1;
                     break;
                 } else {
@@ -231,13 +271,13 @@ class User extends Controller
             if ($check == 1) {
                 $header = 0;
                 $type = 'danger';
-                $msg = 'User user name already exists';
+                $msg = 'Email already exists';
             } else {
                 $status = $this->users->updateUser($id, $name, $avatar, $group, $email, $password, $phone, $address, $desc, $updated_at);
                 if ($status) {
                     $header = 1;
                     $type = 'success';
-                    $msg = 'Update user successfully';
+                    $msg = 'User updated successfully';
                 } else {
                     $header = 0;
                     $type = 'danger';
