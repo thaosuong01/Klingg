@@ -75,7 +75,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="<?php echo _WEB_ROOT . '/admin/dasboard' ?>" class="nav-link">Home</a>
+          <a href="<?php echo _WEB_ROOT . '/' ?>" class="nav-link">Kling</a>
         </li>
       </ul>
 
@@ -85,7 +85,7 @@
           <img src="<?php echo _PATH_AVATAR . $_SESSION['user']['avatar'] ?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?php echo $_SESSION['user']['name'] ?></a>
+          <a href="#" class="d-block hover:text-[#eb6420]"><?php echo $_SESSION['user']['name_user'] ?></a>
         </div>
       </div>
 
@@ -208,7 +208,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a class="hover:text-[#eb6420]" href="<?php echo _WEB_ROOT . '/admin/dashboard' ?>">Home</a></li>
                 <?php if (!empty($data['title'])) {
                 ?>
                   <li class="breadcrumb-item active"><?php echo $data['title'] ?></li>

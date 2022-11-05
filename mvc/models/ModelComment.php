@@ -11,8 +11,7 @@ class ModelComment extends DB {
     }
 
     function getComments($keyword) {
-        $com = "SELECT comment.*, users.name, users.email FROM  comment INNER JOIN users ON comment.user_id = users.id";
-
+        $com = "SELECT comment.*, users.name_user, users.email, product.name, product.image FROM (comment INNER JOIN users ON comment.user_id = users.id) INNER JOIN product ON comment.product_id = product.id";
         if (!empty($keyword)) {
             $com .= " AND name like '%" . $keyword . "%'";
         }
@@ -23,7 +22,7 @@ class ModelComment extends DB {
 
     function getAllCom($keyword = '', $per_page = 5, $offset = 0)
     {
-        $comment = "SELECT comment.*, users.name, users.email FROM  comment INNER JOIN users ON comment.user_id = users.id";
+        $comment = "SELECT comment.*, users.name_user, users.email, product.name, product.image FROM (comment INNER JOIN users ON comment.user_id = users.id) INNER JOIN product ON comment.product_id = product.id";
         if (!empty($keyword)) {
             $comment .= " AND name like '%" . $keyword . "%'";
         }

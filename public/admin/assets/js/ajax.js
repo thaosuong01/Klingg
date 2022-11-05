@@ -35,7 +35,7 @@ window.addEventListener('load', function () {
                                     that.parentElement.parentElement.remove();
                                     Swal.fire(
                                         'Deleted!',
-                                        'Your group has been deleted.',
+                                        'User group has been deleted.',
                                         'success'
                                     )
                                 }

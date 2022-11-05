@@ -140,7 +140,7 @@
                                 <div class="review-header">
 
                                     <div class="review-date">
-                                        <p><b><?php echo $item['name'] ?></b> on <b><?php echo $item['created_at'] ?></b></p>
+                                        <p><b><?php echo $item['name_user'] ?></b> on <b><?php echo $item['created_at'] ?></b></p>
                                     </div>
                                 </div>
                                 <div class="review-content">

@@ -22,7 +22,7 @@ class ModelPayment extends DB
 
     function getBill($keyword = '', $status = -1)
     {
-        $sql = "SELECT bill.*, users.name,users.email FROM  bill INNER JOIN users ON bill.user_id = users.id";
+        $sql = "SELECT bill.*, users.name_user,users.email FROM  bill INNER JOIN users ON bill.user_id = users.id";
         if (!empty($keyword)) {
             $sql .= " AND name like '%" . $keyword . "%'";
         }
@@ -35,7 +35,7 @@ class ModelPayment extends DB
 
     function getAllBill($keyword = '', $status = -1, $per_page = 5, $offset = 0)
     {
-        $bill = "SELECT bill.*, users.name,users.email FROM  bill INNER JOIN users ON bill.user_id = users.id";
+        $bill = "SELECT bill.*, users.name_user,users.email FROM  bill INNER JOIN users ON bill.user_id = users.id";
         if (!empty($keyword)) {
             $bill .= " AND name like '%" . $keyword . "%'";
         }
@@ -64,6 +64,22 @@ class ModelPayment extends DB
 
         $sql .= " order by id desc";
         return $this->pdo_query($sql);
+    }
+
+    function getBillFromUser($keyword = '', $status = -1, $user_id = 0)
+    {
+        $select = "SELECT * FROM bill WHERE 1 ";
+        if ($status > -1) {
+            $select .= " AND status = $status ";
+        }
+        if ($user_id > 0) {
+            $select .= " AND user_id = $user_id ";
+        }
+        if ($keyword  != '') {
+            $select .= " AND name like '%" . $keyword . "%'";
+        }
+        $select .= " ORDER BY created_at DESC";
+        return $this->pdo_query($select);
     }
 
     function editStatus($id, $status, $updated_at)

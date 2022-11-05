@@ -24,11 +24,11 @@ $(function () {
         <div class="review-header">
          
             <div class="review-date">
-                <p><b>${item.name}</b> on <b>${item.created_at}</b></p>
+                <p><b>${item.name_user}</b> on <b>${item.created_at}</b></p>
             </div>
         </div>
         <div class="review-content">
-            <p>${item.comment}</p>
+            <p>${item.comments}</p>
         </div>
     </div>   
         
@@ -47,7 +47,7 @@ $(function () {
         const pro_id = e.target.dataset.proid;
         
         if (+ratingNum <= 0) {
-            alert('Phai danh gia sao');
+            // alert('Phai danh gia sao');
         }
         else {
             $.ajax({

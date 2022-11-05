@@ -37,13 +37,12 @@
                         <div class="address-info pb-4">
                             <h5 class="text-xl pt-3">Shipping address</h5>
                             <div class="pb-sm-3 mt-3">
-                                <select class="form-select pt-[10px] pb-[12x] px-3 region" aria-label="Default select example" name="country">
-                                    <option selected>Country/Region</option>
+                                <select class="form-select pt-[10px] pb-[12x] px-3 region" required aria-label="Default select example" name="country">
+                                    <option value="" >Country/Region</option>
                                     <option value="China">China</option>
                                     <option value="Tokyo">Tokyo</option>
                                     <option value="USA">USA</option>
                                     <option value="Viet Nam">Viet Nam</option>
-
                                 </select>
                             </div>
                             <div class="name-info pb-sm-3">
@@ -57,7 +56,7 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <input type="text" class="form-control pt-[10px] pb-[8px] px-3 address" id="exampleFormControlInput1" placeholder="Address" name="address">
+                                <input type="text" class="form-control pt-[10px] pb-[8px] px-3 address" placeholder="Address" name="address">
                             </div>
 
                             <div class="name-info pb-sm-3">

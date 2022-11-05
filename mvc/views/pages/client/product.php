@@ -123,7 +123,7 @@
                         } else {
                             ?>
                             <div class="w-full text-center bg-[#fff]">
-                                <p class="font-bold text-2xl">NOT FOUND</p>
+                                <p class="font-bold text-2xl">NOT PRODUCTS FOUND</p>
                             </div>
                         <?php
                         }

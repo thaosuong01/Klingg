@@ -6,7 +6,7 @@ class ModelUser extends DB
     {
         $sql = "SELECT * FROM users WHERE 1";
         if (!empty($keyword)) {
-            $sql .= " AND  name like '%" . $keyword . "%'";
+            $sql .= " AND  name_user like '%" . $keyword . "%'";
         }
 
         if ($id > 0) {
@@ -22,7 +22,7 @@ class ModelUser extends DB
     {
         $user = "SELECT * FROM users WHERE 1";
         if (!empty($keyword)) {
-            $user .= " AND  name like '%" . $keyword . "%'";
+            $user .= " AND  name_user like '%" . $keyword . "%'";
         }
 
         if ($id > 0) {
@@ -31,14 +31,14 @@ class ModelUser extends DB
         if ($gr_id > 0) {
             $user .= " AND gr_id = $gr_id";
         }
-      
+
         $user .= " LIMIT $offset, $per_page";
         return $this->pdo_query($user);
     }
 
-    function InsertUser($name, $email, $password, $create_at)
+    function InsertUser($name_user, $email, $password, $create_at)
     {
-        $insert = "INSERT INTO users(gr_id, name, email, password, created_at) VALUE(2, '$name', '$email', '$password', '$create_at')";
+        $insert = "INSERT INTO users(gr_id, name_user, email, password, created_at) VALUE(2, '$name_user', '$email', '$password', '$create_at')";
         return $this->pdo_execute($insert);
     }
 
@@ -72,22 +72,22 @@ class ModelUser extends DB
         }
     }
 
-    function insert($name, $avatar, $group, $email, $password, $phone, $address, $desc, $create_at)
+    function insert($name_user, $avatar, $group, $email, $password, $phone, $address, $desc, $create_at)
     {
-        $insert = "INSERT INTO users(name, avatar, gr_id, email, password, phone, address, description, created_at) VALUE('$name', '$avatar', $group ,'$email', '$password', '$phone', '$address', '$desc', '$create_at')";
+        $insert = "INSERT INTO users(name_user, avatar, gr_id, email, password, phone, address, description, created_at) VALUE('$name_user', '$avatar', $group ,'$email', '$password', '$phone', '$address', '$desc', '$create_at')";
         return $this->pdo_execute($insert);
     }
 
-    function updateUser($id, $name, $avatar, $group, $email, $password, $phone, $address, $desc, $updated_at)
+    function updateUser($id, $name_user, $avatar, $group, $email, $password, $phone, $address, $desc, $updated_at)
     {
         if (!empty($password) && empty($avatar)) {
-            $update = "UPDATE users SET name = '$name', gr_id = '$group', email = '$email', password = '$password', phone = '$phone', address = '$address', description = '$desc', updated_at = '$updated_at' WHERE id = '$id'";
+            $update = "UPDATE users SET name_user = '$name_user', gr_id = '$group', email = '$email', password = '$password', phone = '$phone', address = '$address', description = '$desc', updated_at = '$updated_at' WHERE id = '$id'";
         } else if (empty($password) && !empty($avatar)) {
-            $update = "UPDATE users SET name = '$name', avatar = '$avatar', gr_id = '$group', email = '$email', phone = '$phone', address = '$address', description = '$desc', updated_at = '$updated_at' WHERE id = '$id'";
+            $update = "UPDATE users SET name_user = '$name_user', avatar = '$avatar', gr_id = '$group', email = '$email', phone = '$phone', address = '$address', description = '$desc', updated_at = '$updated_at' WHERE id = '$id'";
         } else if (empty($password) && empty($avatar)) {
-            $update = "UPDATE users SET name = '$name', gr_id = '$group', email = '$email', phone = '$phone', address = '$address', description = '$desc', updated_at = '$updated_at' WHERE id = '$id'";
+            $update = "UPDATE users SET name_user = '$name_user', gr_id = '$group', email = '$email', phone = '$phone', address = '$address', description = '$desc', updated_at = '$updated_at' WHERE id = '$id'";
         } else {
-            $update = "UPDATE users SET name = '$name', avatar = '$avatar', gr_id = '$group', email = '$email', password = '$password', phone = '$phone', address = '$address', description = '$desc', updated_at = '$updated_at' WHERE id = '$id'";
+            $update = "UPDATE users SET name_user = '$name_user', avatar = '$avatar', gr_id = '$group', email = '$email', password = '$password', phone = '$phone', address = '$address', description = '$desc', updated_at = '$updated_at' WHERE id = '$id'";
         }
         return $this->pdo_execute($update);
     }
@@ -104,8 +104,20 @@ class ModelUser extends DB
         return  $this->pdo_query_one($sql);
     }
 
-    function getNameUser($id) {
-        $userName = "SELECT name FROM users WHERE id = '$id'";
+    function getNameUser($id)
+    {
+        $userName = "SELECT name_user FROM users WHERE id = '$id'";
         return  $this->pdo_query_one($userName);
+    }
+
+    function editProfile($id, $name, $img, $email, $address, $phone, $date)
+    {
+        if (!empty($img)) {
+            $sql = "UPDATE users SET name_user ='$name', avatar = '$img', email='$email' , address='$address', phone='$phone', updated_at='$date' WHERE id='$id'";
+        } else {
+            $sql = "UPDATE users SET name_user ='$name', email = '$email' , address='$address', phone='$phone', updated_at='$date' WHERE id='$id'";
+        }
+
+        return $this->pdo_execute($sql);
     }
 }

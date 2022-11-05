@@ -162,7 +162,7 @@ class ModelProduct extends DB
     }
 
     function getProInCate($id, $cate_id) {
-        $pro = "SELECT * FROM product WHERE cate_id = '$cate_id' AND id <> '$id'";
+        $pro = "SELECT * FROM product WHERE cate_id = '$cate_id' AND id <> '$id' LIMIT 5";
         return $this->pdo_query($pro);
     }
     

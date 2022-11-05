@@ -56,8 +56,9 @@
                         <?php
                         }
                         ?>
-                        <li class="user-item"><a href="account.php"><?php echo $_SESSION['user']['name'] ?></a></li>
+                        <li class="user-item"><a href="<?php echo _WEB_ROOT . '/account/' . $_SESSION['user']['id'] ?>"><?php echo $_SESSION['user']['name_user'] ?></a></li>
 
+                        <li class="user-item user-logout"><a href="<?php echo _WEB_ROOT . '/bill' ?>">My orders</a></li>
                         <li class="user-item user-logout"><a href="<?php echo _WEB_ROOT . '/user/logout' ?>">Log out</a></li>
                     <?php
                     } else {
@@ -138,8 +139,9 @@
                         <?php
                         }
                         ?>
-                        <li class="user-item"><a href="account.php"><?php echo $_SESSION['user']['name'] ?></a></li>
+                        <li class="user-item"><a href="<?php echo _WEB_ROOT . '/account/' . $_SESSION['user']['id'] ?>"><?php echo $_SESSION['user']['name_user'] ?></a></li>
 
+                        <li class="user-item user-logout"><a href="<?php echo _WEB_ROOT . '/bill' ?>">My orders</a></li>
                         <li class="user-item user-logout"><a href="<?php echo _WEB_ROOT . '/user/logout' ?>">Log out</a></li>
                     <?php
                     } else {

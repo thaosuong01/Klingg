@@ -79,7 +79,7 @@ if (!empty($_SESSION['msg'])) {
                     <td><?php echo $category['created_at'] ?></td>
                     <td><?php echo $category['updated_at'] ?></td>
                     <td class="text-center"><a class="text-slate-900 hover:scale-125 hover:text-yellow-500 transition-all duration-300 " href="<?php echo _WEB_ROOT . '/category/update_category/' . $category['id'] ?>"><i class="far hover:scale-125 hover:text-yellow-500 transition-all duration-300 fa-edit"></i></a></td>
-                    <td class="text-center"><a class="text-slate-900 delete hover:scale-125 hover:text-red-600 transition-all duration-300_category" href="<?php echo _WEB_ROOT . '/category/delete_category/' . $category['id'] ?>"><i class="fas hover:scale-125 hover:text-red-600 transition-all duration-300 fa-trash-alt"></i></a></td>
+                    <td class="text-center"><a class="text-slate-900 delete_category hover:scale-125 hover:text-red-600 transition-all duration-300_category" href="<?php echo _WEB_ROOT . '/category/delete_category/' . $category['id'] ?>"><i class="fas hover:scale-125 hover:text-red-600 transition-all duration-300 fa-trash-alt"></i></a></td>
                 </tr>
         <?php
             }

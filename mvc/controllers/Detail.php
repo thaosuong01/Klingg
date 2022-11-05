@@ -36,7 +36,7 @@ class Detail extends Controller {
         
         $commentNew = [];
         foreach($getComment as $item) {
-            $item['name'] = $this->users->getNameUser($item['user_id'])['name'];
+            $item['name_user'] = $this->users->getNameUser($item['user_id'])['name_user'];
             array_push($commentNew, $item);
         }
         return $this->view('client',[
@@ -61,16 +61,19 @@ class Detail extends Controller {
         $create_at = date('Y-m-d H:i:s');
 
         if($ratingNum <= 0) {
-            echo 'Cho M, m ngu qua';
+            // echo 'Please rate the product quality';
         }
         else {
             $insertCom = $this->comments->insertComment($ratingNum, $comment, $userId, $proId, $create_at);
+
             $getComment = $this->comments->getAllComment($proId);
+            
             $commentNew = [];
             foreach($getComment as $item) {
-                $item['name'] = $this->users->getNameUser($item['user_id'])['name'];
+                $item['name_user'] = $this->users->getNameUser($item['user_id'])['name_user'];
                 array_push($commentNew, $item);
             }
+            
             print_r(json_encode($commentNew));
         }
     }

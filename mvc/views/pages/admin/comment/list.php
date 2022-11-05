@@ -61,9 +61,9 @@ if (!empty($_SESSION['msg'])) {
         <tr>
             <th scope="col">#</th>
             <th scope="col">User</th>
-            <th scope="col">Comment</th>
+            <th scope="col">Product</th>
             <th scope="col">Rating</th>
-            <th scope="col">Created at</th>
+            <th scope="col">Comment</th>
             <th class="text-center" scope="col">Delete</th>
         </tr>
     </thead>
@@ -75,16 +75,19 @@ if (!empty($_SESSION['msg'])) {
                 <tr>
                     <td class="h-[50px] leading-[50px]" scope="row"><?php echo $comment['id'] ?></td>
                     <td class="h-[50px]">
-                        <p class="text-slate-500 m-0">Name: <span class="text-black"><?php echo $comment['name'] ?></span></p>
+                        <p class="text-slate-500 m-0">Name: <span class="text-black"><?php echo $comment['name_user'] ?></span></p>
                         <p class="text-slate-500 m-0">Email: <span class="text-black"><?php echo $comment['email'] ?></span></p>
                     </td>
-                    <td class="h-[50px] leading-[50px]"><?php echo $comment['comments'] ?></td>
-                    <td class="h-[50px] leading-[50px]  text-yellow-500">
+                    <td class="h-[50px]">
+                        <img width="50px" src="<?php echo _PATH_IMG_PRODUCT . $comment['image'] ?>" alt="">
+                        <p class="text-slate-500 mt-2"><a href="<?php echo _WEB_ROOT . '/detail/index/' . $comment['product_id']?>" class="text-black hover:text-[#eb6420]"><?php echo $comment['name'] ?></a></p>
+                    </td>
+                    <td class="h-[50px]">
                         <div class="rateyo_admin" data-rateyo-rating="<?php echo $comment['rating'] ?>" data-rateyo-read-only="true">
                     </td>
-                    <td class="h-[50px] leading-[50px]"><?php echo $comment['created_at'] ?></td>
+                    <td class="h-[50px] leading-[50px]"><?php echo $comment['comments'] ?></td>
 
-                    <td class="h-[50px] leading-[50px] text-center"><a class="text-slate-900 delete hover:scale-125 hover:text-red-600 transition-all duration-300_comment" href="<?php echo _WEB_ROOT . '/comment/delete_comment/' . $comment['id'] ?>"><i class="fas hover:scale-125 hover:text-red-600 transition-all duration-300 fa-trash-alt"></i></a></td>
+                    <td class="h-[50px] leading-[50px] text-center"><a class="text-slate-900 delete_comment hover:scale-125 hover:text-red-600 transition-all duration-300_comment" href="<?php echo _WEB_ROOT . '/comment/delete_comment/' . $comment['id'] ?>"><i class="fas hover:scale-125 hover:text-red-600 transition-all duration-300 fa-trash-alt"></i></a></td>
                 </tr>
         <?php
             }

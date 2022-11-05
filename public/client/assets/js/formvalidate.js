@@ -3,49 +3,49 @@ $.validator.setDefaults({
         // document.querySelector('#form').submit();
     }
 });
-document.querySelector('#form').addEventListener('submit',function(e){
+document.querySelector('#form').addEventListener('submit', function (e) {
     e.preventDefault();
 })
 $(document).ready(function () {
     $('#form').validate({
         rules: {
+            email: {
+                required: true,
+                email: true
+            },
             firstname: "required",
             lastname: "required",
+            country: {
+                required: true,
+            },
             address: {
                 required: true,
-                minlength: 2
             },
             city: {
                 required: true,
-                minlength: 2
             },
             phone: {
                 required: true,
                 minlength: 10
             },
-            email: {
-                required: true,
-                email: true
-            },
-            country: "required"
+
+
         },
         messages: {
-            firstname: "Bạn chưa nhập vào tên của bạn",
-            lastname: "Bạn chưa nhập vào họ của bạn",
+            firstname: "You must entered your first name.",
+            lastname: "You must entered your last name.",
+            email: "Email address is not valid.",
+            country: "You must choose a shipping address.",
             address: {
-                required: "Bạn chưa nhập vào tên đăng nhập",
-                minlength: "Tên đăng nhập phải có ít nhất 2 ký tự"
+                required: "You must fill in the shipping address."
             },
             city: {
-                required: "Bạn chưa nhập mật khẩu",
-                minlength: "Mật khẩu phải có ít nhất 5 ký tự"
+                required: "You must fill in the shipping address."
             },
             phone: {
-                required: "Bạn chưa nhập mật khẩu",
-                minlength: "Mật khẩu phải có ít nhất 10 ký tự",
+                required: "You must enter your phone number.",
+                minlength: "Invalid phone number.",
             },
-            email: "Hộp thư điện tử không hợp lệ",
-            country: "Bạn phải đồng ý với các quy định của chúng tôi"
         },
         errorElement: "div",
         errorPlacement: function (error, element) {

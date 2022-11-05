@@ -77,7 +77,7 @@ if (!empty($_SESSION['msg'])) {
                     <td><?php echo $group['created_at'] ?></td>
                     <td><?php echo $group['updated_at'] ?></td>
                     <td class="text-center"><a class="text-slate-900 hover:scale-125 hover:text-yellow-500 transition-all duration-300 " href="<?php echo _WEB_ROOT . '/admin/update_group/' . $group['id'] ?>"><i class="far hover:scale-125 hover:text-yellow-500 transition-all duration-300 fa-edit"></i></a></td>
-                    <td class="text-center"><a class="text-slate-900 delete hover:scale-125 hover:text-red-600 transition-all duration-300_group" href="<?php echo _WEB_ROOT . '/admin/delete_group/' . $group['id'] ?>"><i class="fas hover:scale-125 hover:text-red-600 transition-all duration-300 fa-trash-alt"></i></a></td>
+                    <td class="text-center"><a class="text-slate-900 delete_group hover:scale-125 hover:text-red-600 transition-all duration-300_group" href="<?php echo _WEB_ROOT . '/admin/delete_group/' . $group['id'] ?>"><i class="fas hover:scale-125 hover:text-red-600 transition-all duration-300 fa-trash-alt"></i></a></td>
                 </tr>
         <?php
             }

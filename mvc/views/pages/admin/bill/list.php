@@ -80,7 +80,7 @@ if (!empty($_SESSION['msg'])) {
                 <tr>
                     <td class="h-[50px] leading-[50px]" scope="row"><?php echo $bill['id'] ?></td>
                     <td class="h-[50px] ">
-                        <p class="text-slate-500 m-0">Name: <span class="text-black"><?php echo $bill['name'] ?></span></p>
+                        <p class="text-slate-500 m-0">Name: <span class="text-black"><?php echo $bill['name_user'] ?></span></p>
                         <p class="text-slate-500 m-0">Email: <span class="text-black"><?php echo $bill['email'] ?></span></p>
                         <p class="text-slate-500 m-0">Phone: <span class="text-black"><?php echo $bill['phone'] ?></span></p>
                         <p class="text-slate-500 m-0">Address: <span class="text-black"><?php echo $bill['address'] ?></span></p>

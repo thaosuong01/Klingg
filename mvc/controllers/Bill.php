@@ -9,7 +9,37 @@ class Bill extends Controller
     {
         $this->bills = $this->model('ModelPayment');
         $this->users = $this->model('ModelUser');
+        $this->categories = $this->model('ModelCategory');
     }
+
+    function index() {
+        $status = -1;
+		if (isset($_GET['status']) && $_GET['status'] > -1)
+            $status = $_GET['status'];
+
+		if (isset($_SESSION['user'])) {
+			$user_id = $_SESSION['user']['id'];
+		}
+		$categories = $this->categories->getAllCl();
+
+		$getBill = $this->bills->getBillFromUser('', $status, $user_id);
+        
+		$billsNew = [];
+		foreach ($getBill as $bill) {
+			$bill['detail'] = $this->bills->getBillDetail($bill['id']);
+			array_push($billsNew, $bill);
+		}
+
+        return $this->view('client', [
+            'page' => 'mybill',
+            'categories' => $categories,
+            'getBill' => $getBill,
+            'billsNew' => $billsNew,
+            'status' => $status,
+            'css' => ['product']
+        ]);
+    }
+
     function list_bill()
     {
         $keyword = '';
