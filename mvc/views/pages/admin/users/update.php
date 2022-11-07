@@ -2,7 +2,7 @@
   <div class="grid-cols-12 grid gap-4">
     <div class="mb-3 col-span-6">
       <label for="exampleInputEmail1" class="form-label">Name user</label>
-      <input type="text" class="form-control" name="username" placeholder="Name user" value="<?php echo $data['user']['name'] ?>">
+      <input type="text" class="form-control" name="username" placeholder="Name user" value="<?php echo $data['user']['name_user'] ?>">
     </div>
     <?php
     $mb = 'mb-3';

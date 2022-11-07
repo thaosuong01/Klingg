@@ -3,7 +3,7 @@
         <div class="banner-slider">
             <div class="header-slideshow">
                 <div class="header-slider">
-                    <img class="slide-img" src="https://cdn.shopify.com/s/files/1/0461/9036/2778/files/slide1.jpg?v=1597842864" alt="slide1">
+                    <img class="slide-img" src="<?php echo _PUBLIC . '/client/img/home/slide1.jpg' ?>" alt="slide1">
                     <div class="slider-content">
                         <p class="slide-sub-heading">
                             Clean & Elegant!
@@ -22,9 +22,9 @@
 
             </div>
 
-            <div class="header-slideshow ">
+            <div class="header-slideshow">
                 <div class="header-slider">
-                    <img class="slide-img" src="https://cdn.shopify.com/s/files/1/0461/9036/2778/files/slider2-mobile_768x940.jpg?v=1598251126" alt="slide2">
+                    <img class="slide-img" src="<?php echo _PUBLIC . '/client/img/home/slider2.jpg' ?>" alt="slide2">
                     <div class="slider-content text-center-content">
                         <p class="slide-sub-heading">
                             Style Perfectionist!
@@ -45,7 +45,7 @@
 
             <div class="header-slideshow">
                 <div class="header-slider">
-                    <img class="slide-img" src="https://cdn.shopify.com/s/files/1/0461/9036/2778/files/slider3.jpg?v=1598251231" alt="slide3">
+                    <img class="slide-img" src="<?php echo _PUBLIC . '/client/img/home/slider3.jpg' ?>" alt="slide3">
                     <div class="slider-content">
                         <p class="slide-sub-heading">
                             Be Stylish!
@@ -65,7 +65,7 @@
             </div>
         </div>
 
-        <div class="header-support ">
+        <div class="header-support">
             <div class="row">
                 <div class="support-item col col-3">
                     <img src="https://cdn.shopify.com/s/files/1/0461/9036/2778/files/icon-2_200x200.png?v=1598010673" alt="" class="support-icon">
@@ -124,7 +124,7 @@
                 foreach ($data['trendpro'] as $trendpro) {
                 ?>
                     <li class="trending-item col col-4">
-                        <div class="trending-info">
+                        <div class="trending-info" data-aos="fade-up" data-aos-easing="linear">
                             <div class="trending-img">
                                 <img src="<?php echo _PATH_IMG_PRODUCT . $trendpro['image'] ?>" alt="" class="first-img">
                                 <img src="<?php echo _PATH_IMG_PRODUCT . $trendpro['detail_img'] ?>" alt="" class="last-img">
@@ -170,7 +170,7 @@
             </ul>
         </div>
 
-        <div class="product-slider">
+        <div class="product-slider" data-aos="fade-in" data-aos-easing="linear">
             <div class="slider-image">
                 <img src="https://cdn.shopify.com/s/files/1/0461/9036/2778/files/cont-section-image1.jpg?v=1597991036" alt="" class="slide-img">
                 <div class="slider-content">
@@ -191,7 +191,7 @@
                     <h2 class="category-main-heading">Shop By Category</h2>
                 </div>
                 <div class="category-list">
-                    <div class="category-item">
+                    <div class="category-item" data-aos="fade-up" data-aos-easing="linear">
                         <div class="category-content">
                             <div class="category-image">
                                 <img src="https://cdn.shopify.com/s/files/1/0461/9036/2778/files/cont-section-image4_600x.jpg?v=1597996546" alt="">
@@ -202,7 +202,7 @@
                         </div>
                     </div>
 
-                    <div class="category-item">
+                    <div class="category-item" data-aos="fade-up" data-aos-easing="linear">
                         <div class="category-content">
                             <div class="category-image">
                                 <img src="https://cdn.shopify.com/s/files/1/0461/9036/2778/files/cont-section-image5_600x.jpg?v=1597996556" alt="">
@@ -213,7 +213,7 @@
                         </div>
                     </div>
 
-                    <div class="category-item">
+                    <div class="category-item" data-aos="fade-up" data-aos-easing="linear">
                         <div class="category-content">
                             <div class="category-image">
                                 <img src="https://cdn.shopify.com/s/files/1/0461/9036/2778/files/cont-section-image6_600x.jpg?v=1597996639" alt="">
@@ -224,7 +224,7 @@
                         </div>
                     </div>
 
-                    <div class="category-item">
+                    <div class="category-item" data-aos="fade-up" data-aos-easing="linear">
                         <div class="category-content">
                             <div class="category-image">
                                 <img src="https://cdn.shopify.com/s/files/1/0461/9036/2778/files/cont-section-image7_600x.jpg?v=1597996759" alt="">

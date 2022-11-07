@@ -4,9 +4,7 @@ if(!empty($data['msg'])) {
 }
 ?>
 
-
-
-<form method="POST">
+<form method="POST" id="form">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Name user group</label>
     <input type="text" class="form-control" name="groupname" placeholder="Name user group">

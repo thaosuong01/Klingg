@@ -138,7 +138,9 @@ class Admin extends Controller
             'msg' => $msg,
             'type' => $type,
             'bg' => 'active',
-            'pageactive' => 'group'
+            'title' => 'User group',
+            'pageactive' => 'group',
+            'js' => ['validate', 'formvalidate']
         ]);
     }
 

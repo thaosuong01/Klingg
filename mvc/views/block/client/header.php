@@ -41,7 +41,7 @@
                 <?php
                 } else {
                 ?>
-                    <img class="header-account-icon w-[30px] h-[30px] object-cover rounded-full" src="https://ss-images.saostar.vn/wp700/pc/1613810558698/Facebook-Avatar_3.png" alt="">
+                    <img class="header-account-icon w-[30px] h-[30px] object-cover rounded-full" src="<?php echo _PATH_AVATAR . '/avatarDefault.jpg' ?>" alt="">
                 <?php
                 }
                 ?>

@@ -232,7 +232,7 @@ class User extends Controller
             'msg' => $msg,
             'type' => $type,
             'title' => 'User',
-            'js' => ['uploadImg'],
+            'js' => ['uploadImg', 'validate', 'formvalidate'],
             'bg' => 'active',
             'pageactive' => 'user'
         ]);

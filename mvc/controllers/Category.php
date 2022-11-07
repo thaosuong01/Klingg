@@ -87,7 +87,9 @@ class Category extends Controller
             'msg' => $msg,
             'type' => $type,
             'bg' => 'active',
-            'pageactive' => 'category'
+            'pageactive' => 'category',
+            'title' => 'Category',
+            'js' => ['validate', 'formvalidate']
         ]);
     }
 

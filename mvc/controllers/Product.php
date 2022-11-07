@@ -180,7 +180,7 @@ class Product extends Controller
             'msg' => $msg,
             'type' => $type,
             'title' => 'Product',
-            'js' => ['uploadImg'],
+            'js' => ['uploadImg', 'validate', 'formvalidate'],
             'bg' => 'active',
             'pageactive' => 'product'
         ]);

@@ -87,7 +87,19 @@ if (!empty($_SESSION['msg'])) {
                 <tr>
                     <td class="h-[50px] leading-[50px]" scope="row"><?php echo $user['id'] ?></td>
                     <td class="h-[50px] leading-[50px]"><?php echo $user['name_user'] ?></td>
-                    <td class="h-[50px] leading-[50px]"><img src="<?php echo _PATH_AVATAR . $user['avatar'] ?>" class="w-10"></td>
+                    <?php
+                    if (isset($user['avatar']) && !empty($user['avatar'])) {
+                    ?>
+                        <td class="h-[50px] leading-[50px]"><img src="<?php echo _PATH_AVATAR . $user['avatar'] ?>" class="w-10 h-10 rounded-full object-cover"></td>
+                    <?php
+                    }
+                    else {
+                        ?>
+                        <td class="h-[50px] leading-[50px]"><img src="<?php echo _PATH_AVATAR . '/avatarDefault.jpg' ?>" class="w-10 h-10 rounded-full object-cover"></td>
+                        <?php
+                    }
+
+                    ?>
                     <?php
                     $color = '';
                     if (getNameUserGroup($user['gr_id']) == 'Admin') {
@@ -119,17 +131,17 @@ if (!empty($_SESSION['msg'])) {
     $keyword = '';
     $group_id = 0;
 
-    if(!empty($_GET['keyword_user'])){
+    if (!empty($_GET['keyword_user'])) {
         $keyword = $_GET['keyword_user'];
     }
-    if(!empty($_GET['group'])){
+    if (!empty($_GET['group'])) {
         $group_id = $_GET['group'];
     }
     $page = $data['pageNum'];
     $maxPage = $data['maxPage'];
     if ($page > 1) {
         $prevPage = $page - 1;
-        echo '<li class="w-[40px] h-[40px] px-1 mx-1"><a class="rounded-full w-full border pt-[6px] pb-[5px] pl-[8px] pr-[10px] leading-none text-center text-black hover:bg-[#eb6420] hover:text-white text-[1.2rem]" href="' . _WEB_ROOT . '/user/list_user?page=' . $prevPage . '&keyword_user='.$keyword.'&group='.$group_id.'"><i class="fas fa-angle-double-left"></i></a></li>';
+        echo '<li class="w-[40px] h-[40px] px-1 mx-1"><a class="rounded-full w-full border pt-[6px] pb-[5px] pl-[8px] pr-[10px] leading-none text-center text-black hover:bg-[#eb6420] hover:text-white text-[1.2rem]" href="' . _WEB_ROOT . '/user/list_user?page=' . $prevPage . '&keyword_user=' . $keyword . '&group=' . $group_id . '"><i class="fas fa-angle-double-left"></i></a></li>';
     }
     ?>
 
@@ -146,13 +158,13 @@ if (!empty($_SESSION['msg'])) {
 
     for ($i = $begin; $i <= $end; $i++) {
     ?>
-        <li class="w-[40px] h-[40px] px-1"><a class="rounded-full w-full border pt-[6px] pb-[4px] px-[11px] leading-none text-center text-black hover:bg-[#eb6420] hover:text-white text-[1.2rem] <?php echo ($i == $page) ? 'bg-[#000] text-white' : false ?>" href="<?php echo _WEB_ROOT . '/user/list_user?page=' . $i .'&keyword_user='.$keyword.'&group='.$group_id?>"><?php echo $i ?></a></li>
+        <li class="w-[40px] h-[40px] px-1"><a class="rounded-full w-full border pt-[6px] pb-[4px] px-[11px] leading-none text-center text-black hover:bg-[#eb6420] hover:text-white text-[1.2rem] <?php echo ($i == $page) ? 'bg-[#000] text-white' : false ?>" href="<?php echo _WEB_ROOT . '/user/list_user?page=' . $i . '&keyword_user=' . $keyword . '&group=' . $group_id ?>"><?php echo $i ?></a></li>
     <?php } ?>
 
     <?php
     if ($page < $maxPage) {
         $nextPage = $page + 1;
-        echo '<li class="w-[40px] h-[40px] px-1 mx-1"><a class="rounded-full w-full border pt-[6px] pb-[5px] pl-[10px] pr-[8px] leading-none text-center text-black hover:bg-[#eb6420] hover:text-white text-[1.2rem]" href="' . _WEB_ROOT . '/user/list_user?page=' . $nextPage . '&keyword_user='.$keyword.'&group='.$group_id.'"><i class="fas fa-angle-double-right"></i></a></li>';
+        echo '<li class="w-[40px] h-[40px] px-1 mx-1"><a class="rounded-full w-full border pt-[6px] pb-[5px] pl-[10px] pr-[8px] leading-none text-center text-black hover:bg-[#eb6420] hover:text-white text-[1.2rem]" href="' . _WEB_ROOT . '/user/list_user?page=' . $nextPage . '&keyword_user=' . $keyword . '&group=' . $group_id . '"><i class="fas fa-angle-double-right"></i></a></li>';
     }
     ?>
 </ul>

@@ -4,15 +4,15 @@ if (!empty($data['msg'])) {
 }
 ?>
 
-<form method="POST" action="<?php echo _WEB_ROOT . '/product/add_product' ?>" enctype="multipart/form-data">
+<form id="form" method="POST" action="<?php echo _WEB_ROOT . '/product/add_product' ?>" enctype="multipart/form-data">
     <div class="grid-cols-12 grid gap-4">
         <div class="mb-3 col-span-6">
-            <label for="exampleInputEmail1" class="form-label">Name product</label>
-            <input type="text" class="form-control" name="productname" placeholder="Name product">
+            <label for="exampleInputEmail1" class="form-label">Product name</label>
+            <input type="text" class="form-control" name="productname" placeholder="Product name">
         </div>
         <div class="mb-3 col-span-6 h-[70px]" id="image-upload">
             <label for="image" class="form-label flex flex-col justify-center" id="upload-img">
-                <span>Image Product</span>
+                <span>Product image</span>
                 <div class="flex items-center gap-3 bg-[#fff] mt-2 px-2 py-1 rounded border border-[#99a1a8] w-[483px]">
                     <img src="<?php echo _PUBLIC . '/client/assets/image/image_upload.png' ?>" alt="" class="w-7">
                     <span>
@@ -20,24 +20,25 @@ if (!empty($data['msg'])) {
                     </span>
                 </div>
             </label>
-            <input type="file" id="image" class="form-control hidden" name="product" onchange="readURL(this);"><br>
+            <input type="file" id="image" class="form-control hidden" name="productimage" onchange="readURL(this);"><br>
         </div>
         <div class="mb-3 col-span-6 h-[70px]" id="images-upload">
-            <label for="image-multiple" class="form-label flex flex-col justify-center" id="upload-imgs">
-                <span>Images Product</span>
+            <label for="images" class="form-label flex flex-col justify-center">
+                <span>Product images</span>
                 <div class="flex items-center gap-3 bg-[#fff] mt-2 px-2 py-1 rounded border border-[#99a1a8] w-[483px]">
                     <img src="<?php echo _PUBLIC . '/client/assets/image/image_upload.png' ?>" alt="" class="w-7">
                     <span>
                         Upload file
                     </span>
                 </div>
+                <div id="frames" class="flex gap-2"></div>
             </label>
-            <input type="file" id="image-multiple" multiple class="form-control hidden" name="detail_image[]"><br>
+            <input type="file" id="images" class="hidden" name="image[]" multiple /><br />
         </div>
         <div class="mb-3 col-span-6">
             <label for="exampleInputEmail1" class="form-label">Category</label><br>
             <select name="category" id="category" class="custom-select" required>
-                <option>---Select---</option>
+                <option value="">---Select---</option>
                 <?php
                 foreach ($data['categories'] as $category) {
                 ?>

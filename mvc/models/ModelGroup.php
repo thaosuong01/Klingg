@@ -12,7 +12,7 @@ class ModelGroup extends DB
         if (!empty($keyword)) {
             $sql = "SELECT * FROM group_user WHERE name like '%" . $keyword . "%'";
         } else {
-            $sql = "SELECT * FROM group_user ORDER BY name";
+            $sql = "SELECT * FROM group_user ORDER BY id";
         }
         $sql .= " LIMIT $offset, $per_page";
         return $this->pdo_query($sql);

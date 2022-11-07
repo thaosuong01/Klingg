@@ -40,8 +40,8 @@ if (!empty($data['msg'])) {
       $mb = 'mb-5';
     }
     ?>
-    <div class="<?php echo $mb ?> col-span-6 h-[70px]" id="images-upload">
-      <label for="multiple-image" class="form-label flex flex-col justify-center" id="upload-imgs">
+    <div class="<?php echo $mb ?> col-span-6 h-[70px] edit_pro" id="images-upload">
+      <label for="images" class="form-label flex flex-col justify-center" id="upload-imgs">
         <span>Images Product</span>
         <div class="flex items-center gap-3 bg-[#fff] mt-2 px-2 py-1 rounded border border-[#99a1a8] w-[483px]">
           <img src="<?php echo _PUBLIC . '/client/assets/image/image_upload.png' ?>" alt="" class="w-7">
@@ -57,7 +57,7 @@ if (!empty($data['msg'])) {
             <?php
             foreach ($data['productImg'] as $productImg) {
             ?>
-              <img src="<?php echo _PATH_IMG_PRODUCT . $productImg['image'] ?>" alt="" style="width: 50px; height: 50px; margin-top: 5px; max-width: 100%; object-fit: cover; object-position: center;" id="imgs-preview" class="flex gap-2">
+              <img src="<?php echo _PATH_IMG_PRODUCT . $productImg['image'] ?>" alt="" style="width: 50px; height: 50px; margin-top: 5px; max-width: 100%; object-fit: cover; object-position: center;" class="flex gap-2 imgs">
             <?php
             }
             ?>
@@ -65,8 +65,9 @@ if (!empty($data['msg'])) {
         <?php
         }
         ?>
+        <div id="frames" class="flex gap-2"></div>
       </label>
-      <input type="file" id="multiple-image" multiple class="form-control hidden" name="detail_image[]"><br>
+      <input type="file" id="images" class="hidden" name="image[]" multiple /><br />
     </div>
     <div class="mb-3 col-span-6">
       <label for="exampleInputEmail1" class="form-label">Category</label><br>
