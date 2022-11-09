@@ -12,7 +12,7 @@ window.addEventListener('load', function () {
             const user = e.target.parentElement.dataset.user;
             
             if (user == 'not logged in') {
-                Swal.fire('You need to login to make a purchase')
+                Swal.fire('You need to login to make a purchase');
             }
             else {
                 if (id) {
@@ -284,16 +284,23 @@ window.addEventListener('load', function () {
             const id = e.target.dataset.id;
             const url = e.target.dataset.url;
             const path_img = e.target.dataset.pathimg;
-            if (id) {
-                addToCart(id, url, path_img, number);
+            const user = e.target.dataset.user;
+            
+            if (user == 'not logged in') {
+                Swal.fire('You need to login to make a purchase');
             }
             else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Something went wrong!',
-                    footer: '<a href="">Why do I have this issue?</a>'
-                })
+                if (id) {
+                    addToCart(id, url, path_img, number);
+                }
+                else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                        footer: '<a href="">Why do I have this issue?</a>'
+                    })
+                }
             }
         }
 

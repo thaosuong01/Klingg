@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div class="product-button">
-                    <button class="btn detail_add-cart" data-url="<?php echo _WEB_ROOT . '/ajax' ?>" data-pathimg="<?php echo _PATH_IMG_PRODUCT ?>" data-id="<?php echo $data['product']['id'] ?>">Add to cart</button>
+                    <button class="btn detail_add-cart" data-url="<?php echo _WEB_ROOT . '/ajax' ?>" data-pathimg="<?php echo _PATH_IMG_PRODUCT ?>" data-id="<?php echo $data['product']['id'] ?>" data-user="<?php echo isset($_SESSION['user']) ? $_SESSION['user']['id'] : 'not logged in' ?>">Add to cart</button>
                     <button class="btn">Buy it now</button>
                 </div>
 
@@ -115,7 +115,7 @@
                     <h4 class="review-title">
                         Write a review
                     </h4>
-                    <form class="review-form-input" action="<?php echo _WEB_ROOT . '/detail/add_comment' ?>" method="post" data-userid="<?php echo $_SESSION['user']['id'] ?>" data-proid="<?php echo $data['product']['id'] ?>">
+                    <form class="review-form-input" action="<?php echo _WEB_ROOT . '/detail/add_comment' ?>" method="post" data-userid="<?php echo $_SESSION['user']['id'] ?>" data-user="<?php echo isset($_SESSION['user']) ? $_SESSION['user']['id'] : 'not logged in' ?>" data-proid="<?php echo $data['product']['id'] ?>">
 
                         <div class="flex items-center gap-3">
                             <div id="rateYo" class="my-3"></div>

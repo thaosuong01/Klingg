@@ -13,7 +13,7 @@ $(function () {
     const formComment = document.querySelector('.review-form-input');
     const list_comment = document.querySelector('.list_comment');
 
-    function renderComment(item){
+    function renderComment(item) {
         let template = `
         <div class="review-post">
         <div class="rateyo"
@@ -35,9 +35,9 @@ $(function () {
         `;
         $(".rateyo").rateYo();
 
-        list_comment.insertAdjacentHTML('beforeend',template);
+        list_comment.insertAdjacentHTML('beforeend', template);
     }
-    let commentText =  document.querySelector('.comment');
+    let commentText = document.querySelector('.comment');
     formComment.addEventListener('submit', function (e) {
         e.preventDefault();
         const ratingNum = document.querySelector('.num_start').textContent;
@@ -45,28 +45,35 @@ $(function () {
         const url = this.getAttribute('action');
         const user_id = e.target.dataset.userid;
         const pro_id = e.target.dataset.proid;
-        
-        if (+ratingNum <= 0) {
-            // alert('Phai danh gia sao');
+        const user = e.target.dataset.user;
+
+        if (user == 'not logged in') {
+            Swal.fire('You need to login to rate this product');
         }
+
         else {
-            $.ajax({
-                url: url,
-                type: "POST",
-                data: { ratingNum, comment, user_id, pro_id },
-                dataType: "text",
-                success: function (data) {
-                    let response = JSON.parse(data);
-                    list_comment.innerHTML = '';
-                    response.length > 0 && response.forEach(item=>{
-                        renderComment(item);
-                    })
-                    commentText.value = '';
-                },
-                error: function (e) {
-                    console.log(e);
-                },
-            })
+            if (+ratingNum <= 0) {
+                // alert('Phai danh gia sao');
+            }
+            else {
+                $.ajax({
+                    url: url,
+                    type: "POST",
+                    data: { ratingNum, comment, user_id, pro_id },
+                    dataType: "text",
+                    success: function (data) {
+                        let response = JSON.parse(data);
+                        list_comment.innerHTML = '';
+                        response.length > 0 && response.forEach(item => {
+                            renderComment(item);
+                        })
+                        commentText.value = '';
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    },
+                })
+            }
         }
     })
 
