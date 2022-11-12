@@ -110,12 +110,12 @@ class ModelUser extends DB
         return  $this->pdo_query_one($userName);
     }
 
-    function editProfile($id, $name, $img, $email, $address, $phone, $date)
+    function editProfile($id, $name, $img, $email, $address, $phone, $desc, $date)
     {
         if (!empty($img)) {
-            $sql = "UPDATE users SET name_user ='$name', avatar = '$img', email='$email' , address='$address', phone='$phone', updated_at='$date' WHERE id='$id'";
+            $sql = "UPDATE users SET name_user ='$name', avatar = '$img', email='$email' , address='$address', phone='$phone', description = '$desc', updated_at='$date' WHERE id='$id'";
         } else {
-            $sql = "UPDATE users SET name_user ='$name', email = '$email' , address='$address', phone='$phone', updated_at='$date' WHERE id='$id'";
+            $sql = "UPDATE users SET name_user ='$name', email = '$email' , address='$address', phone='$phone', description = '$desc', updated_at='$date' WHERE id='$id'";
         }
 
         return $this->pdo_execute($sql);

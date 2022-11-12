@@ -31,9 +31,10 @@ class Account extends Controller
             $email = $_POST['email'];
             $phone = $_POST['phone'];
             $address = $_POST['address'];
+            $desc = $_POST['description'];
             $updated_at = date('Y-m-d H:i:s');
 
-            $this->users->editProfile($id, $name, $avatar, $email, $address, $phone, $updated_at);
+            $this->users->editProfile($id, $name, $avatar, $email, $address, $phone, $desc, $updated_at);
             if (isset($_SESSION['user'])) {
                 $id = $_SESSION['user']['id'];
                 $_SESSION['user'] = $this->users->SelectUser($id);

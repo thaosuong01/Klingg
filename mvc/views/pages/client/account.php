@@ -19,7 +19,7 @@
                                     } else {
                                         echo _PATH_AVATAR . '/' . $_SESSION['user']['avatar'];
                                     }
-                                    ?>" alt="Avatar" class="avatar img-fluid my-5 mx-[auto] border-2 border-[#eb6420] rounded-full" style="width: 200px;" />
+                                    ?>" alt="Avatar" class="avatar img-fluid my-5 mx-[auto] border-2 border-[#eb6420] rounded-full" style="width: 200px; height:200px; object-fit:cover;" />
                     </div>
                     <div class="mx-auto w-[50%]">
                         <input type="file" name="avatar" id="" class="file-upload form-control outline-none w-[100%] ml-5">
@@ -40,6 +40,12 @@
                     <div class="col-md-6">
                         <label for="address" class="form-label"></label>
                         <input type="text" class="form-control outline-none" placeholder="Address" id="address" name="address" aria-describedby="addressFeedback" value="<?php echo $_SESSION['user']['address'] ?>">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col">
+                        <label for="description" class="form-label"></label>
+                        <textarea type="text" class="form-control outline-none" placeholder="Description" id="description" name="description" aria-describedby="descriptionFeedback" value=""><?php echo $_SESSION['user']['description'] ?></textarea>
                     </div>
                 </div>
 

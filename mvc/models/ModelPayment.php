@@ -24,7 +24,7 @@ class ModelPayment extends DB
     {
         $sql = "SELECT bill.*, users.name_user,users.email FROM  bill INNER JOIN users ON bill.user_id = users.id";
         if (!empty($keyword)) {
-            $sql .= " AND name like '%" . $keyword . "%'";
+            $sql .= " AND name_user like '%" . $keyword . "%'";
         }
         if ($status > -1) {
             $sql .= " AND status = $status";
@@ -37,7 +37,7 @@ class ModelPayment extends DB
     {
         $bill = "SELECT bill.*, users.name_user,users.email FROM  bill INNER JOIN users ON bill.user_id = users.id";
         if (!empty($keyword)) {
-            $bill .= " AND name like '%" . $keyword . "%'";
+            $bill .= " AND name_user like '%" . $keyword . "%'";
         }
 
         if ($status > -1) {
