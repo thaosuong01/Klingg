@@ -555,11 +555,11 @@ header .header-menu .nav-list .menu-list .menu-item .list .item:hover a {
 }
 
 main .product-main {
-  padding: 100px 0;
+  padding: 100px 0 10px 0;
 }
 
 main .product-main .product-container {
-  margin: 0 40px;
+  /* margin: 0 40px; */
   display: flex;
 }
 
@@ -647,7 +647,7 @@ main .product-main .product-container .product-menu .product-menu-col .filter-pr
 }
 
 main .product-main .product-container .product-col .product-list {
-  width: 100%;
+  /* width: 100%; */
 }
 
 main .product-main .product-container .product-col .product-list .product-list-col {

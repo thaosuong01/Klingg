@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div class="product-main">
+    <div class="product-main w-[90%] mx-auto">
         <div class="product-container container">
             <div class="row w-full">
                 <div class="product-menu col-3 w-[300px]">
@@ -70,7 +70,7 @@
                 </div>
             </div>
 
-            <div class="product-col col-9 ">
+            <div class="product-col col-9">
 
                 <div class="product-list">
                     <div class="product-list-col row">

@@ -1,26 +1,6 @@
 <?php
 class User extends Controller
 {
-    public function login()
-    {
-        return $this->view('client', [
-            'page' => 'login',
-            'js' => ['account'],
-            'css' => ['login']
-        ]);
-    }
-
-    public function register()
-    {
-        return $this->view('client', [
-            'page' => 'register',
-            'js' => [
-                'register'
-            ],
-            'css' => ['register']
-        ]);
-    }
-
     private $users;
     private $groups;
     private $products;
@@ -29,7 +9,36 @@ class User extends Controller
         $this->users = $this->model('ModelUser');
         $this->groups = $this->model('ModelGroup');
         $this->products = $this->model('ModelProduct');
+        $this->categories = $this->model('ModelCategory');
     }
+
+    public function login()
+    {
+		$categories = $this->categories->getAllCl();
+
+        return $this->view('client', [
+            'page' => 'login',
+            'categories' => $categories,
+            'js' => ['account'],
+            'css' => ['login']
+        ]);
+    }
+
+    public function register()
+    {
+		$categories = $this->categories->getAllCl();
+
+        return $this->view('client', [
+            'page' => 'register',
+            'categories' => $categories,
+            'js' => [
+                'register'
+            ],
+            'css' => ['register']
+        ]);
+    }
+
+    
 
     function handleRegister()
     {

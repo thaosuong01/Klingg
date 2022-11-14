@@ -79,29 +79,7 @@
         </div>
         <!-- /.card -->
 
-        <div class="card">
-
-            <!-- /.card-header -->
-            <div class="card-body">
-                <!-- Conversations are loaded here -->
-
-
-            </div>
-            <!-- /.card-body -->
-
-            <!-- /.card-footer-->
-        </div>
-        <!--/.direct-chat -->
-
-        <!-- TO DO List -->
-        <div class="card">
-
-            <!-- /.card-header -->
-            <div class="card-body">
-
-            </div>
-        </div>
-        <!-- /.card -->
+        
     </section>
     <!-- /.Left col -->
     <!-- right col (We are only adding the ID to make the widgets sortable)-->
@@ -146,24 +124,7 @@
             <!-- /.card-body -->
         </div>
         <!-- Map card -->
-        <div class="card bg-gradient-primary">
-
-            <div class="card-body">
-            </div>
-
-        </div>
-        <!-- /.card -->
-
-        <!-- solid sales graph -->
-        <div class="card bg-gradient-info">
-            <div class="card-header border-0">
-
-            </div>
-            <div class="card-body">
-
-            </div>
-        </div>
-        <!-- /.card -->
+        
 
 
         <!-- /.card -->
