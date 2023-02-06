@@ -5,7 +5,7 @@ class DB
     public $servername = "localhost";
     public $username = "root";
     public $password = "";
-    public $dbname = "Kling";
+    public $dbname = "kling";
 
     function __construct()
     {
